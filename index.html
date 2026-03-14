@@ -40,8 +40,15 @@ align-items:center;
 padding:28px 0;
 }
 
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+}
+
 .logo img{
-height:26px;
+height:18px;
 }
 
 nav a{
@@ -143,6 +150,19 @@ font-size:14px;
 margin-top:80px;
 }
 
+/* Scroll animation */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible{
+opacity:1;
+transform:translateY(0);
+}
+
 </style>
 
 </head>
@@ -156,6 +176,7 @@ margin-top:80px;
 
 <div class="logo">
 <img src="logo.svg">
+Recall
 </div>
 
 <div>
@@ -179,7 +200,7 @@ AI infrastructure for <span class="highlight">capturing organisational knowledge
 </h1>
 
 <p>
-Critical expertise disappears every day as knowledge remains buried across documents, systems and conversations.  
+Critical expertise disappears every day as knowledge remains buried across documents, systems and conversations.
 Recall captures institutional knowledge and makes it instantly accessible through AI.
 </p>
 
@@ -193,7 +214,7 @@ Contact
 
 
 
-<section class="section problem">
+<section class="section problem reveal">
 
 <div class="container">
 
@@ -230,7 +251,7 @@ When experienced employees retire or change roles, organisations lose valuable o
 
 
 
-<section class="section">
+<section class="section reveal">
 
 <div class="container">
 
@@ -267,7 +288,7 @@ Designed for organisations operating complex technology stacks and strict compli
 
 
 
-<section class="section usecases">
+<section class="section usecases reveal">
 
 <div class="container">
 
@@ -310,6 +331,26 @@ Preserve institutional expertise before experienced employees leave the organisa
 contact@recall.ai
 
 </div>
+
+
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+},{
+threshold:0.2
+});
+
+document.querySelectorAll('.reveal').forEach(el=>{
+observer.observe(el);
+});
+
+</script>
 
 
 </body>
