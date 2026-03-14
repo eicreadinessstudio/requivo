@@ -1,134 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Recall — AI Knowledge System</title>
+<title>Recall — AI Knowledge Infrastructure</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
 body{
 font-family:'Inter',sans-serif;
-margin:0;
-background:#0f1115;
-color:#e6e8eb;
+background:#0b0d12;
+color:#e8ecf1;
+line-height:1.6;
 }
 
 .container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-padding:40px 20px;
+padding:0 24px;
 }
 
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 0;
+padding:28px 0;
 }
 
 .logo{
 font-weight:600;
 font-size:22px;
-letter-spacing:1px;
+letter-spacing:0.5px;
+}
+
+nav a{
+color:#9aa4b2;
+text-decoration:none;
+margin-left:30px;
+font-size:14px;
 }
 
 .hero{
-padding:120px 0 80px 0;
+padding:120px 0 100px 0;
+text-align:center;
+background: radial-gradient(circle at top, #1c2130 0%, #0b0d12 60%);
 }
 
 .hero h1{
-font-size:48px;
-line-height:1.2;
-margin-bottom:20px;
+font-size:56px;
+max-width:850px;
+margin:auto;
+line-height:1.1;
+margin-bottom:30px;
 }
 
 .hero p{
 font-size:20px;
-color:#a0a6ad;
-max-width:650px;
-}
-
-.section{
-padding:80px 0;
-}
-
-.section h2{
-font-size:32px;
-margin-bottom:20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-margin-top:40px;
-}
-
-.card{
-background:#171a21;
-padding:30px;
-border-radius:12px;
-}
-
-.card h3{
-margin-bottom:10px;
-}
-
-.card p{
-color:#a0a6ad;
-}
-
-.footer{
-border-top:1px solid #2a2f38;
-padding:30px 0;
-margin-top:60px;
-font-size:14px;
-color:#7d838c;
+color:#9aa4b2;
+max-width:720px;
+margin:auto;
 }
 
 .button{
 display:inline-block;
-margin-top:30px;
-padding:14px 26px;
+margin-top:40px;
+padding:16px 32px;
 background:#4f8cff;
 color:white;
 text-decoration:none;
-border-radius:6px;
+border-radius:8px;
 font-weight:500;
+transition:0.2s;
+}
+
+.button:hover{
+background:#3d73d8;
+}
+
+.section{
+padding:110px 0;
+}
+
+.section h2{
+font-size:36px;
+text-align:center;
+margin-bottom:60px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+}
+
+.card{
+background:#151922;
+padding:35px;
+border-radius:14px;
+border:1px solid #222833;
+}
+
+.card h3{
+margin-bottom:12px;
+font-size:20px;
+}
+
+.card p{
+color:#9aa4b2;
+}
+
+.problem{
+background:#0e1117;
+}
+
+.usecases{
+background:#0e1117;
+}
+
+.footer{
+border-top:1px solid #222833;
+margin-top:80px;
+padding:40px 0;
+text-align:center;
+color:#7b8391;
+font-size:14px;
+}
+
+.highlight{
+color:#4f8cff;
 }
 
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
 <nav>
-<div class="logo">Recall</div>
+
+<div class="logo">
+Recall
+</div>
+
+<div>
+<a href="#">Product</a>
+<a href="#">Use Cases</a>
+<a href="#">Contact</a>
+</div>
+
 </nav>
+
+</div>
+
 
 <section class="hero">
 
+<div class="container">
+
 <h1>
-AI that captures and retrieves organisational knowledge
+AI infrastructure for capturing and retrieving <span class="highlight">organisational knowledge</span>
 </h1>
 
 <p>
-Critical expertise disappears every day when employees leave or information remains buried across documents, systems, and conversations. Recall captures that knowledge and makes it accessible instantly through AI.
+Critical expertise disappears every day as information remains buried across documents, systems, and conversations.  
+Recall captures institutional knowledge and makes it instantly accessible through AI.
 </p>
 
 <a class="button" href="mailto:contact@recall.ai">
-Contact
+Contact us
 </a>
+
+</div>
 
 </section>
 
-<section class="section">
+
+<section class="section problem">
+
+<div class="container">
 
 <h2>The problem</h2>
 
@@ -137,64 +198,70 @@ Contact
 <div class="card">
 <h3>Knowledge fragmentation</h3>
 <p>
-Organisations operate across hundreds of software systems, making critical information difficult to locate.
+Large organisations operate across hundreds of systems, making critical information difficult to locate.
 </p>
 </div>
 
 <div class="card">
 <h3>Time lost searching</h3>
 <p>
-Knowledge workers spend significant portions of their workweek searching for internal data and documentation.
+Knowledge workers spend a significant portion of their time searching for internal documentation and data.
 </p>
 </div>
 
 <div class="card">
 <h3>Expertise leaving organisations</h3>
 <p>
-As experienced employees retire or move on, organisations lose critical operational knowledge.
+When experienced employees retire or change roles, organisations lose valuable operational knowledge.
 </p>
+</div>
+
 </div>
 
 </div>
 
 </section>
 
+
 <section class="section">
 
-<h2>The solution</h2>
+<div class="container">
 
-<p>
-Recall builds an AI knowledge system that captures organisational expertise and makes it instantly searchable through natural language.
-</p>
+<h2>The solution</h2>
 
 <div class="grid">
 
 <div class="card">
 <h3>Knowledge capture</h3>
 <p>
-Automatically capture expertise from documents, procedures, and internal systems.
+Automatically capture organisational knowledge from documents, procedures, and enterprise systems.
 </p>
 </div>
 
 <div class="card">
 <h3>AI retrieval</h3>
 <p>
-Employees can ask questions and receive precise answers grounded in company knowledge.
+Employees can ask questions in natural language and receive precise answers grounded in company knowledge.
 </p>
 </div>
 
 <div class="card">
-<h3>Enterprise-ready</h3>
+<h3>Enterprise infrastructure</h3>
 <p>
-Designed for organisations with complex infrastructure and strict compliance requirements.
+Built for organisations operating complex technology stacks and strict compliance environments.
 </p>
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<section class="section">
+
+<section class="section usecases">
+
+<div class="container">
 
 <h2>Use cases</h2>
 
@@ -203,33 +270,39 @@ Designed for organisations with complex infrastructure and strict compliance req
 <div class="card">
 <h3>Manufacturing</h3>
 <p>
-Capture operational knowledge from engineers, plant procedures, and technical documentation.
+Capture engineering knowledge, plant procedures, and operational expertise across manufacturing environments.
 </p>
 </div>
 
 <div class="card">
 <h3>Enterprise operations</h3>
 <p>
-Reduce time spent searching for internal knowledge across systems and documentation.
+Reduce time spent searching for internal knowledge across systems, documentation, and teams.
 </p>
 </div>
 
 <div class="card">
 <h3>Knowledge retention</h3>
 <p>
-Preserve expertise before experienced employees leave the organisation.
+Preserve institutional expertise before experienced employees leave the organisation.
 </p>
+</div>
+
 </div>
 
 </div>
 
 </section>
 
+
 <div class="footer">
-© 2026 Recall AI
-</div>
+
+© 2026 Recall AI  
+contact@recall.ai
 
 </div>
+
 
 </body>
+
 </html>
