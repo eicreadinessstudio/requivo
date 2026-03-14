@@ -20,6 +20,10 @@ margin:0;
 padding:0;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:'Inter',sans-serif;
 background:#0a0c11;
@@ -40,15 +44,8 @@ align-items:center;
 padding:28px 0;
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:600;
-}
-
 .logo img{
-height:18px;
+height:22px;
 }
 
 nav a{
@@ -160,7 +157,7 @@ margin-left:8px;
 color:#4f8cff;
 }
 
-/* Scroll animation */
+/* scroll animation */
 
 .reveal{
 opacity:0;
@@ -186,13 +183,12 @@ transform:translateY(0);
 
 <div class="logo">
 <img src="logo.svg">
-Recall
 </div>
 
 <div>
 <a href="#">Product</a>
 <a href="#">Use Cases</a>
-<a href="mailto:contact@recall.ai">Contact</a>
+<a href="#contact">Contact</a>
 </div>
 
 </nav>
@@ -214,7 +210,7 @@ Critical expertise disappears every day as knowledge remains buried across docum
 Recall captures institutional knowledge and makes it instantly accessible through AI.
 </p>
 
-<a class="button" href="mailto:contact@recall.ai">
+<a class="button" href="#contact">
 Contact
 </a>
 
@@ -335,11 +331,55 @@ Preserve institutional expertise before experienced employees leave the organisa
 
 
 
+<section class="section reveal" id="contact">
+
+<div class="container">
+
+<h2>Contact</h2>
+
+<p style="text-align:center;color:#9aa4b2;max-width:600px;margin:auto;margin-bottom:50px;">
+We are currently building Recall and exploring partnerships with early design partners.
+If you are interested in learning more, please reach out.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Agnieszka Pisz</h3>
+<p>Co-Founder</p>
+</div>
+
+<div class="card">
+<h3>Patrick Pirchheim</h3>
+<p>Co-Founder</p>
+</div>
+
+<div class="card">
+<h3>Jakub Weglarz</h3>
+<p>COO</p>
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+
+<a class="button" href="mailto:contact@recall.ai">
+contact@recall.ai
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
 <div class="footer">
 
 © 2026 Recall |
 <a href="impressum.html">Impressum</a> |
-<a href="mailto:contact@recall.ai">Contact</a>
+<a href="#contact">Contact</a>
 
 </div>
 
