@@ -534,22 +534,12 @@
       text-decoration:underline;
     }
 
-    .footer-gradient{
-      height:180px;
-      background:
-        linear-gradient(to bottom,
-          rgba(191,208,223,0.00) 0%,
-          rgba(191,208,223,0.16) 18%,
-          rgba(145,170,191,0.32) 38%,
-          rgba(97,129,155,0.48) 58%,
-          rgba(53,89,118,0.72) 80%,
-          rgba(22,58,87,0.96) 100%);
-    }
-
     footer{
       background:var(--petrol-deep);
       color:#edf3f8;
       padding:54px 0 64px 0;
+      margin-top:0;
+      border-top:1px solid rgba(255,255,255,0.08);
     }
 
     .footer-grid{
@@ -570,6 +560,7 @@
       align-items:center;
       gap:12px;
       color:#ffffff;
+      text-decoration:none;
     }
 
     .footer-logo .logo-mark{
@@ -684,8 +675,12 @@
         padding:22px 20px;
       }
 
-      .footer-gradient{
-        height:140px;
+      .hero-image{
+        min-height:auto;
+      }
+
+      .hero-image-frame{
+        min-height:260px;
       }
     }
   </style>
@@ -926,16 +921,14 @@
     </div>
   </section>
 
-  <div class="footer-gradient"></div>
-
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo">
+          <a href="#top" class="footer-logo" aria-label="Requivo home">
             <span class="logo-mark"></span>
             <span class="logo-word">Requivo</span>
-          </div>
+          </a>
           <p>
             Requivo is an early-stage operational knowledge system concept focused on turning fragmented enterprise evidence into governed operational clarity.
           </p>
