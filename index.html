@@ -10,32 +10,31 @@
   <style>
     :root{
       --bg:#071018;
-      --bg-2:#09121d;
-      --panel:#0b1522;
-      --panel-2:#0d1827;
+      --bg-2:#09131d;
+      --bg-3:#0c1724;
+      --panel:#0d1826;
+      --panel-2:#111e2d;
       --line:rgba(173,194,223,0.14);
       --line-soft:rgba(190,208,232,0.08);
-      --line-faint:rgba(190,208,232,0.04);
-
       --text:#edf3fb;
       --text-soft:#a7b7cc;
       --text-dim:#7f90a6;
-
       --blue:#77a9ff;
       --blue-2:#a7c7ff;
-      --blue-hover:#5f92e9;
-
+      --blue-3:#2f63ff;
+      --green:#1faa59;
+      --green-soft:rgba(31,170,89,0.12);
+      --green-line:rgba(31,170,89,0.28);
       --shadow:0 24px 70px rgba(0,0,0,0.34);
       --radius:18px;
 
-      --fig-stroke:rgba(192,208,231,0.26);
-      --fig-stroke-strong:rgba(232,239,250,0.72);
-      --fig-node:rgba(237,244,255,0.98);
-      --fig-node-soft:rgba(222,234,252,0.12);
-      --grid:rgba(255,255,255,0.025);
-
-      --copy-title-h:58px;
-      --copy-body-h:120px;
+      --demo-bg:#f3f5f8;
+      --demo-panel:#ffffff;
+      --demo-line:#dfe4ea;
+      --demo-text:#111827;
+      --demo-text-soft:#667085;
+      --demo-blue:#2f63ff;
+      --demo-pill:#edf3ff;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -50,60 +49,262 @@
       overflow-x:hidden;
     }
 
-    .container{max-width:1180px;margin:auto;padding:0 28px}
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:0 28px;
+    }
 
     nav{
-      display:flex;justify-content:space-between;align-items:center;padding:28px 0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:28px 0;
+      position:relative;
+      z-index:10;
     }
-    .logo img{height:34px;display:block}
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:15px;
+      letter-spacing:.18em;
+      font-weight:800;
+      text-transform:uppercase;
+      color:var(--blue);
+    }
+
+    .logo img{
+      height:34px;
+      display:block;
+    }
+
     nav a{
-      color:var(--text-soft);text-decoration:none;margin-left:28px;font-size:14px;
+      color:var(--text-soft);
+      text-decoration:none;
+      margin-left:28px;
+      font-size:14px;
       transition:color .2s ease;
     }
     nav a:hover{color:var(--text)}
 
     .hero{
       position:relative;
-      padding:120px 0 84px 0;
-      text-align:center;
+      padding:110px 0 78px 0;
       background:
-        radial-gradient(circle at 18% 10%, rgba(48,84,146,0.28) 0%, transparent 36%),
-        radial-gradient(circle at 82% 18%, rgba(48,84,146,0.20) 0%, transparent 36%),
+        radial-gradient(circle at 18% 8%, rgba(48,84,146,0.28) 0%, transparent 34%),
+        radial-gradient(circle at 82% 12%, rgba(48,84,146,0.20) 0%, transparent 34%),
         linear-gradient(to bottom, #07111a 0%, #09131e 100%);
+      overflow:hidden;
     }
+
     .hero::before{
-      content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.2;
       background:
-        linear-gradient(to right, var(--grid) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 18%);
-      background-size:40px 40px,40px 40px,100% 100%;
+        linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size:40px 40px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.95), rgba(0,0,0,.35));
     }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 1.05fr) minmax(380px, .95fr);
+      gap:56px;
+      align-items:center;
+    }
+
+    .hero-copy{
+      position:relative;
+      z-index:1;
+    }
+
+    .eyebrow{
+      color:var(--blue-2);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
     .hero h1{
-      position:relative;z-index:1;
-      font-size:76px;line-height:.98;font-weight:800;letter-spacing:-2.8px;
-      max-width:1080px;margin:0 auto 24px auto;
+      font-size:72px;
+      line-height:.98;
+      font-weight:800;
+      letter-spacing:-2.6px;
+      max-width:820px;
+      margin-bottom:24px;
     }
+
     .highlight{color:var(--blue)}
-    .hero-sub{
-      position:relative;z-index:1;
-      color:var(--blue-2);font-size:16px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-      margin:0 auto 16px auto;max-width:760px;
-    }
+
     .hero p{
-      position:relative;z-index:1;
-      font-size:18px;color:var(--text-soft);max-width:760px;margin:auto;line-height:1.75;
+      font-size:18px;
+      color:var(--text-soft);
+      max-width:700px;
+      line-height:1.78;
     }
 
-    .section{padding:110px 0}
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      margin-top:30px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border-radius:999px;
+      padding:14px 20px;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:700;
+      transition:transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+
+    .btn:hover{transform:translateY(-1px)}
+
+    .btn-primary{
+      background:var(--blue);
+      color:#08111c;
+      border:1px solid transparent;
+    }
+
+    .btn-primary:hover{background:var(--blue-2)}
+
+    .btn-secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .btn-secondary:hover{
+      border-color:rgba(119,169,255,0.26);
+      color:#fff;
+    }
+
+    .hero-side{
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-system{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(8px);
+    }
+
+    .mini-system-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:20px;
+    }
+
+    .mini-kicker{
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#8aa6d8;
+      font-weight:700;
+    }
+
+    .mini-badge{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      color:#bcd3ff;
+      border:1px solid rgba(167,199,255,0.18);
+      background:rgba(167,199,255,0.06);
+    }
+
+    .mini-stack{
+      display:grid;
+      gap:12px;
+    }
+
+    .mini-row{
+      display:grid;
+      grid-template-columns:94px 1fr auto;
+      align-items:center;
+      gap:14px;
+      padding:14px 14px;
+      border:1px solid var(--line-soft);
+      border-radius:14px;
+      background:rgba(255,255,255,0.018);
+    }
+
+    .mini-tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:76px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      color:#dce7fa;
+      background:rgba(167,199,255,0.08);
+      border:1px solid rgba(167,199,255,0.15);
+    }
+
+    .mini-row strong{
+      font-size:14px;
+      font-weight:700;
+      color:#eef4fc;
+      line-height:1.35;
+    }
+
+    .mini-state{
+      font-size:12px;
+      color:#a6b6cb;
+      white-space:nowrap;
+    }
+
+    .section{
+      padding:108px 0;
+      position:relative;
+    }
+
     .section h2{
-      font-size:34px;text-align:center;margin-bottom:18px;font-weight:800;letter-spacing:-.8px;
-    }
-    .section-intro{
-      text-align:center;color:var(--text-soft);font-size:17px;max-width:820px;margin:0 auto 56px auto;line-height:1.8;
+      font-size:36px;
+      text-align:center;
+      margin-bottom:18px;
+      font-weight:800;
+      letter-spacing:-.9px;
     }
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px}
+    .section-intro{
+      text-align:center;
+      color:var(--text-soft);
+      font-size:17px;
+      max-width:860px;
+      margin:0 auto 56px auto;
+      line-height:1.82;
+    }
+
+    .problem,.usecases{
+      background:var(--bg-2);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:36px;
+    }
 
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
@@ -114,199 +315,498 @@
       backdrop-filter:blur(8px);
       transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
     }
+
     .card:hover{
       transform:translateY(-3px);
       border-color:rgba(119,169,255,0.22);
       box-shadow:0 24px 54px rgba(0,0,0,0.34);
     }
-    .card h3{margin-bottom:12px;font-size:20px;font-weight:800;letter-spacing:-.02em}
-    .card p{color:var(--text-soft);font-size:16px;line-height:1.75}
 
-    .problem,.usecases{background:var(--bg-2)}
-    .sting{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:#8a97b0;font-weight:500}
-
-    .footer{border-top:1px solid var(--line);padding:42px 0;text-align:center;color:var(--text-dim);font-size:14px}
-    .footer a{color:var(--text-dim);text-decoration:none;margin:0 10px;transition:.2s}
-    .footer a:hover{color:var(--blue)}
-
-    /* safe fallback: content visible by default */
-    .reveal{opacity:1;transform:none}
-    .js-enabled .reveal{
-      opacity:0;
-      transform:translateY(40px);
-      transition:opacity .8s ease,transform .8s ease;
-    }
-    .js-enabled .reveal.visible{
-      opacity:1;
-      transform:translateY(0);
+    .card h3{
+      margin-bottom:12px;
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:-.02em;
     }
 
-    .feature-figures{
-      position:relative;padding:34px 0 10px 0;
+    .card p{
+      color:var(--text-soft);
+      font-size:16px;
+      line-height:1.75;
+    }
+
+    .sting{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      font-size:12px;
+      color:#8a97b0;
+      font-weight:600;
+    }
+
+    .walkthrough{
       background:
-        radial-gradient(circle at 50% 0%, rgba(119,169,255,0.08), transparent 34%),
-        linear-gradient(to bottom, rgba(255,255,255,0.01), rgba(255,255,255,0));
-    }
-    .feature-figures::before{
-      content:"";position:absolute;inset:0;pointer-events:none;opacity:.13;
-      background:
-        linear-gradient(to right, var(--grid) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-      background-size:36px 36px;
+        linear-gradient(to bottom, #08121c 0%, #0a1520 100%);
     }
 
-    .figures-grid{
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;
-      border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
-    }
-
-    .figure-card{
-      position:relative;
-      min-height:700px;
-      padding:34px 40px 34px 40px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0));
+    .walkthrough-shell{
+      border:1px solid var(--line);
+      border-radius:24px;
       overflow:hidden;
-      isolation:isolate;
+      box-shadow:0 28px 80px rgba(0,0,0,0.38);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+    }
+
+    .walkthrough-topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:20px 24px;
+      border-bottom:1px solid var(--line-soft);
+      background:rgba(255,255,255,0.015);
+    }
+
+    .walkthrough-brand{
       display:flex;
       flex-direction:column;
+      gap:3px;
     }
 
-    .figure-card + .figure-card{border-left:1px solid var(--line-soft)}
-
-    .figure-card::before{
-      content:"";
-      position:absolute;inset:-20% -10%;
-      z-index:0;pointer-events:none;opacity:0;transition:opacity .35s ease;
-      background:
-        radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(119,169,255,0.10), transparent 18%),
-        radial-gradient(circle at 50% 20%, rgba(255,255,255,0.03), transparent 44%);
-    }
-    .figure-card:hover::before{opacity:1}
-    .figure-card::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,0.02);pointer-events:none}
-
-    .figure-topline{
-      position:relative;z-index:2;font-size:11px;color:#89a6d8;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
-      letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px;
+    .walkthrough-brand .brand-mini{
+      color:var(--blue);
+      font-size:13px;
+      letter-spacing:.16em;
+      font-weight:800;
+      text-transform:uppercase;
     }
 
-    .figure-visual{
-      position:relative;z-index:2;height:430px;
-      display:flex;align-items:center;justify-content:center;
-      perspective:1600px;transform-style:preserve-3d;
-      margin-bottom:18px;
-      flex:0 0 auto;
+    .walkthrough-brand .brand-title{
+      font-size:18px;
+      font-weight:800;
+      color:#f3f7fc;
+      letter-spacing:-.03em;
     }
 
-    .figure-copy{
-      position:relative;z-index:2;
-      display:flex;flex-direction:column;justify-content:flex-start;
-      margin-top:auto;
+    .walkthrough-scenario{
+      color:var(--text-soft);
+      font-size:14px;
+      text-align:right;
     }
 
-    .figure-copy h3{
-      font-size:19px;line-height:1.14;font-weight:700;margin-bottom:14px;
-      color:#f4f8fd;letter-spacing:-.04em;
-      min-height:var(--copy-title-h);
-      display:flex;align-items:flex-start;
+    .walkthrough-note{
+      padding:12px 24px;
+      text-align:center;
+      font-size:14px;
+      color:var(--text-soft);
+      border-bottom:1px solid var(--line-soft);
+      background:rgba(255,255,255,0.018);
     }
 
-    .figure-copy p{
-      font-size:15px;line-height:1.8;color:var(--text-soft);max-width:320px;
-      min-height:var(--copy-body-h);
+    .walkthrough-body{
+      background:var(--demo-bg);
+      color:var(--demo-text);
+      padding:0;
     }
 
-    .tech-svg{
-      width:100%;max-width:360px;height:auto;overflow:visible;
-      transform:
-        rotateX(calc(var(--rx,0deg) * .42))
-        rotateY(calc(var(--ry,0deg) * .58))
-        translate3d(var(--tx,0px), var(--ty,0px), 0)
-        scale(var(--scale,1));
-      transition:transform .14s ease-out, filter .35s ease;
-      filter:drop-shadow(0 14px 44px rgba(0,0,0,.32));
-    }
-    .figure-card:hover .tech-svg{
-      filter:drop-shadow(0 18px 52px rgba(0,0,0,.38)) drop-shadow(0 0 34px rgba(119,169,255,.08));
+    .walkthrough-progress{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:18px 24px;
+      border-bottom:1px solid var(--demo-line);
+      background:#eef1f5;
+      color:#43506a;
+      font-size:14px;
+      font-weight:500;
     }
 
-    .tech-svg path,.tech-svg line,.tech-svg polyline,.tech-svg polygon,.tech-svg ellipse,.tech-svg circle,.tech-svg rect{
-      fill:none;stroke:var(--fig-stroke);stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;
-      vector-effect:non-scaling-stroke;shape-rendering:geometricPrecision;
-      transition:transform .28s ease,opacity .28s ease,stroke .28s ease,fill .28s ease,r .25s ease, y .22s ease, height .22s ease;
-      transform-box:fill-box;transform-origin:center;
+    .progress-dots{
+      display:flex;
+      gap:8px;
+      align-items:center;
     }
 
-    .figure-card:hover .tech-svg path,
-    .figure-card:hover .tech-svg line,
-    .figure-card:hover .tech-svg polyline,
-    .figure-card:hover .tech-svg polygon,
-    .figure-card:hover .tech-svg ellipse,
-    .figure-card:hover .tech-svg circle,
-    .figure-card:hover .tech-svg rect{
-      stroke:var(--fig-stroke-strong)
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#cfd5dd;
+    }
+    .dot.active{background:var(--demo-blue)}
+    .dot.done{background:var(--green)}
+
+    .walkthrough-stage{
+      padding:0 28px 28px 28px;
     }
 
-    .guide{opacity:.16}
-    .node{fill:rgba(223,235,252,0.10);stroke:rgba(226,236,252,0.34)}
-    .node-soft{fill:rgba(180,208,255,0.05);stroke:rgba(190,208,232,0.18)}
-    .node-core{fill:#edf4ff;stroke:none;opacity:.98}
-    .pulse{fill:none;stroke:rgba(130,177,255,0.24)!important;stroke-width:1.2!important}
-    .glow-line{stroke:rgba(130,177,255,0.34)!important;stroke-width:1.35!important}
-    .accent-line{stroke:rgba(145,188,255,0.46)!important;stroke-width:1.6!important}
-    .beam{fill:rgba(124,171,255,0.06);stroke:rgba(124,171,255,0.14)}
-    .plate{fill:rgba(223,235,252,0.05);stroke:rgba(226,236,252,0.22)}
-    .step-fill{fill:rgba(223,235,252,0.06);stroke:rgba(226,236,252,0.26)}
-    .step-core{fill:rgba(237,244,255,0.18);stroke:rgba(232,239,250,0.38)}
-
-    .knowledge-plane{transform:translateY(calc(var(--kp-shift, 0px) * .55))}
-    .knowledge-links{transform:translateY(calc(var(--kl-shift, 0px) * .7))}
-    .knowledge-nodes .mover{
-      transform:translate3d(calc(var(--mxp,0px) * var(--dx,1)), calc(var(--myp,0px) * var(--dy,1)), 0)
+    .walkthrough-canvas{
+      background:#e9edf2;
+      min-height:720px;
+      position:relative;
+      overflow:hidden;
+      border-left:1px solid rgba(0,0,0,0.03);
+      border-right:1px solid rgba(0,0,0,0.03);
     }
 
-    .radial-ring{transform:rotate(calc(var(--orbit-rot,0deg)));transform-origin:180px 160px}
-    .radial-gates .gate{
-      transform:translate3d(calc(var(--gate-shift,0px) * var(--gx,1)), calc(var(--gate-shift,0px) * var(--gy,1)), 0)
+    .walkthrough-pane{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+      padding:38px 0 34px 0;
+      display:grid;
+      grid-template-columns:minmax(0,1fr);
     }
-    .radial-center{transform:scale(calc(1 + var(--center-scale,0)))}
 
-    .wave-steps .step{
-      transform:translateY(calc(var(--step-shift, 0px) * var(--sy, 1))) translateX(calc(var(--step-x, 0px) * var(--sx, 1)));
+    .walkthrough-screen{
+      background:var(--demo-bg);
+      border-radius:18px;
+      padding:34px 0 18px 0;
     }
-    .wave-nodes .module-node{
-      transform:translateY(calc(var(--module-y, 0px) * var(--ny, 1))) translateX(calc(var(--module-x, 0px) * var(--nx, 1)));
+
+    .screen-content{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 18px;
     }
-    .wave-ridge{transform:translateY(calc(var(--ridge-shift, 0px) * .7))}
-    .wave-bars .bar{
-      transform:translateY(calc(var(--bar-base, 0px) * var(--by, 1)));
+
+    .screen-step{
+      color:var(--demo-blue);
+      font-size:13px;
+      letter-spacing:.18em;
+      font-weight:800;
+      text-transform:uppercase;
+      margin-bottom:10px;
     }
+
+    .screen-title{
+      font-size:30px;
+      line-height:1.12;
+      letter-spacing:-.05em;
+      font-weight:800;
+      margin-bottom:12px;
+      color:var(--demo-text);
+      max-width:680px;
+    }
+
+    .screen-copy{
+      color:var(--demo-text-soft);
+      font-size:17px;
+      line-height:1.72;
+      max-width:720px;
+      margin-bottom:22px;
+    }
+
+    .source-card{
+      background:var(--demo-panel);
+      border:1px solid var(--demo-line);
+      border-radius:18px;
+      box-shadow:0 14px 28px rgba(17,24,39,0.06);
+      overflow:hidden;
+    }
+
+    .source-card-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding:12px 16px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:800;
+      color:#6b7280;
+      background:#f5f7fa;
+      border-bottom:1px solid var(--demo-line);
+    }
+
+    .source-status{
+      font-size:12px;
+      font-weight:700;
+      color:var(--demo-blue);
+      background:var(--demo-pill);
+      border-radius:999px;
+      padding:6px 10px;
+      letter-spacing:0;
+      text-transform:none;
+    }
+
+    .source-list{
+      padding:10px;
+      display:grid;
+      gap:8px;
+    }
+
+    .source-item{
+      display:grid;
+      grid-template-columns:56px minmax(0,1fr) auto;
+      gap:14px;
+      align-items:center;
+      background:#f6f8fb;
+      border:1px solid #eef2f6;
+      border-radius:12px;
+      padding:10px 12px;
+    }
+
+    .source-badge{
+      width:32px;
+      height:32px;
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.03em;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,0.15);
+    }
+    .pdf{background:#ef4444}
+    .ts{background:#2563eb}
+    .ji{background:#1d4ed8}
+    .co{background:#315efb}
+    .csv{background:#16a34a}
+
+    .source-main{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .source-main strong{
+      font-size:15px;
+      line-height:1.35;
+      color:var(--demo-text);
+      font-weight:700;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .source-main span{
+      font-size:13px;
+      color:#7a8598;
+    }
+
+    .source-meta{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      text-align:right;
+    }
+
+    .source-pill{
+      padding:4px 8px;
+      background:var(--demo-pill);
+      color:var(--demo-blue);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .source-date{
+      font-size:12px;
+      color:#98a2b3;
+      white-space:nowrap;
+    }
+
+    .evidence-banner{
+      margin-top:18px;
+      background:#eefaf2;
+      border:1px solid #b7e6c2;
+      border-radius:14px;
+      padding:16px 18px;
+      color:#385445;
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    .evidence-banner strong{color:#223427}
+
+    .screen-footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .back-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#697586;
+      border:1px solid #d7dee7;
+      background:#ffffff;
+      border-radius:999px;
+      padding:10px 16px;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .continue-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:#111827;
+      border:2px solid #111827;
+      background:#fff;
+      border-radius:999px;
+      padding:14px 20px;
+      text-decoration:none;
+      font-size:15px;
+      font-weight:800;
+    }
+
+    .deep-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:36px;
+    }
+
+    .deep-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px 22px 20px 22px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.008));
+    }
+
+    .deep-card .kicker{
+      color:#89a6d8;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .deep-card h3{
+      font-size:18px;
+      line-height:1.18;
+      letter-spacing:-.04em;
+      margin-bottom:10px;
+      font-weight:800;
+      color:#f2f7fc;
+    }
+
+    .deep-card p{
+      color:var(--text-soft);
+      font-size:15px;
+      line-height:1.78;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+      margin-top:10px;
+    }
+
+    .contact-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:28px;
+      min-height:148px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .contact-card h3{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:-.03em;
+      margin-bottom:6px;
+    }
+
+    .contact-card p{
+      color:var(--text-soft);
+      font-size:15px;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:42px 0;
+      text-align:center;
+      color:var(--text-dim);
+      font-size:14px;
+    }
+
+    .footer a{
+      color:var(--text-dim);
+      text-decoration:none;
+      margin:0 10px;
+      transition:.2s;
+    }
+
+    .footer a:hover{color:var(--blue)}
 
     @media (max-width:1100px){
-      .hero h1{font-size:62px}
-      .figures-grid{grid-template-columns:1fr}
-      .figure-card + .figure-card{border-left:none;border-top:1px solid var(--line-soft)}
-      .figure-card{min-height:auto;padding:26px 26px 30px 26px}
-      .figure-visual{height:340px}
-      .tech-svg{max-width:312px}
-      .figure-copy h3,.figure-copy p{min-height:auto}
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+      .hero h1{
+        font-size:58px;
+        max-width:900px;
+      }
+      .deep-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+      .walkthrough-canvas{
+        min-height:auto;
+      }
     }
 
-    @media (max-width:900px){
-      .hero{padding:90px 0 80px 0}
-      .hero h1{font-size:48px;line-height:.98;letter-spacing:-1.6px}
-      .hero p{font-size:17px}
-      .section{padding:90px 0}
-      .section h2{font-size:30px}
-      nav{flex-direction:column;gap:18px}
+    @media (max-width:820px){
+      nav{
+        flex-direction:column;
+        gap:16px;
+      }
       nav a{margin:0 12px}
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .reveal{opacity:1!important;transform:none!important;transition:none!important}
-      .tech-svg,.tech-svg *,.figure-card::before{transition:none!important;animation:none!important}
+      .hero{
+        padding:88px 0 68px 0;
+      }
+      .hero h1{
+        font-size:44px;
+        line-height:1.02;
+        letter-spacing:-1.4px;
+      }
+      .hero p{
+        font-size:17px;
+      }
+      .section{
+        padding:88px 0;
+      }
+      .section h2{
+        font-size:30px;
+      }
+      .walkthrough-topbar,
+      .walkthrough-progress{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .screen-title{
+        font-size:26px;
+      }
+      .source-item{
+        grid-template-columns:44px minmax(0,1fr);
+      }
+      .source-meta{
+        grid-column:2;
+        justify-content:flex-start;
+        text-align:left;
+      }
+      .screen-footer{
+        flex-direction:column;
+        align-items:flex-start;
+      }
     }
   </style>
 </head>
@@ -318,6 +818,7 @@
       </div>
       <div>
         <a href="#problem">Problem</a>
+        <a href="#walkthrough">Walkthrough</a>
         <a href="#usecases">Use Cases</a>
         <a href="#contact">Contact</a>
       </div>
@@ -326,369 +827,295 @@
 
   <section class="hero">
     <div class="container">
-      <h1>
-        Governed operational knowledge <span class="highlight">from fragmented enterprise evidence</span>
-      </h1>
-      <div class="hero-sub">Operational knowledge system</div>
-      <p>
-        Requivo transforms fragmented documents, expert input, and workflow evidence into a governed operational knowledge layer.
-      </p>
-    </div>
-  </section>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Operational knowledge system</div>
+          <h1>
+            Governed operational knowledge <span class="highlight">from fragmented enterprise evidence</span>
+          </h1>
+          <p>
+            Requivo transforms documents, tickets, configs, workflow traces, and expert input into a governed operational knowledge layer — structured, validated, and reusable across operational workflows.
+          </p>
 
-  <section class="feature-figures reveal" id="motion-features">
-    <div class="container">
-      <div class="figures-grid">
-
-        <article class="figure-card motion-figure panel-knowledge">
-          <div class="figure-topline">GOVERNED OPERATIONAL KNOWLEDGE LAYER</div>
-
-          <div class="figure-visual">
-            <svg viewBox="0 0 420 320" class="tech-svg" aria-hidden="true">
-              <g class="guide knowledge-plane">
-                <polygon points="102,92 210,54 318,92 318,210 210,248 102,210"></polygon>
-                <polygon points="128,116 210,88 292,116 292,186 210,214 128,186"></polygon>
-                <polygon points="152,136 210,116 268,136 268,168 210,188 152,168"></polygon>
-
-                <line x1="210" y1="54" x2="210" y2="248"></line>
-                <line x1="102" y1="92" x2="210" y2="88"></line>
-                <line x1="318" y1="92" x2="210" y2="88"></line>
-                <line x1="102" y1="210" x2="210" y2="214"></line>
-                <line x1="318" y1="210" x2="210" y2="214"></line>
-              </g>
-
-              <g class="knowledge-links">
-                <line x1="144" y1="98" x2="210" y2="74"></line>
-                <line x1="210" y1="74" x2="276" y2="98"></line>
-                <line x1="144" y1="98" x2="176" y2="122"></line>
-                <line x1="276" y1="98" x2="244" y2="122"></line>
-
-                <line x1="176" y1="122" x2="210" y2="110"></line>
-                <line x1="210" y1="110" x2="244" y2="122"></line>
-                <line x1="176" y1="122" x2="158" y2="146"></line>
-                <line x1="244" y1="122" x2="262" y2="146"></line>
-
-                <line class="accent-line" x1="210" y1="74" x2="210" y2="110"></line>
-                <line class="accent-line" x1="210" y1="110" x2="210" y2="150"></line>
-                <line class="accent-line" x1="210" y1="150" x2="210" y2="196"></line>
-
-                <line x1="158" y1="146" x2="188" y2="150"></line>
-                <line x1="188" y1="150" x2="210" y2="150"></line>
-                <line x1="210" y1="150" x2="232" y2="150"></line>
-                <line x1="232" y1="150" x2="262" y2="146"></line>
-
-                <line x1="158" y1="146" x2="148" y2="182"></line>
-                <line x1="262" y1="146" x2="272" y2="182"></line>
-                <line x1="148" y1="182" x2="186" y2="196"></line>
-                <line x1="272" y1="182" x2="234" y2="196"></line>
-                <line x1="186" y1="196" x2="210" y2="196"></line>
-                <line x1="210" y1="196" x2="234" y2="196"></line>
-
-                <line x1="210" y1="196" x2="210" y2="230"></line>
-                <line x1="186" y1="196" x2="170" y2="222"></line>
-                <line x1="234" y1="196" x2="250" y2="222"></line>
-                <line x1="170" y1="222" x2="210" y2="230"></line>
-                <line x1="250" y1="222" x2="210" y2="230"></line>
-              </g>
-
-              <g class="knowledge-nodes">
-                <g class="mover" style="--dx:-1.1;--dy:-1;">
-                  <circle class="node" cx="144" cy="98" r="10"></circle>
-                  <circle class="node-core" cx="144" cy="98" r="2.2"></circle>
-                </g>
-                <g class="mover" style="--dx:0;--dy:-1.35;">
-                  <circle class="pulse" cx="210" cy="74" r="18"></circle>
-                  <circle class="node" cx="210" cy="74" r="13"></circle>
-                  <circle class="node-core" cx="210" cy="74" r="2.8"></circle>
-                </g>
-                <g class="mover" style="--dx:1.1;--dy:-1;">
-                  <circle class="node" cx="276" cy="98" r="10"></circle>
-                  <circle class="node-core" cx="276" cy="98" r="2.2"></circle>
-                </g>
-
-                <g class="mover" style="--dx:-.8;--dy:-.35;">
-                  <circle class="node" cx="176" cy="122" r="9"></circle>
-                  <circle class="node-core" cx="176" cy="122" r="2.1"></circle>
-                </g>
-                <g class="mover" style="--dx:0;--dy:-.22;">
-                  <circle class="node-soft" cx="210" cy="110" r="9"></circle>
-                  <circle class="node-core" cx="210" cy="110" r="2"></circle>
-                </g>
-                <g class="mover" style="--dx:.8;--dy:-.35;">
-                  <circle class="node" cx="244" cy="122" r="9"></circle>
-                  <circle class="node-core" cx="244" cy="122" r="2.1"></circle>
-                </g>
-
-                <g class="mover" style="--dx:-.65;--dy:.05;">
-                  <circle class="node" cx="158" cy="146" r="8"></circle>
-                  <circle class="node-core" cx="158" cy="146" r="1.9"></circle>
-                </g>
-                <g class="mover" style="--dx:-.25;--dy:.08;">
-                  <circle class="node" cx="188" cy="150" r="8"></circle>
-                  <circle class="node-core" cx="188" cy="150" r="1.9"></circle>
-                </g>
-                <g class="mover" style="--dx:0;--dy:0;">
-                  <circle class="pulse" cx="210" cy="150" r="24"></circle>
-                  <circle class="node" cx="210" cy="150" r="16"></circle>
-                  <circle class="node-core" cx="210" cy="150" r="3.1"></circle>
-                </g>
-                <g class="mover" style="--dx:.25;--dy:.08;">
-                  <circle class="node" cx="232" cy="150" r="8"></circle>
-                  <circle class="node-core" cx="232" cy="150" r="1.9"></circle>
-                </g>
-                <g class="mover" style="--dx:.65;--dy:.05;">
-                  <circle class="node" cx="262" cy="146" r="8"></circle>
-                  <circle class="node-core" cx="262" cy="146" r="1.9"></circle>
-                </g>
-
-                <g class="mover" style="--dx:-1.05;--dy:.7;">
-                  <circle class="node" cx="148" cy="182" r="9"></circle>
-                  <circle class="node-core" cx="148" cy="182" r="2.1"></circle>
-                </g>
-                <g class="mover" style="--dx:-.35;--dy:.92;">
-                  <circle class="node" cx="186" cy="196" r="9"></circle>
-                  <circle class="node-core" cx="186" cy="196" r="2"></circle>
-                </g>
-                <g class="mover" style="--dx:.35;--dy:.92;">
-                  <circle class="node" cx="234" cy="196" r="9"></circle>
-                  <circle class="node-core" cx="234" cy="196" r="2"></circle>
-                </g>
-                <g class="mover" style="--dx:1.05;--dy:.7;">
-                  <circle class="node" cx="272" cy="182" r="9"></circle>
-                  <circle class="node-core" cx="272" cy="182" r="2.1"></circle>
-                </g>
-
-                <g class="mover" style="--dx:-.55;--dy:1.25;">
-                  <circle class="node" cx="170" cy="222" r="10"></circle>
-                  <circle class="node-core" cx="170" cy="222" r="2.2"></circle>
-                </g>
-                <g class="mover" style="--dx:0;--dy:1.45;">
-                  <circle class="pulse" cx="210" cy="230" r="20"></circle>
-                  <circle class="node" cx="210" cy="230" r="13"></circle>
-                  <circle class="node-core" cx="210" cy="230" r="2.6"></circle>
-                </g>
-                <g class="mover" style="--dx:.55;--dy:1.25;">
-                  <circle class="node" cx="250" cy="222" r="10"></circle>
-                  <circle class="node-core" cx="250" cy="222" r="2.2"></circle>
-                </g>
-              </g>
-            </svg>
+          <div class="hero-actions">
+            <a href="#walkthrough" class="btn btn-primary">See product walkthrough</a>
+            <a href="#contact" class="btn btn-secondary">Talk to the team</a>
           </div>
+        </div>
 
-          <div class="figure-copy">
-            <h3>Governed operational knowledge layer</h3>
-            <p>
-              Fragmented evidence is transformed into a structured operational layer with governed relations, clustered context, validation touchpoints, and reusable downstream knowledge objects.
-            </p>
+        <div class="hero-side">
+          <div class="mini-system">
+            <div class="mini-system-top">
+              <div class="mini-kicker">Product logic</div>
+              <div class="mini-badge">Governed layer → modules</div>
+            </div>
+
+            <div class="mini-stack">
+              <div class="mini-row">
+                <div class="mini-tag">Input</div>
+                <strong>Documents, configs, tickets, wiki pages, expert evidence</strong>
+                <div class="mini-state">Fragmented</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-tag">Core</div>
+                <strong>Ingestion, typing, linking, clustering, validation workflows</strong>
+                <div class="mini-state">Structured</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-tag">Layer</div>
+                <strong>Governed operational knowledge layer with traceable relations</strong>
+                <div class="mini-state">Governed</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-tag">Modules</div>
+                <strong>Writing, verification, management, controlled AI access</strong>
+                <div class="mini-state">Reusable</div>
+              </div>
+            </div>
           </div>
-        </article>
-
-        <article class="figure-card motion-figure panel-radial">
-          <div class="figure-topline">EXPERT VALIDATION LOOP</div>
-
-          <div class="figure-visual">
-            <svg viewBox="0 0 420 320" class="tech-svg" aria-hidden="true">
-              <g class="guide">
-                <circle cx="210" cy="160" r="94"></circle>
-                <circle cx="210" cy="160" r="66"></circle>
-              </g>
-              <g class="radial-ring">
-                <line x1="210" y1="94" x2="210" y2="128"></line>
-                <line x1="272" y1="132" x2="240" y2="144"></line>
-                <line x1="272" y1="188" x2="240" y2="176"></line>
-                <line x1="210" y1="226" x2="210" y2="192"></line>
-                <line x1="148" y1="188" x2="180" y2="176"></line>
-                <line x1="148" y1="132" x2="180" y2="144"></line>
-              </g>
-              <g class="radial-gates">
-                <rect class="gate" style="--gx:0;--gy:-1.1;" x="194" y="76" width="32" height="18" rx="4"></rect>
-                <rect class="gate" style="--gx:1;--gy:-.35;" x="284" y="123" width="34" height="18" rx="4"></rect>
-                <rect class="gate" style="--gx:1;--gy:.35;" x="284" y="179" width="34" height="18" rx="4"></rect>
-                <rect class="gate" style="--gx:0;--gy:1.1;" x="194" y="226" width="32" height="18" rx="4"></rect>
-                <rect class="gate" style="--gx:-1;--gy:.35;" x="102" y="179" width="34" height="18" rx="4"></rect>
-                <rect class="gate" style="--gx:-1;--gy:-.35;" x="102" y="123" width="34" height="18" rx="4"></rect>
-              </g>
-              <g>
-                <circle class="node" cx="210" cy="94" r="8"></circle><circle class="node-core" cx="210" cy="94" r="2"></circle>
-                <circle class="node" cx="272" cy="132" r="8"></circle><circle class="node-core" cx="272" cy="132" r="2"></circle>
-                <circle class="node" cx="272" cy="188" r="8"></circle><circle class="node-core" cx="272" cy="188" r="2"></circle>
-                <circle class="node" cx="210" cy="226" r="8"></circle><circle class="node-core" cx="210" cy="226" r="2"></circle>
-                <circle class="node" cx="148" cy="188" r="8"></circle><circle class="node-core" cx="148" cy="188" r="2"></circle>
-                <circle class="node" cx="148" cy="132" r="8"></circle><circle class="node-core" cx="148" cy="132" r="2"></circle>
-              </g>
-              <g class="radial-center">
-                <circle class="pulse" cx="210" cy="160" r="34"></circle>
-                <circle class="pulse" cx="210" cy="160" r="48"></circle>
-                <circle class="node" cx="210" cy="160" r="24"></circle>
-                <circle class="node-core" cx="210" cy="160" r="4"></circle>
-                <path d="M198 160 L208 170 L226 150"></path>
-              </g>
-            </svg>
-          </div>
-
-          <div class="figure-copy">
-            <h3>Expert validation and resolution</h3>
-            <p>
-              Conflicts, gaps, and uncertain knowledge move through explicit expert review loops — converting weak evidence into traceable, governed operational truth.
-            </p>
-          </div>
-        </article>
-
-        <article class="figure-card motion-figure panel-wave">
-          <div class="figure-topline">APPLICATION MODULES</div>
-
-          <div class="figure-visual">
-            <svg viewBox="0 0 420 320" class="tech-svg" aria-hidden="true">
-              <g class="guide">
-                <path d="M72 232 C118 220, 152 196, 188 182 C224 168, 256 150, 302 126"></path>
-                <path d="M72 250 C118 238, 152 214, 188 200 C224 186, 256 168, 302 144"></path>
-              </g>
-
-              <g class="wave-ridge">
-                <path class="accent-line" d="M72 242 C114 228, 152 206, 188 192 C224 178, 262 156, 304 136"></path>
-                <path class="beam" d="M72 248 C114 234, 152 212, 188 198 C224 184, 262 162, 304 142 L304 154 C262 174, 224 196, 188 210 C152 224, 114 246, 72 260 Z"></path>
-              </g>
-
-              <g class="wave-steps">
-                <g class="step" style="--sx:-.45;--sy:.35;">
-                  <polygon class="step-fill" points="86,230 136,210 136,230 86,250"></polygon>
-                  <polygon class="step-core" points="136,210 160,218 160,238 136,230"></polygon>
-                  <polygon class="step-fill" points="86,250 136,230 160,238 110,258"></polygon>
-                </g>
-
-                <g class="step" style="--sx:-.15;--sy:.1;">
-                  <polygon class="step-fill" points="136,208 188,186 188,208 136,230"></polygon>
-                  <polygon class="step-core" points="188,186 214,194 214,216 188,208"></polygon>
-                  <polygon class="step-fill" points="136,230 188,208 214,216 162,238"></polygon>
-                </g>
-
-                <g class="step" style="--sx:.1;--sy:-.1;">
-                  <polygon class="step-fill" points="188,184 240,162 240,184 188,206"></polygon>
-                  <polygon class="step-core" points="240,162 266,170 266,192 240,184"></polygon>
-                  <polygon class="step-fill" points="188,206 240,184 266,192 214,214"></polygon>
-                </g>
-
-                <g class="step" style="--sx:.38;--sy:-.32;">
-                  <polygon class="step-fill" points="240,160 292,138 292,160 240,182"></polygon>
-                  <polygon class="step-core" points="292,138 318,146 318,168 292,160"></polygon>
-                  <polygon class="step-fill" points="240,182 292,160 318,168 266,190"></polygon>
-                </g>
-              </g>
-
-              <g class="wave-bars">
-                <rect class="bar" style="--by:1.2;" x="92" y="196" width="8" height="18" rx="4"></rect>
-                <rect class="bar" style="--by:.8;" x="116" y="188" width="8" height="24" rx="4"></rect>
-                <rect class="bar" style="--by:.5;" x="146" y="176" width="8" height="30" rx="4"></rect>
-                <rect class="bar" style="--by:.15;" x="176" y="166" width="8" height="34" rx="4"></rect>
-                <rect class="bar" style="--by:-.1;" x="208" y="152" width="8" height="38" rx="4"></rect>
-                <rect class="bar" style="--by:-.35;" x="240" y="140" width="8" height="40" rx="4"></rect>
-                <rect class="bar" style="--by:-.55;" x="272" y="128" width="8" height="42" rx="4"></rect>
-              </g>
-
-              <g class="wave-nodes">
-                <g class="module-node" style="--nx:-1;--ny:.5;">
-                  <circle class="node" cx="108" cy="202" r="8"></circle>
-                  <circle class="node-core" cx="108" cy="202" r="2"></circle>
-                </g>
-                <g class="module-node" style="--nx:-.4;--ny:.2;">
-                  <circle class="node" cx="154" cy="180" r="8"></circle>
-                  <circle class="node-core" cx="154" cy="180" r="2"></circle>
-                </g>
-                <g class="module-node" style="--nx:0;--ny:0;">
-                  <circle class="pulse" cx="210" cy="154" r="18"></circle>
-                  <circle class="node" cx="210" cy="154" r="12"></circle>
-                  <circle class="node-core" cx="210" cy="154" r="2.6"></circle>
-                </g>
-                <g class="module-node" style="--nx:.45;--ny:-.2;">
-                  <circle class="node" cx="266" cy="130" r="8"></circle>
-                  <circle class="node-core" cx="266" cy="130" r="2"></circle>
-                </g>
-                <g class="module-node" style="--nx:1;--ny:-.55;">
-                  <circle class="node" cx="314" cy="108" r="8"></circle>
-                  <circle class="node-core" cx="314" cy="108" r="2"></circle>
-                </g>
-              </g>
-
-              <g>
-                <line x1="108" y1="202" x2="154" y2="180"></line>
-                <line x1="154" y1="180" x2="210" y2="154"></line>
-                <line class="accent-line" x1="210" y1="154" x2="266" y2="130"></line>
-                <line x1="266" y1="130" x2="314" y2="108"></line>
-              </g>
-            </svg>
-          </div>
-
-          <div class="figure-copy">
-            <h3>Application modules on top of the layer</h3>
-            <p>
-              Writing, verification, management, and controlled AI access emerge as modular steps above the governed layer — each connected, distinct, and composable.
-            </p>
-          </div>
-        </article>
-
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section problem reveal" id="problem">
+  <section class="section problem" id="problem">
     <div class="container">
       <h2>The problem</h2>
       <div class="section-intro">
-        Most organisations treat documentation and knowledge as the same thing. They are not. Document management tools capture what people choose to write down. They do not capture the judgment, exceptions, and workarounds that experts carry in practice.
+        Most organisations have documentation, but not governed operational knowledge. Critical know-how lives across systems, files, tickets, and people — and usually breaks exactly where context, judgment, and traceability matter most.
       </div>
+
       <div class="grid">
         <div class="card">
           <h3>Expertise that disappears</h3>
-          <p>When a long-tenured expert leaves, the organisation loses the judgment, workarounds, and edge-case decisions they built over years of practice. In most companies, that knowledge was never written down — and is rarely captured before it disappears.</p>
+          <p>When a long-tenured expert leaves, the organisation loses the workarounds, edge-case judgment, and operational memory built over years of practice. In most companies, that knowledge was never truly captured.</p>
           <p class="sting">Irreplaceable · Permanent · Unrecoverable</p>
         </div>
+
         <div class="card">
           <h3>Knowledge that never transfers</h3>
-          <p>New team members inherit the manual, but not the judgment behind it. The gap between documented procedure and how work actually gets done is rarely captured — which forces every new hire to relearn it from scratch.</p>
-          <p class="sting">Lost productivity · Infinite restart</p>
+          <p>New team members inherit documents, but not the reasoning behind them. The difference between written procedure and actual operational practice remains hidden until work breaks.</p>
+          <p class="sting">Lost productivity · Slow onboarding</p>
         </div>
+
         <div class="card">
-          <h3>Answers that exist but can't be found</h3>
-          <p>In organisations, the answer to many operational questions already exists — in someone’s head, two floors away or two time zones apart. Without a way to route questions to the right expertise, that knowledge remains inaccessible.</p>
-          <p class="sting">Operational risk · Repeated cost</p>
+          <h3>Answers that exist but stay fragmented</h3>
+          <p>The answer may already exist — in a PDF, a Jira ticket, a config export, or a wiki page. Without governed linking and validation, it remains scattered and hard to trust.</p>
+          <p class="sting">Operational risk · Repeated search cost</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section usecases reveal" id="usecases">
+  <section class="section walkthrough" id="walkthrough">
+    <div class="container">
+      <h2>Interactive product walkthrough</h2>
+      <div class="section-intro">
+        The product language on this page now follows the same visual logic as the demo: clearer steps, real interface structure, and less abstract illustration. The result is more consistent with how Requivo should feel as a deep-tech product.
+      </div>
+
+      <div class="walkthrough-shell">
+        <div class="walkthrough-topbar">
+          <div class="walkthrough-brand">
+            <div class="brand-mini">Requivo</div>
+            <div class="brand-title">Interactive Product Walkthrough</div>
+          </div>
+          <div class="walkthrough-scenario">Scenario: Pichler Hydraulik GmbH · illustrative demo</div>
+        </div>
+
+        <div class="walkthrough-note">
+          This walkthrough is for demonstration only; the interface and scenario are illustrative and do not represent the final product.
+        </div>
+
+        <div class="walkthrough-body">
+          <div class="walkthrough-progress">
+            <div>2 / 8</div>
+            <div class="progress-dots">
+              <span class="dot done"></span>
+              <span class="dot active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+
+          <div class="walkthrough-stage">
+            <div class="walkthrough-canvas">
+              <div class="walkthrough-pane">
+                <div class="walkthrough-screen">
+                  <div class="screen-content">
+                    <div class="screen-step">Step 1 · Ingestion</div>
+                    <div class="screen-title">Connect what you already have</div>
+                    <div class="screen-copy">
+                      Requivo ingests documents, tickets, configs, and wikis from the systems your team already uses — no migration needed.
+                    </div>
+
+                    <div class="source-card">
+                      <div class="source-card-top">
+                        <span>Source connectors</span>
+                        <span class="source-status">Ingested</span>
+                      </div>
+
+                      <div class="source-list">
+                        <div class="source-item">
+                          <div class="source-badge pdf">PDF</div>
+                          <div class="source-main">
+                            <strong>restart_procedure_v3.pdf</strong>
+                          </div>
+                          <div class="source-meta">
+                            <span class="source-pill">SOP</span>
+                            <span class="source-date">F. Moser · 2019</span>
+                          </div>
+                        </div>
+
+                        <div class="source-item">
+                          <div class="source-badge ts">TS</div>
+                          <div class="source-main">
+                            <strong>press_line_A_config.yml</strong>
+                          </div>
+                          <div class="source-meta">
+                            <span class="source-pill">Config</span>
+                            <span class="source-date">PLC export · 2024</span>
+                          </div>
+                        </div>
+
+                        <div class="source-item">
+                          <div class="source-badge ji">JI</div>
+                          <div class="source-main">
+                            <strong>ENG-4412 — Pressure valve rework</strong>
+                          </div>
+                          <div class="source-meta">
+                            <span class="source-pill">Ticket</span>
+                            <span class="source-date">K. Berger · Q3 2025</span>
+                          </div>
+                        </div>
+
+                        <div class="source-item">
+                          <div class="source-badge co">CO</div>
+                          <div class="source-main">
+                            <strong>Hydraulic Press Restart (wiki)</strong>
+                          </div>
+                          <div class="source-meta">
+                            <span class="source-pill">Wiki</span>
+                            <span class="source-date">Last edit 2021</span>
+                          </div>
+                        </div>
+
+                        <div class="source-item">
+                          <div class="source-badge csv">CSV</div>
+                          <div class="source-main">
+                            <strong>CMMS incident 2025-Q4-017</strong>
+                          </div>
+                          <div class="source-meta">
+                            <span class="source-pill">Incident</span>
+                            <span class="source-date">Auto-import</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="evidence-banner">
+                      <strong>1,490 evidence objects</strong> ingested from 6 sources. Each is typed, tagged with owner and date, and linked to its origin — ready for knowledge construction.
+                    </div>
+
+                    <div class="screen-footer">
+                      <a href="#" class="back-btn">← Back</a>
+                      <a href="#" class="continue-btn">Continue →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="deep-grid">
+        <div class="deep-card">
+          <div class="kicker">Design principle</div>
+          <h3>System confidence instead of abstract motion</h3>
+          <p>
+            The page now shows an interface-led product story rather than decorative graphs. That makes the product feel more credible, more operational, and more aligned with enterprise deep-tech expectations.
+          </p>
+        </div>
+
+        <div class="deep-card">
+          <div class="kicker">Visual direction</div>
+          <h3>Demo-consistent, but still deep-tech</h3>
+          <p>
+            The walkthrough uses a lighter internal product canvas inside a darker shell, so the interface stays consistent with Patrick’s demo while the page around it still feels premium and technical.
+          </p>
+        </div>
+
+        <div class="deep-card">
+          <div class="kicker">Brand logic</div>
+          <h3>Closer to Palantir / Mistral than generic SaaS</h3>
+          <p>
+            The structure is quieter, sharper, and more architectural: strong typography, large spacing, restrained color accents, and a product-first presentation rather than startup-style illustration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section usecases" id="usecases">
     <div class="container">
       <h2>Use cases</h2>
       <div class="section-intro">
-        Any organisation where operational expertise is critical, distributed, and difficult to preserve.
+        Requivo is relevant wherever operational expertise is critical, distributed, and difficult to preserve — especially where fragmented sources and weak documentation create risk.
       </div>
+
       <div class="grid">
         <div class="card">
           <h3>Operations &amp; Manufacturing</h3>
-          <p>Preserve plant procedures, engineering know-how, and maintenance expertise before critical experience gaps become operational risk.</p>
+          <p>Preserve plant procedures, engineering know-how, and maintenance expertise before critical experience gaps become operational disruption.</p>
         </div>
+
         <div class="card">
           <h3>Enterprise &amp; Professional Services</h3>
-          <p>Reduce time spent searching across fragmented systems and make internal expertise easier to access when it is needed.</p>
+          <p>Reduce time spent searching across fragmented systems and make internal expertise easier to access, validate, and reuse when it is needed.</p>
         </div>
+
         <div class="card">
           <h3>Regulated Environments</h3>
-          <p>Source traceability and auditability make Requivo suitable for quality, compliance, and safety-critical environments.</p>
+          <p>Traceability, source linkage, and structured validation make Requivo suitable for quality, compliance, and safety-relevant workflows.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section reveal" id="contact">
+  <section class="section" id="contact">
     <div class="container">
       <h2>Contact</h2>
       <div class="section-intro">
-        We are currently building Requivo with a small group of early design partners. If operational knowledge capture is relevant to your organisation, we would be glad to hear from you.
+        We are currently building Requivo with a focused group of early design partners. If governed operational knowledge is relevant to your organisation, we would be glad to hear from you.
       </div>
-      <div class="grid">
-        <div class="card"><h3>Agnieszka Pisz</h3><p>Co-Founder</p></div>
-        <div class="card"><h3>Patrick Pirchheim</h3><p>Co-Founder</p></div>
-        <div class="card"><h3>Jakub Weglarz</h3><p>COO</p></div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div>
+            <h3>Agnieszka Pisz</h3>
+            <p>Co-Founder</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div>
+            <h3>Patrick Pirchheim</h3>
+            <p>Co-Founder</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div>
+            <h3>Jakub Weglarz</h3>
+            <p>COO</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -698,150 +1125,5 @@
     <a href="impressum.html">Impressum</a> |
     <a href="#contact">Contact</a>
   </div>
-
-  <script>
-    document.documentElement.classList.add('js-enabled');
-
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-        }
-      });
-    },{ threshold:0.2 });
-
-    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const figures = document.querySelectorAll('.motion-figure');
-
-    function resetCardVars(card){
-      const defaults = {
-        '--mx':'50%',
-        '--my':'50%',
-        '--rx':'0deg',
-        '--ry':'0deg',
-        '--tx':'0px',
-        '--ty':'0px',
-        '--scale':'1',
-        '--kp-shift':'0px',
-        '--kl-shift':'0px',
-        '--mxp':'0px',
-        '--myp':'0px',
-        '--orbit-rot':'0deg',
-        '--gate-shift':'0px',
-        '--center-scale':'0',
-        '--step-shift':'0px',
-        '--step-x':'0px',
-        '--module-y':'0px',
-        '--module-x':'0px',
-        '--ridge-shift':'0px',
-        '--bar-base':'0px'
-      };
-
-      Object.entries(defaults).forEach(([key,val])=>{
-        card.style.setProperty(key,val);
-      });
-    }
-
-    if(!prefersReducedMotion){
-      figures.forEach(card=>{
-        resetCardVars(card);
-
-        card.addEventListener('mousemove', (e)=>{
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const px = x / rect.width;
-          const py = y / rect.height;
-
-          const rx = (0.5 - py) * 10;
-          const ry = (px - 0.5) * 16;
-          const tx = (px - 0.5) * 10;
-          const ty = (py - 0.5) * 8;
-
-          card.style.setProperty('--mx', `${px * 100}%`);
-          card.style.setProperty('--my', `${py * 100}%`);
-          card.style.setProperty('--rx', `${rx}deg`);
-          card.style.setProperty('--ry', `${ry}deg`);
-          card.style.setProperty('--tx', `${tx}px`);
-          card.style.setProperty('--ty', `${ty}px`);
-          card.style.setProperty('--scale', `${1 + Math.abs(px - 0.5) * 0.015}`);
-
-          if(card.classList.contains('panel-knowledge')){
-            card.style.setProperty('--kp-shift', `${(py - 0.5) * 14}px`);
-            card.style.setProperty('--kl-shift', `${(py - 0.5) * 10}px`);
-            card.style.setProperty('--mxp', `${(px - 0.5) * 8}px`);
-            card.style.setProperty('--myp', `${(py - 0.5) * 8}px`);
-          }
-
-          if(card.classList.contains('panel-radial')){
-            card.style.setProperty('--orbit-rot', `${(px - 0.5) * 20}deg`);
-            card.style.setProperty('--gate-shift', `${(py - 0.5) * 8}px`);
-            card.style.setProperty('--center-scale', `${Math.abs(px - 0.5) * 0.06 + 0.03}`);
-          }
-
-          if(card.classList.contains('panel-wave')){
-            const offsetX = (px - 0.5) * 12;
-            const offsetY = (0.5 - py) * 14;
-            card.style.setProperty('--step-shift', `${offsetY}px`);
-            card.style.setProperty('--step-x', `${offsetX}px`);
-            card.style.setProperty('--module-y', `${offsetY * 0.75}px`);
-            card.style.setProperty('--module-x', `${offsetX * 0.55}px`);
-            card.style.setProperty('--ridge-shift', `${offsetY * 0.55}px`);
-            card.style.setProperty('--bar-base', `${offsetY * 0.7}px`);
-          }
-        });
-
-        card.addEventListener('mouseleave', ()=>{
-          resetCardVars(card);
-        });
-      });
-
-      let t = 0;
-      function idleMotion(){
-        t += 0.012;
-
-        figures.forEach((card, index)=>{
-          if(card.matches(':hover')) return;
-
-          const phase = t + index * 1.7;
-          const s1 = Math.sin(phase);
-          const s2 = Math.cos(phase * 0.78);
-
-          card.style.setProperty('--rx', `${s2 * 1.2}deg`);
-          card.style.setProperty('--ry', `${s1 * 1.6}deg`);
-          card.style.setProperty('--tx', `${s1 * 1.5}px`);
-          card.style.setProperty('--ty', `${s2 * 1.4}px`);
-
-          if(card.classList.contains('panel-knowledge')){
-            card.style.setProperty('--kp-shift', `${s1 * 3}px`);
-            card.style.setProperty('--kl-shift', `${s2 * 2}px`);
-            card.style.setProperty('--mxp', `${s2 * 1.6}px`);
-            card.style.setProperty('--myp', `${s1 * 1.5}px`);
-          }
-
-          if(card.classList.contains('panel-radial')){
-            card.style.setProperty('--orbit-rot', `${s1 * 6}deg`);
-            card.style.setProperty('--gate-shift', `${s2 * 2.5}px`);
-            card.style.setProperty('--center-scale', `${0.02 + (Math.sin(phase * 1.4) + 1) * 0.012}`);
-          }
-
-          if(card.classList.contains('panel-wave')){
-            card.style.setProperty('--step-shift', `${s1 * 4}px`);
-            card.style.setProperty('--step-x', `${s2 * 2.6}px`);
-            card.style.setProperty('--module-y', `${s2 * 2.2}px`);
-            card.style.setProperty('--module-x', `${s1 * 1.4}px`);
-            card.style.setProperty('--ridge-shift', `${s1 * 2.5}px`);
-            card.style.setProperty('--bar-base', `${s2 * 2.4}px`);
-          }
-        });
-
-        requestAnimationFrame(idleMotion);
-      }
-
-      requestAnimationFrame(idleMotion);
-    }
-  </script>
 </body>
 </html>
