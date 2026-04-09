@@ -39,7 +39,7 @@ body {
 }
 a { text-decoration: none; color: inherit; }
 .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
- 
+
 /* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
@@ -54,15 +54,10 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   justify-content: space-between; height: 64px; gap: 32px;
 }
 .logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-serif); font-size: 21px; color: var(--text);
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-sans); font-size: 19px; font-weight: 400;
+  color: var(--text); letter-spacing: -.02em;
 }
-.logo-mark {
-  width: 26px; height: 26px; border-radius: 6px;
-  background: var(--indigo);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.logo-mark svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 2; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a {
   font-size: 14px; font-weight: 400; color: var(--text-soft);
@@ -76,7 +71,7 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   transition: background .18s, transform .18s !important;
 }
 .nav-cta:hover { background: #312e81 !important; transform: translateY(-1px) !important; }
- 
+
 /* PAGE */
 .page { padding: 80px 0 100px; }
 .page-label {
@@ -95,7 +90,7 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   font-size: 18px; line-height: 1.8; font-weight: 300;
   color: var(--text-soft); max-width: 720px; margin-bottom: 48px;
 }
- 
+
 /* LEGAL CARD */
 .legal-card {
   background: var(--bg);
@@ -138,7 +133,7 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   color: var(--indigo);
   border-color: rgba(55,48,163,.4);
 }
- 
+
 /* BACK LINK */
 .back-link {
   display: inline-flex; align-items: center; gap: 8px;
@@ -150,7 +145,7 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
 }
 .back-link:hover { color: var(--indigo-mid); }
 .back-link::before { content: '←'; }
- 
+
 /* FOOTER */
 footer { background: var(--bg-deep); padding: 80px 0 60px; }
 .footer-grid {
@@ -159,15 +154,11 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
 }
 .footer-brand { display: flex; flex-direction: column; gap: 16px; }
 .footer-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-serif); font-size: 20px; color: #fff;
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-sans); font-size: 19px; font-weight: 400;
+  color: #fff; letter-spacing: -.02em;
 }
-.footer-logo .logo-mark {
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.15);
-}
-.footer-logo .logo-mark svg { stroke: rgba(255,255,255,.7); }
-.footer-brand p {
+.footer-logo .footer-logo .footer-brand p {
   font-size: 14px; line-height: 1.8; font-weight: 300;
   color: #7b8fad; max-width: 280px;
 }
@@ -188,7 +179,7 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
   font-size: 12px; color: #3d5070;
   display: flex; justify-content: space-between; align-items: center;
 }
- 
+
 /* RESPONSIVE */
 @media (max-width: 1040px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -204,13 +195,16 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
 </style>
 </head>
 <body>
- 
+
 <nav id="nav">
   <div class="wrap nav-inner">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="3"/><line x1="7" y1="1" x2="7" y2="3"/><line x1="7" y1="11" x2="7" y2="13"/><line x1="1" y1="7" x2="3" y2="7"/><line x1="11" y1="7" x2="13" y2="7"/></svg>
-      </span>
+        <a href="index.html" class="logo" aria-label="Requivo home">
+      <svg class="rq-logo-icon" viewBox="0 0 28 22" width="28" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="22" height="5" rx="2.5" fill="#3730a3"/>
+        <rect x="2.5" y="8" width="17" height="4" rx="2" fill="#4f46e5" opacity=".85"/>
+        <rect x="5" y="15" width="12" height="3" rx="1.5" fill="#0ea5e9" opacity=".8"/>
+        <circle cx="25" cy="2.5" r="3" fill="#0ea5e9"/>
+      </svg>
       Requivo
     </a>
     <div class="nav-links">
@@ -222,13 +216,13 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
     </div>
   </div>
 </nav>
- 
+
 <main class="page">
   <div class="wrap">
     <div class="page-label">Datenschutz</div>
     <h1>Datenschutzerklärung</h1>
     <p class="page-intro">Informationen zur Verarbeitung personenbezogener Daten im Zusammenhang mit dieser Website.</p>
- 
+
     <div class="legal-card">
       <section class="legal-section">
         <h2>1. Verantwortliche Stelle</h2>
@@ -238,12 +232,12 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
         </p>
         <p>
           E-Mail:<br>
-          <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a><br>
-          <a href="mailto:jakub@requivo.at">jakub@requivo.at</a>
+          <a href="/cdn-cgi/l/email-protection#7d1c1a1314180e07161c530a181a111c0f073d0f180c08140b12531c09"><span class="__cf_email__" data-cfemail="7415131a1d11070e1f155a0311131815060e34061105011d021b5a1500">[email&#160;protected]</span></a><br>
+          <a href="/cdn-cgi/l/email-protection#80eae1ebf5e2c0f2e5f1f5e9f6efaee1f4"><span class="__cf_email__" data-cfemail="f09a919b8592b08295818599869fde9184">[email&#160;protected]</span></a>
         </p>
         <p>Anfragen zum Datenschutz können an diese E-Mail-Adressen gerichtet werden.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>2. Zwecke und Rechtsgrundlagen der Verarbeitung</h2>
         <p>Wir verarbeiten personenbezogene Daten nur insoweit, als dies zur Bereitstellung dieser Website, zur Gewährleistung der technischen Sicherheit und zur Bearbeitung von Kontaktanfragen erforderlich ist.</p>
@@ -254,7 +248,7 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
         </ul>
         <p>Diese Website dient der allgemeinen Information über Requivo. Es werden keine Benutzerkonten angeboten, keine Formulare verarbeitet und keine Tracking- oder Marketing-Tools eingesetzt.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>3. Bereitstellung der Website</h2>
         <p>Die Website wird als statische Website bereitgestellt. Beim Aufruf der Website können aus technischen Gründen bestimmte Verbindungsdaten verarbeitet werden, insbesondere:</p>
@@ -268,35 +262,35 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
         </ul>
         <p>Diese Datenverarbeitung erfolgt ausschließlich, soweit dies für den technischen Betrieb, die Stabilität und die Sicherheit der Website erforderlich ist.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>4. Kontaktaufnahme per E-Mail</h2>
         <p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen freiwillig übermittelten personenbezogenen Daten ausschließlich zur Bearbeitung Ihres Anliegens.</p>
         <p>Bitte beachten Sie, dass die Übermittlung per E-Mail grundsätzlich nicht vollständig risikofrei ist. Sie entscheiden selbst, welche Informationen Sie uns auf diesem Weg mitteilen.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>5. Empfänger</h2>
         <p>Eine Weitergabe personenbezogener Daten an Dritte erfolgt nicht zu Werbezwecken.</p>
         <p>Eine Weitergabe kann nur insoweit erfolgen, als dies für den technischen Betrieb der Website erforderlich ist, insbesondere an Hosting- oder Infrastruktur-Dienstleister.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>6. Drittlandübermittlung</h2>
         <p>Im Zusammenhang mit dem bloßen Besuch dieser Website ist keine bewusste Übermittlung personenbezogener Daten in ein Drittland beabsichtigt. Soweit im Einzelfall technische Infrastruktur von Dienstleistern mit Drittlandbezug eingesetzt wird, erfolgt dies nur im Rahmen der datenschutzrechtlich zulässigen Voraussetzungen.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>7. Cookies und ähnliche Technologien</h2>
         <p>Diese Website verwendet keine nicht notwendigen Cookies sowie keine Analyse-, Tracking- oder Marketing-Technologien.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>8. Speicherdauer</h2>
         <p>Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Zwecke erforderlich ist.</p>
         <p>E-Mails und damit verbundene Kommunikationsdaten werden grundsätzlich nur so lange gespeichert, wie dies zur Bearbeitung des Anliegens erforderlich ist, sofern nicht gesetzliche Aufbewahrungspflichten oder berechtigte Gründe für eine längere Speicherung bestehen.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>9. Ihre Rechte</h2>
         <p>Sie haben nach Maßgabe der DSGVO insbesondere folgende Rechte:</p>
@@ -311,35 +305,38 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
         </ul>
         <p>In Österreich ist dies insbesondere die Datenschutzbehörde.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>10. Datensicherheit</h2>
         <p>Wir setzen angemessene technische und organisatorische Maßnahmen ein, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten. Dazu zählt insbesondere die verschlüsselte Übertragung der Website per HTTPS, soweit dies durch die eingesetzte Infrastruktur unterstützt wird.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>11. Keine automatisierten Entscheidungen</h2>
         <p>Es findet keine ausschließlich automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO statt.</p>
       </section>
- 
+
       <section class="legal-section">
         <h2>12. Änderungen dieser Datenschutzerklärung</h2>
         <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, insbesondere wenn sich die Website, ihre Funktionen oder die rechtlichen Anforderungen ändern.</p>
       </section>
     </div>
- 
+
     <a class="back-link" href="index.html">Back to main page</a>
   </div>
 </main>
- 
+
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo">
-          <span class="logo-mark">
-            <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="3"/><line x1="7" y1="1" x2="7" y2="3"/><line x1="7" y1="11" x2="7" y2="13"/><line x1="1" y1="7" x2="3" y2="7"/><line x1="11" y1="7" x2="13" y2="7"/></svg>
-          </span>
+                <a href="index.html" class="footer-logo" aria-label="Requivo home">
+          <svg class="rq-logo-icon" viewBox="0 0 28 22" width="28" height="22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="0" width="22" height="5" rx="2.5" fill="#ffffff"/>
+          <rect x="2.5" y="8" width="17" height="4" rx="2" fill="#93c5fd" opacity=".9"/>
+          <rect x="5" y="15" width="12" height="3" rx="1.5" fill="#38bdf8" opacity=".85"/>
+          <circle cx="25" cy="2.5" r="3" fill="#38bdf8"/>
+        </svg>
           Requivo
         </a>
         <p>Governed operational knowledge from fragmented enterprise evidence.</p>
@@ -360,22 +357,5 @@ footer { background: var(--bg-deep); padding: 80px 0 60px; }
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
-        <a href="mailto:jakub@requivo.at">jakub@requivo.at</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Requivo. All rights reserved.</span>
-      <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;">Vienna · Austria</span>
-    </div>
-  </div>
-</footer>
- 
-<script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('raised', window.scrollY > 20);
-}, { passive: true });
-</script>
-</body>
-</html>
+        <a href="/cdn-cgi/l/email-protection#84e5e3eaede1f7feefe5aaf3e1e3e8e5f6fec4f6e1f5f1edf2ebaae5f0"><span class="__cf_email__" data-cfemail="8beaece5e2eef8f1e0eaa5fceeece7eaf9f1cbf9eefafee2fde4a5eaff">[email&#160;protected]</span></a>
+        <a href="/cdn-cgi/l/email-protection#284249435d4a685a4d595d415e4706495c"><
