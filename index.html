@@ -273,6 +273,37 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   padding: 18px;
 }
 
+.hero-shot-frame.hero-no-img {
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f0f4fb 0%, #e8eef7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-shot-frame.hero-no-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(55,48,163,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55,48,163,.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.hero-shot-frame.hero-no-img::after {
+  content: 'Interface fragment coming soon';
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-shot-frame img {
   width: 100%;
   height: auto;
@@ -717,7 +748,38 @@ footer {
     border-radius: 16px;
   }
 
-  .hero-shot-frame img {
+  .hero-shot-frame.hero-no-img {
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f0f4fb 0%, #e8eef7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-shot-frame.hero-no-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(55,48,163,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55,48,163,.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.hero-shot-frame.hero-no-img::after {
+  content: 'Interface fragment coming soon';
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-shot-frame img {
     max-height: none;
   }
 }
@@ -727,12 +789,12 @@ footer {
 
 <nav id="nav">
   <div class="wrap nav-inner">
-        <a href="#top" class="logo" aria-label="Requivo home">
-      <svg viewBox="0 0 38 32" width="38" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M 14 -1  Q 4 -1  4 8  L 4 24  Q 4 33  14 33" stroke="#3730a3" stroke-width="3.8" stroke-linecap="round" fill="none" transform="translate(0,-16)"/>
-        <path d="M 24 -1  Q 34 -1  34 8  L 34 24  Q 34 33  24 33" stroke="#3730a3" stroke-width="3.8" stroke-linecap="round" fill="none" transform="translate(0,-16)"/>
-        <rect x="13" y="-1" width="12" height="12" rx="2" fill="#0ea5e9" transform="rotate(45 19 4.5)"/>
-        <circle cx="19" cy="4.5" r="2.2" fill="#ffffff" opacity=".5"/>
+            <a href="#top" class="logo" aria-label="Requivo home">
+      <svg viewBox="0 0 44 36" width="36" height="29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 16 3  Q 4 3  4 13  L 4 23  Q 4 33  16 33" stroke="#3730a3" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+        <path d="M 28 3  Q 40 3  40 13  L 40 23  Q 40 33  28 33" stroke="#3730a3" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+        <rect x="14" y="9" width="16" height="16" rx="2.5" fill="#0ea5e9" transform="rotate(45 22 17)"/>
+        <circle cx="22" cy="17" r="2.8" fill="#ffffff" opacity=".5"/>
       </svg>
       Requivo
     </a>
@@ -763,7 +825,8 @@ footer {
       <div class="hero-aside">
         <div class="hero-shot">
           <div class="hero-shot-frame">
-            <img src="requivo-fragment.png" alt="Selected interface fragment from Requivo" />
+            <img src="requivo-fragment.png" alt="Selected interface fragment from Requivo"
+                 onerror="this.style.display='none';this.parentElement.classList.add('hero-no-img')" />
           </div>
           <div class="hero-shot-caption">Selected interface fragment</div>
         </div>
@@ -922,19 +985,19 @@ footer {
       <div class="contact-card reveal">
         <h3>Agnieszka Pisz-Weglarz</h3>
         <div class="contact-role">Co-Founder</div>
-        <a class="contact-email" href="/cdn-cgi/l/email-protection#177670797e72646d7c76396072707b76656d57657266627e6178397663"><span class="__cf_email__" data-cfemail="6f0e0801060a1c15040e41180a08030e1d152f1d0a1e1a061900410e1b">[email&#160;protected]</span></a>
+        <a class="contact-email" href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
       </div>
 
       <div class="contact-card reveal d1">
         <h3>Patrick Pirchheim</h3>
         <div class="contact-role">Co-Founder</div>
-        <a class="contact-email" href="/cdn-cgi/l/email-protection#3949584d4b505a521749504b5a51515c5054794b5c484c504f5617584d"><span class="__cf_email__" data-cfemail="66160712140f050d48160f14050e0e030f0b26140317130f1009480712">[email&#160;protected]</span></a>
+        <a class="contact-email" href="mailto:patrick.pirchheim@requivo.at">patrick.pirchheim@requivo.at</a>
       </div>
 
       <div class="contact-card reveal d2">
         <h3>Jakub Weglarz</h3>
         <div class="contact-role">COO</div>
-        <a class="contact-email" href="/cdn-cgi/l/email-protection#5d373c36283f1d2f382c28342b32733c29"><span class="__cf_email__" data-cfemail="345e555f415674465145415d425b1a5540">[email&#160;protected]</span></a>
+        <a class="contact-email" href="mailto:jakub@requivo.at">jakub@requivo.at</a>
       </div>
     </div>
   </div>
@@ -944,13 +1007,13 @@ footer {
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-                <a href="#top" class="footer-logo" aria-label="Requivo home">
-          <svg viewBox="0 0 38 32" width="38" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M 14 -1  Q 4 -1  4 8  L 4 24  Q 4 33  14 33" stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" fill="none" transform="translate(0,-16)"/>
-          <path d="M 24 -1  Q 34 -1  34 8  L 34 24  Q 34 33  24 33" stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" fill="none" transform="translate(0,-16)"/>
-          <rect x="13" y="-1" width="12" height="12" rx="2" fill="#38bdf8" transform="rotate(45 19 4.5)"/>
-          <circle cx="19" cy="4.5" r="2.2" fill="#0f1c3a" opacity=".35"/>
-        </svg>
+                        <a href="#top" class="footer-logo" aria-label="Requivo home">
+          <svg viewBox="0 0 44 36" width="36" height="29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M 16 3  Q 4 3  4 13  L 4 23  Q 4 33  16 33" stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+            <path d="M 28 3  Q 40 3  40 13  L 40 23  Q 40 33  28 33" stroke="#ffffff" stroke-width="3.8" stroke-linecap="round" fill="none"/>
+            <rect x="14" y="9" width="16" height="16" rx="2.5" fill="#38bdf8" transform="rotate(45 22 17)"/>
+            <circle cx="22" cy="17" r="2.8" fill="#0f1c3a" opacity=".35"/>
+          </svg>
           Requivo
         </a>
 
@@ -975,8 +1038,8 @@ footer {
 
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="/cdn-cgi/l/email-protection#29484e47404c5a534248075e4c4e45485b53695b4c585c405f4607485d"><span class="__cf_email__" data-cfemail="ceafa9a0a7abbdb4a5afe0b9aba9a2afbcb48ebcabbfbba7b8a1e0afba">[email&#160;protected]</span></a>
-        <a href="/cdn-cgi/l/email-protection#b6dcd7ddc3d4f6c4d3c7c3dfc0d998d7c2"><span class="__cf_email__" data-cfemail="2d474c46584f6d5f485c58445b42034c59">[email&#160;protected]</span></a>
+        <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
+        <a href="mailto:jakub@requivo.at">jakub@requivo.at</a>
       </div>
     </div>
 
