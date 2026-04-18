@@ -1109,7 +1109,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   updateNav();
-  window.addEventListener('scroll', updateNav);
+  window.addEventListener('scroll', updateNav, { passive: true });
 
   if (!('IntersectionObserver' in window)) {
     reveals.forEach(el => el.classList.add('in'));
@@ -1131,49 +1131,81 @@ document.addEventListener('DOMContentLoaded', function () {
 
   (function () {
     const canvas = document.getElementById('topo-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     const hero = document.getElementById('top');
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const CFG = {
-      COLS: 24,
-      ROWS: 15,
-      GHOST_COLS: 15,
-      GHOST_ROWS: 9,
+    let profile = null;
+    let CFG = null;
 
-      NOISE_SCALE: 0.0102,
-      NOISE_SPEED: 0.00034,
-
-      AMP_LEFT: 74,
-      AMP_MID: 14,
-      AMP_RIGHT: 2.1,
-
-      SPRING_LEFT: 0.036,
-      SPRING_MID: 0.068,
-      SPRING_RIGHT: 0.128,
-
-      FRICTION_LEFT: 0.80,
-      FRICTION_MID: 0.72,
-      FRICTION_RIGHT: 0.56,
-
-      MOUSE_RADIUS: 160,
-      MOUSE_PULL: 0.14,
-      REVEAL_RADIUS: 130,
-
-      DOT_R: 1.12,
-      DOT_R_ACTIVE: 2.15,
-
-      INDIGO: [55,48,163],
-      SKY: [14,165,233],
-      SLATE: [132,147,169],
-      VALID: [79,70,229]
-    };
-
-    let W, H, cellW, cellH, dpr;
+    let W = 0, H = 0, cellW = 0, cellH = 0, dpr = 1;
     let pts = [];
     let ghostPts = [];
+    let anchors = [];
     let memoryTrails = [];
     let time = 0;
-    let mouse = { x: -9999, y: -9999, active: false, lastX: -9999, lastY: -9999 };
+    let running = false;
+    let rafId = null;
+    let lastFrameTime = 0;
+
+    let mouse = {
+      x: -9999,
+      y: -9999,
+      active: false,
+      lastX: -9999,
+      lastY: -9999
+    };
+
+    function getProfile() {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const isTouch = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+      const lowPowerMode = isMobile || isTouch;
+
+      return {
+        isMobile,
+        isTouch,
+        lowPowerMode,
+        targetFPS: lowPowerMode ? 30 : 60
+      };
+    }
+
+    function buildConfig(currentProfile) {
+      const low = currentProfile.lowPowerMode;
+
+      return {
+        COLS: low ? 14 : 24,
+        ROWS: low ? 9 : 15,
+        GHOST_COLS: low ? 8 : 15,
+        GHOST_ROWS: low ? 5 : 9,
+
+        NOISE_SCALE: low ? 0.0092 : 0.0102,
+        NOISE_SPEED: low ? 0.00022 : 0.00034,
+
+        AMP_LEFT: low ? 42 : 74,
+        AMP_MID: low ? 9 : 14,
+        AMP_RIGHT: low ? 1.5 : 2.1,
+
+        SPRING_LEFT: 0.036,
+        SPRING_MID: 0.068,
+        SPRING_RIGHT: 0.128,
+
+        FRICTION_LEFT: 0.80,
+        FRICTION_MID: 0.72,
+        FRICTION_RIGHT: 0.56,
+
+        MOUSE_RADIUS: low ? 90 : 160,
+        MOUSE_PULL: low ? 0.08 : 0.14,
+        REVEAL_RADIUS: low ? 70 : 130,
+
+        DOT_R: low ? 0.92 : 1.12,
+        DOT_R_ACTIVE: low ? 1.55 : 2.15,
+
+        INDIGO: [55,48,163],
+        SKY: [14,165,233],
+        SLATE: [132,147,169],
+        VALID: [79,70,229]
+      };
+    }
 
     function clamp(v, min, max) {
       return Math.max(min, Math.min(max, v));
@@ -1222,7 +1254,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      profile = getProfile();
+      CFG = buildConfig(profile);
+
+      dpr = Math.min(window.devicePixelRatio || 1, profile.lowPowerMode ? 1.5 : 2);
+
       W = hero.offsetWidth;
       H = hero.offsetHeight;
 
@@ -1239,10 +1275,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       buildGrid();
       buildGhostGrid();
+      memoryTrails = [];
     }
 
     function buildGrid() {
       pts = [];
+      anchors = [];
 
       for (let row = 0; row < CFG.ROWS; row++) {
         for (let col = 0; col < CFG.COLS; col++) {
@@ -1260,6 +1298,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const zone = xn < 0.34 ? 'fragmented' : xn < 0.66 ? 'aligned' : 'governed';
 
           const validationHub =
+            !profile.lowPowerMode &&
             zone === 'governed' &&
             (col === CFG.COLS - 5 || col === CFG.COLS - 8 || col === CFG.COLS - 11) &&
             (row === 3 || row === 7 || row === 11);
@@ -1267,13 +1306,14 @@ document.addEventListener('DOMContentLoaded', function () {
           const anchor =
             zone === 'governed' &&
             (col === CFG.COLS - 7 || col === CFG.COLS - 10) &&
-            (row === 4 || row === 10);
+            (row === Math.max(2, Math.floor(CFG.ROWS * 0.3)) || row === Math.max(4, Math.floor(CFG.ROWS * 0.7)));
 
           const backbone =
             zone === 'governed' &&
+            !profile.lowPowerMode &&
             (col === CFG.COLS - 8 || col === CFG.COLS - 6);
 
-          pts.push({
+          const point = {
             ox, oy,
             x: ox, y: oy,
             vx: 0, vy: 0,
@@ -1287,13 +1327,19 @@ document.addEventListener('DOMContentLoaded', function () {
             validationHub,
             anchor,
             backbone
-          });
+          };
+
+          if (anchor) anchors.push(point);
+          pts.push(point);
         }
       }
     }
 
     function buildGhostGrid() {
       ghostPts = [];
+
+      if (profile.lowPowerMode) return;
+
       const gw = W / (CFG.GHOST_COLS - 1);
       const gh = H / (CFG.GHOST_ROWS - 1);
 
@@ -1325,7 +1371,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updatePrimary() {
       const t = time * CFG.NOISE_SPEED;
-      const anchors = pts.filter(p => p.anchor);
 
       pts.forEach(p => {
         const nx = p.ox * CFG.NOISE_SCALE;
@@ -1334,8 +1379,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let dx = smoothNoise(nx, ny, t) * p.amp;
         let dy = smoothNoise(nx + 31, ny + 17, t) * p.amp;
 
-        dx += smoothNoise(nx * 2.05, ny * 2.05, t * 1.5) * p.amp * 0.18;
-        dy += smoothNoise(nx * 2.05 + 3, ny * 2.05 + 2, t * 1.35) * p.amp * 0.14;
+        dx += smoothNoise(nx * 2.05, ny * 2.05, t * 1.5) * p.amp * (profile.lowPowerMode ? 0.10 : 0.18);
+        dy += smoothNoise(nx * 2.05 + 3, ny * 2.05 + 2, t * 1.35) * p.amp * (profile.lowPowerMode ? 0.08 : 0.14);
 
         if (p.zone === 'aligned') {
           dx *= 0.58;
@@ -1345,13 +1390,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (p.zone === 'governed') {
           dx *= 0.10;
           dy *= 0.09;
-          dx += Math.sin(t * 130 + p.row * 0.18) * 0.22;
-          dy += Math.cos(t * 118 + p.col * 0.08) * 0.06;
+          dx += Math.sin(t * 130 + p.row * 0.18) * (profile.lowPowerMode ? 0.12 : 0.22);
+          dy += Math.cos(t * 118 + p.col * 0.08) * (profile.lowPowerMode ? 0.03 : 0.06);
         }
 
         if (p.zone === 'fragmented') {
-          dx += Math.sin(t * 230 + p.phase) * 4.4;
-          dy += Math.cos(t * 205 + p.phase) * 2.7;
+          dx += Math.sin(t * 230 + p.phase) * (profile.lowPowerMode ? 2.8 : 4.4);
+          dy += Math.cos(t * 205 + p.phase) * (profile.lowPowerMode ? 1.7 : 2.7);
         }
 
         if (p.anchor) {
@@ -1377,19 +1422,20 @@ document.addEventListener('DOMContentLoaded', function () {
           dy += (rowSnap - p.oy) * 0.014;
         }
 
-        if (p.zone === 'governed' && !p.anchor && !p.validationHub) {
+        if (p.zone === 'governed' && !p.anchor && !p.validationHub && anchors.length) {
           let basinX = 0;
           let basinY = 0;
           let basinW = 0;
 
-          anchors.forEach(a => {
+          for (let i = 0; i < anchors.length; i++) {
+            const a = anchors[i];
             const d = distance(p.ox, p.oy, a.ox, a.oy);
-            if (d > 170) return;
+            if (d > 170) continue;
             const w = 1 - d / 170;
             basinX += a.ox * w;
             basinY += a.oy * w;
             basinW += w;
-          });
+          }
 
           if (basinW > 0) {
             dx += ((basinX / basinW) - p.ox) * 0.012;
@@ -1422,6 +1468,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateGhost() {
+      if (profile.lowPowerMode || ghostPts.length === 0) return;
+
       const tt = time * 0.00022;
       ghostPts.forEach(p => {
         const amp = p.zone === 'fragmented' ? 10 : p.zone === 'aligned' ? 5 : 1.8;
@@ -1431,6 +1479,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateMemoryTrails() {
+      if (profile.lowPowerMode) {
+        memoryTrails.length = 0;
+        return;
+      }
+
       memoryTrails = memoryTrails
         .map(t => ({ ...t, life: t.life - 1 }))
         .filter(t => t.life > 0);
@@ -1487,11 +1540,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (a.col < CFG.COLS - 1) neighbours.push(pts[i + 1]);
         if (a.row < CFG.ROWS - 1) neighbours.push(pts[i + CFG.COLS]);
-        if (a.zone !== 'fragmented' && a.col < CFG.COLS - 1 && a.row < CFG.ROWS - 1) {
+        if (!profile.lowPowerMode && a.zone !== 'fragmented' && a.col < CFG.COLS - 1 && a.row < CFG.ROWS - 1) {
           neighbours.push(pts[i + CFG.COLS + 1]);
         }
 
-        for (const b of neighbours) {
+        for (let n = 0; n < neighbours.length; n++) {
+          const b = neighbours[n];
           const dx = b.x - a.x;
           const dy = b.y - a.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1537,6 +1591,8 @@ document.addEventListener('DOMContentLoaded', function () {
             alpha *= 0.72;
           }
 
+          if (profile.lowPowerMode) alpha *= 0.88;
+
           ctx.globalAlpha = alpha;
           ctx.strokeStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
           ctx.lineWidth =
@@ -1545,6 +1601,10 @@ document.addEventListener('DOMContentLoaded', function () {
             kind === 'backbone' ? 0.62 :
             kind === 'supporting' ? 0.46 :
             (a.edge || b.edge ? 0.34 : 0.46);
+
+          if (profile.lowPowerMode) {
+            ctx.lineWidth *= 0.92;
+          }
 
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -1555,6 +1615,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function drawGhostEdges() {
+      if (profile.lowPowerMode || ghostPts.length === 0) return;
+
       for (let i = 0; i < ghostPts.length; i++) {
         const a = ghostPts[i];
         const neighbours = [];
@@ -1562,7 +1624,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (a.col < CFG.GHOST_COLS - 1) neighbours.push(ghostPts[i + 1]);
         if (a.row < CFG.GHOST_ROWS - 1) neighbours.push(ghostPts[i + CFG.GHOST_COLS]);
 
-        for (const b of neighbours) {
+        for (let n = 0; n < neighbours.length; n++) {
+          const b = neighbours[n];
           const dx = b.x - a.x;
           const dy = b.y - a.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1591,11 +1654,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function drawBackboneLanes() {
+      if (profile.lowPowerMode) return;
+
       const cols = [CFG.COLS - 8, CFG.COLS - 6];
       cols.forEach((col, i) => {
         ctx.beginPath();
         for (let row = 1; row < CFG.ROWS - 1; row++) {
           const p = pts[row * CFG.COLS + col];
+          if (!p) continue;
           if (row === 1) ctx.moveTo(p.x, p.y);
           else ctx.lineTo(p.x, p.y);
         }
@@ -1607,7 +1673,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addMemoryTrail() {
-      if (!mouse.active) return;
+      if (profile.lowPowerMode || !mouse.active) return;
       if (mouse.x < W * 0.64) return;
 
       const moved = distance(mouse.x, mouse.y, mouse.lastX, mouse.lastY);
@@ -1620,9 +1686,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const a = nearby[i];
         const b = nearby[i + 1];
         memoryTrails.push({
-          x1:a.x, y1:a.y,
-          x2:b.x, y2:b.y,
-          life:22
+          x1: a.x, y1: a.y,
+          x2: b.x, y2: b.y,
+          life: 22
         });
       }
 
@@ -1631,6 +1697,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function drawMemoryTrails() {
+      if (profile.lowPowerMode) return;
+
       memoryTrails.forEach(t => {
         const alpha = (t.life / 22) * 0.050;
         ctx.globalAlpha = alpha;
@@ -1683,19 +1751,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (p.anchor) {
           rgb = CFG.INDIGO;
           alpha = 0.28;
-          radius = 1.75;
+          radius = profile.lowPowerMode ? 1.35 : 1.75;
         }
 
         if (p.validationHub) {
           rgb = CFG.VALID;
           alpha = 0.55 + Math.sin(time * 0.018 + p.row) * 0.03;
-          radius = 2.15;
+          radius = profile.lowPowerMode ? 1.7 : 2.15;
         }
 
         alpha += mouseGlow * 0.18;
         radius += mouseGlow * (CFG.DOT_R_ACTIVE - CFG.DOT_R);
 
-        if ((mouseGlow > 0.14 && p.zone === 'governed') || p.validationHub) {
+        if (!profile.lowPowerMode && ((mouseGlow > 0.14 && p.zone === 'governed') || p.validationHub)) {
           const haloR = p.validationHub ? radius * 3.2 : radius * 2.8;
           const haloA = p.validationHub ? 0.08 : mouseGlow * 0.05;
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
@@ -1713,7 +1781,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
         ctx.fill();
 
-        if (p.validationHub) {
+        if (!profile.lowPowerMode && p.validationHub) {
           const ring = 4.0 + Math.sin(time * 0.014 + p.col) * 0.18;
           ctx.globalAlpha = 0.10;
           ctx.strokeStyle = 'rgb(79,70,229)';
@@ -1724,20 +1792,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
-      ghostPts.forEach(p => {
-        const reveal = revealStrength(p.x, p.y);
-        if (reveal < 0.16) return;
+      if (!profile.lowPowerMode) {
+        ghostPts.forEach(p => {
+          const reveal = revealStrength(p.x, p.y);
+          if (reveal < 0.16) return;
 
-        const xNorm = clamp(p.x / W, 0, 1);
-        const wGov = smoothstep(0.46, 0.94, xNorm);
-        const rgb = lerpColor(CFG.SLATE, CFG.SKY, wGov);
+          const xNorm = clamp(p.x / W, 0, 1);
+          const wGov = smoothstep(0.46, 0.94, xNorm);
+          const rgb = lerpColor(CFG.SLATE, CFG.SKY, wGov);
 
-        ctx.globalAlpha = (0.018 + wGov * 0.012) * reveal;
-        ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 0.62, 0, Math.PI * 2);
-        ctx.fill();
-      });
+          ctx.globalAlpha = (0.018 + wGov * 0.012) * reveal;
+          ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 0.62, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
 
       ctx.globalAlpha = 1;
     }
@@ -1746,43 +1816,112 @@ document.addEventListener('DOMContentLoaded', function () {
       ctx.clearRect(0, 0, W, H);
       drawAtmosphere();
       drawGovernanceField();
-      drawGhostEdges();
+
+      if (!profile.lowPowerMode) {
+        drawGhostEdges();
+      }
+
       drawPrimaryEdges();
-      drawBackboneLanes();
-      drawMemoryTrails();
+
+      if (!profile.lowPowerMode) {
+        drawBackboneLanes();
+        drawMemoryTrails();
+      }
+
       drawInteractionField();
       drawNodes();
       ctx.globalAlpha = 1;
     }
 
-    function loop() {
-      update();
-      addMemoryTrail();
-      draw();
-      requestAnimationFrame(loop);
+    function stopLoop() {
+      running = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
     }
 
-    hero.addEventListener('mousemove', e => {
-      const r = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
-      mouse.active = true;
-    }, { passive: true });
+    function loop(timestamp = 0) {
+      if (!running) return;
 
-    hero.addEventListener('mouseleave', () => {
+      const interval = 1000 / profile.targetFPS;
+      if (!lastFrameTime || timestamp - lastFrameTime >= interval) {
+        lastFrameTime = timestamp;
+        update();
+        addMemoryTrail();
+        draw();
+      }
+
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function startLoop() {
+      if (prefersReducedMotion) return;
+      if (running) return;
+      running = true;
+      lastFrameTime = 0;
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function handlePointerMove(clientX, clientY) {
+      const r = canvas.getBoundingClientRect();
+      mouse.x = clientX - r.left;
+      mouse.y = clientY - r.top;
+      mouse.active = true;
+    }
+
+    function resetMouse() {
       mouse.x = -9999;
       mouse.y = -9999;
       mouse.active = false;
+      mouse.lastX = -9999;
+      mouse.lastY = -9999;
+    }
+
+    if (!profile) {
+      profile = getProfile();
+    }
+
+    if (!profile.isTouch) {
+      hero.addEventListener('mousemove', e => {
+        handlePointerMove(e.clientX, e.clientY);
+      }, { passive: true });
+
+      hero.addEventListener('mouseleave', resetMouse, { passive: true });
+    }
+
+    window.addEventListener('resize', () => {
+      const prevLowPower = profile ? profile.lowPowerMode : null;
+      resize();
+
+      if (prevLowPower !== null && prevLowPower !== profile.lowPowerMode) {
+        resetMouse();
+      }
+
+      if (prefersReducedMotion) {
+        draw();
+      }
+    }, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopLoop();
+      } else if (!prefersReducedMotion) {
+        startLoop();
+      }
     });
 
-    window.addEventListener('resize', resize, { passive: true });
+    window.addEventListener('pagehide', stopLoop);
+    window.addEventListener('pageshow', () => {
+      if (!prefersReducedMotion) startLoop();
+    });
 
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      resize();
+    resize();
+
+    if (prefersReducedMotion) {
       draw();
     } else {
-      resize();
-      loop();
+      startLoop();
     }
   })();
 });
