@@ -1192,8 +1192,8 @@ document.addEventListener('DOMContentLoaded', function () {
         FRICTION_MID: 0.72,
         FRICTION_RIGHT: 0.56,
 
-        MOUSE_RADIUS: low ? 90 : 160,
-        MOUSE_PULL: low ? 0.08 : 0.14,
+        MOUSE_RADIUS: low ? 80 : 140,
+        MOUSE_PULL: low ? 0.06 : 0.10,
         REVEAL_RADIUS: low ? 70 : 130,
 
         DOT_R: low ? 0.92 : 1.12,
@@ -1394,8 +1394,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (p.zone === 'fragmented') {
-          dx += Math.sin(t * 230 + p.phase) * (profile.lowPowerMode ? 2.8 : 4.4);
-          dy += Math.cos(t * 205 + p.phase) * (profile.lowPowerMode ? 1.7 : 2.7);
+          dx += Math.sin(t * 230 + p.phase) * (profile.lowPowerMode ? 2.0 : 3.2);
+          dy += Math.cos(t * 205 + p.phase) * (profile.lowPowerMode ? 1.2 : 2.0);
         }
 
         if (p.anchor) {
@@ -1635,7 +1635,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const mx = (a.x + b.x) * 0.5;
           const my = (a.y + b.y) * 0.5;
           const reveal = revealStrength(mx, my);
-          if (reveal < 0.14) continue;
+          if (reveal < 0.09) continue;
 
           const xNorm = clamp(mx / W, 0, 1);
           const wGov = smoothstep(0.44, 0.94, xNorm);
@@ -1664,9 +1664,9 @@ document.addEventListener('DOMContentLoaded', function () {
           if (row === 1) ctx.moveTo(p.x, p.y);
           else ctx.lineTo(p.x, p.y);
         }
-        ctx.globalAlpha = 0.050 + Math.sin(time * 0.008 + i) * 0.006;
+        ctx.globalAlpha = 0.036 + Math.sin(time * 0.008 + i) * 0.004;
         ctx.strokeStyle = i === 0 ? 'rgb(79,70,229)' : 'rgb(14,165,233)';
-        ctx.lineWidth = 0.76;
+        ctx.lineWidth = 0.52;
         ctx.stroke();
       });
     }
@@ -1687,7 +1687,7 @@ document.addEventListener('DOMContentLoaded', function () {
         memoryTrails.push({
           x1: a.x, y1: a.y,
           x2: b.x, y2: b.y,
-          life: 22
+          life: 14
         });
       }
 
@@ -1699,7 +1699,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (profile.lowPowerMode) return;
 
       memoryTrails.forEach(t => {
-        const alpha = (t.life / 22) * 0.050;
+        const alpha = (t.life / 14) * 0.040;
         ctx.globalAlpha = alpha;
         ctx.strokeStyle = 'rgb(79,70,229)';
         ctx.lineWidth = 0.50;
@@ -1755,16 +1755,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (p.validationHub) {
           rgb = CFG.VALID;
-          alpha = 0.55 + Math.sin(time * 0.018 + p.row) * 0.03;
-          radius = profile.lowPowerMode ? 1.7 : 2.15;
+          alpha = 0.34 + Math.sin(time * 0.018 + p.row) * 0.014;
+          radius = profile.lowPowerMode ? 1.5 : 1.9;
         }
 
         alpha += mouseGlow * 0.18;
         radius += mouseGlow * (CFG.DOT_R_ACTIVE - CFG.DOT_R);
 
         if (!profile.lowPowerMode && ((mouseGlow > 0.14 && p.zone === 'governed') || p.validationHub)) {
-          const haloR = p.validationHub ? radius * 3.2 : radius * 2.8;
-          const haloA = p.validationHub ? 0.08 : mouseGlow * 0.05;
+          const haloR = p.validationHub ? radius * 2.8 : radius * 2.8;
+          const haloA = p.validationHub ? 0.055 : mouseGlow * 0.05;
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
           grad.addColorStop(0, `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${haloA})`);
           grad.addColorStop(1, `rgba(${rgb[0]},${rgb[1]},${rgb[2]},0)`);
@@ -1781,10 +1781,10 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.fill();
 
         if (!profile.lowPowerMode && p.validationHub) {
-          const ring = 4.0 + Math.sin(time * 0.014 + p.col) * 0.18;
-          ctx.globalAlpha = 0.10;
+          const ring = 3.6 + Math.sin(time * 0.014 + p.col) * 0.10;
+          ctx.globalAlpha = 0.055;
           ctx.strokeStyle = 'rgb(79,70,229)';
-          ctx.lineWidth = 0.62;
+          ctx.lineWidth = 0.50;
           ctx.beginPath();
           ctx.arc(p.x, p.y, ring, 0, Math.PI * 2);
           ctx.stroke();
@@ -1794,7 +1794,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!profile.lowPowerMode) {
         ghostPts.forEach(p => {
           const reveal = revealStrength(p.x, p.y);
-          if (reveal < 0.16) return;
+          if (reveal < 0.10) return;
 
           const xNorm = clamp(p.x / W, 0, 1);
           const wGov = smoothstep(0.46, 0.94, xNorm);
