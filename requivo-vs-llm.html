@@ -147,11 +147,11 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   font-weight: 300;
   color: var(--text-soft);
   max-width: 720px;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .cmp-preamble {
-  padding-top: 24px;
+  padding-top: 40px;
   border-top: 1px solid var(--line-soft);
   max-width: 680px;
 }
@@ -163,7 +163,7 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--indigo-mid);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .cmp-preamble-desc {
@@ -313,14 +313,28 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
 .insight-card {
   background: var(--bg);
   border: 1px solid var(--line);
-  border-top: 2px solid var(--indigo-mid);
+  border-top: 2px solid var(--line);
   border-radius: 12px;
   padding: 32px 28px 36px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  position: relative;
   transition: box-shadow .2s var(--ease), transform .2s var(--ease);
 }
+
+.insight-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--indigo-mid);
+  transition: width .4s var(--ease);
+}
+
+.insight-card:hover::before { width: 100%; }
 
 .insight-card:hover {
   box-shadow: 0 6px 28px rgba(55,48,163,.08);
