@@ -220,14 +220,7 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
 }
 
 .hero-tag::before {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--indigo-mid);
-  flex-shrink: 0;
-  animation: hero-dot-pulse 2.8s ease-in-out infinite;
+  content: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -398,13 +391,7 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 .section-label::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--indigo-mid);
-  flex-shrink: 0;
+  content: none;
 }
 
 .section-title {
