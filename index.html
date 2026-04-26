@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+<!-- Requivo mechanism animation -->
+<link rel="stylesheet" href="requivo-mechanism.css" />
+
 <script>
   document.documentElement.classList.add('js');
 </script>
@@ -198,11 +201,6 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
   align-items: center;
 }
 
-@keyframes hero-dot-pulse {
-  0%, 100% { opacity: 0.9; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(0.65); }
-}
-
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -221,10 +219,6 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
 
 .hero-tag::before {
   content: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-tag::before { animation: none; }
 }
 
 .hero h1 {
@@ -414,45 +408,27 @@ section + section { border-top: 1px solid var(--line-soft); }
   margin-bottom: 52px;
 }
 
-/* MISSION / VISION */
-#mission-vision { background: var(--bg-off); }
-
-.mv-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  border-radius: 12px;
-  overflow: hidden;
+/* HOW REQUIVO WORKS */
+#how-it-works {
+  background: var(--bg-off);
+  padding: 112px 0;
 }
 
-.mv-card {
-  background: var(--bg);
-  padding: 40px 36px 44px;
+.how-head {
+  margin-bottom: 48px;
+}
+
+.mechanism-shell {
+  width: min(100%, 1320px);
+  margin: 0 auto;
   border: 1px solid var(--line-soft);
-  transition: box-shadow .22s var(--ease);
-}
-
-.mv-card:hover {
-  box-shadow: 0 4px 24px rgba(55,48,163,.07);
-}
-
-.mv-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 18px;
-}
-
-.mv-card p {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  line-height: 1.42;
-  letter-spacing: -.01em;
-  color: var(--text);
-  max-width: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fbfcff;
+  box-shadow:
+    0 1px 2px rgba(15,28,58,.04),
+    0 12px 42px rgba(55,48,163,.08),
+    0 28px 80px rgba(15,28,58,.06);
 }
 
 /* PROBLEM */
@@ -773,7 +749,7 @@ footer {
   align-items: center;
 }
 
-/* REVEAL - safe version */
+/* REVEAL */
 .reveal {
   opacity: 1;
   transform: none;
@@ -816,7 +792,13 @@ footer {
   .wrap { width: calc(100% - 32px); }
   .nav-links { display: none; }
   section { padding: 80px 0; }
-  .prob-grid, .mv-grid, .use-grid, .contact-grid { grid-template-columns: 1fr; }
+
+  .prob-grid,
+  .use-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
   .strata-row { grid-template-columns: 1fr; }
   .strata-label { padding: 16px 20px 6px; border-right: none; }
   .strata-body { padding: 0 20px 16px; }
@@ -830,33 +812,6 @@ footer {
 
   .hero-shot-frame.hero-no-img {
     min-height: 360px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(145deg, #f0f4fb 0%, #e8eef7 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-shot-frame.hero-no-img::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(55,48,163,.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(55,48,163,.05) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  .hero-shot-frame.hero-no-img::after {
-    content: 'Interface fragment coming soon';
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: .1em;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
   }
 
   .hero-shot-frame img {
@@ -865,6 +820,14 @@ footer {
 
   .hero {
     min-height: auto;
+  }
+
+  #how-it-works {
+    padding: 80px 0;
+  }
+
+  .mechanism-shell {
+    border-radius: 14px;
   }
 }
 </style>
@@ -883,6 +846,7 @@ footer {
     </a>
 
     <div class="nav-links">
+      <a href="#how-it-works">How it works</a>
       <a href="#problem">Problem</a>
       <a href="#solution">Solution</a>
       <a href="#why">Why this matters</a>
@@ -923,18 +887,128 @@ footer {
   </div>
 </section>
 
-<section id="mission-vision">
+<section id="how-it-works">
   <div class="wrap">
-    <div class="mv-grid">
-      <div class="mv-card reveal">
-        <div class="mv-label">Mission</div>
-        <p>To turn fragmented enterprise evidence into governed operational knowledge that organisations can trust, maintain, and reuse.</p>
-      </div>
-      <div class="mv-card reveal d1">
-        <div class="mv-label">Vision</div>
-        <p>A world in which organisations no longer rely on scattered documents and tacit memory, but operate on governed, validated, and evolving knowledge.</p>
-      </div>
+    <div class="how-head">
+      <div class="section-label">How Requivo works</div>
+      <div class="section-title reveal">Evidence becomes governed operational knowledge.</div>
+      <div class="section-sub reveal d1">Requivo resolves fragmented operational evidence into validated, reusable knowledge — structured once, then used across multiple applications.</div>
     </div>
+  </div>
+
+  <div class="mechanism-shell reveal d1">
+    <section class="rq-mechanism" aria-label="Requivo knowledge mechanism">
+      <div class="rq-mechanism-header">
+        <div class="rq-mechanism-brand">
+          <span class="rq-mechanism-wordmark">Requivo</span>
+          <span class="rq-mechanism-divider"></span>
+          <span class="rq-mechanism-eyebrow">Knowledge Mechanism</span>
+        </div>
+        <div class="rq-mechanism-controls">
+          <div class="rq-mechanism-dots" role="tablist" aria-label="Steps"></div>
+          <button class="rq-mechanism-play" type="button" aria-label="Pause autoplay">
+            <span class="rq-mechanism-play-icon"></span>
+            <span class="rq-mechanism-play-label">Pause</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="rq-mechanism-stage-wrap">
+        <div class="rq-mechanism-stage" data-stage>
+          <svg class="rq-mechanism-bg" viewBox="0 0 1660 860" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <pattern id="rqMechGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+                <circle cx="0.5" cy="0.5" r="0.5" fill="oklch(72% 0.025 275 / 0.20)"/>
+              </pattern>
+              <radialGradient id="rqMechWash" cx="50%" cy="50%" r="42%">
+                <stop offset="0%" stop-color="oklch(94% 0.035 275 / 0.45)"/>
+                <stop offset="100%" stop-color="oklch(98.6% 0.006 275 / 0)"/>
+              </radialGradient>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#rqMechGrid)"/>
+            <rect width="100%" height="100%" fill="url(#rqMechWash)"/>
+          </svg>
+
+          <div class="rq-mechanism-label" style="left:70px;top:92px">FRAGMENTED EVIDENCE</div>
+          <div class="rq-mechanism-label rq-mechanism-label--center" style="left:350px;top:92px;width:340px">REQUIVO RESOLUTION ENGINE</div>
+          <div class="rq-mechanism-label rq-mechanism-label--center" style="left:706px;top:92px;width:309px">EXPERT CAPTURE LOOP</div>
+          <div class="rq-mechanism-label rq-mechanism-label--center" style="left:1156px;top:92px;width:276px">GOVERNED KNOWLEDGE LAYER</div>
+          <div class="rq-mechanism-label" style="left:1462px;top:92px">REQUIVO APPLICATIONS</div>
+
+          <svg class="rq-mechanism-connectors" viewBox="0 0 1660 860" data-connectors aria-hidden="true">
+            <defs>
+              <linearGradient id="rqMechAccent" x1="0" x2="1">
+                <stop offset="0%" stop-color="oklch(78% 0.08 282)"/>
+                <stop offset="100%" stop-color="oklch(58% 0.16 282)"/>
+              </linearGradient>
+              <linearGradient id="rqMechAccentBack" x1="1" x2="0">
+                <stop offset="0%" stop-color="oklch(58% 0.16 282)"/>
+                <stop offset="100%" stop-color="oklch(78% 0.08 282)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div class="rq-mechanism-evidence" data-evidence></div>
+
+          <div class="rq-mechanism-mark" data-mark>Requivo</div>
+
+          <div class="rq-mechanism-engine" data-engine>
+            <div class="rq-mechanism-engine-header">
+              <span>Resolution Engine</span>
+            </div>
+            <div class="rq-mechanism-engine-rule"></div>
+            <div class="rq-mechanism-engine-rows" data-engine-rows></div>
+            <div class="rq-mechanism-anchor rq-mechanism-anchor--right"></div>
+          </div>
+
+          <svg class="rq-mechanism-loop" viewBox="0 0 350 420" preserveAspectRatio="none" aria-hidden="true"
+               style="left:702px;top:170px;width:350px;height:420px">
+            <path d="M 12 30 C 12 8, 50 6, 175 6 C 300 6, 338 8, 338 30 L 338 390 C 338 412, 300 414, 175 414 C 50 414, 12 412, 12 390 Z"
+                  fill="none" stroke="oklch(72% 0.08 282 / 0.28)" stroke-width="1" stroke-dasharray="2 4"/>
+          </svg>
+
+          <div class="rq-mechanism-zone-label" style="left:720px;top:188px" data-zone-out>
+            <span class="rq-mechanism-zone-tick"></span>
+            <span>Routed → selected experts</span>
+          </div>
+          <div class="rq-mechanism-zone-label" style="left:720px;top:402px" data-zone-in>
+            <span class="rq-mechanism-zone-tick"></span>
+            <span>Captured ← retained</span>
+          </div>
+
+          <div class="rq-mechanism-questions" data-questions></div>
+          <div class="rq-mechanism-experts" data-experts></div>
+          <div class="rq-mechanism-returns" data-returns></div>
+
+          <div class="rq-mechanism-kl" data-kl>
+            <div class="rq-mechanism-kl-header"><span>Knowledge Layer</span></div>
+            <div class="rq-mechanism-kl-rule"></div>
+            <div class="rq-mechanism-kl-rows" data-kl-rows></div>
+            <div class="rq-mechanism-anchor rq-mechanism-anchor--left"></div>
+            <div class="rq-mechanism-density" data-density>
+              <span data-density-1>validated</span>
+              <span class="rq-mechanism-density-dot"></span>
+              <span data-density-2>retained</span>
+              <span class="rq-mechanism-density-dot"></span>
+              <span data-density-3>reusable</span>
+            </div>
+          </div>
+
+          <div class="rq-mechanism-apps" data-apps></div>
+
+          <div class="rq-mechanism-rail" data-rail></div>
+        </div>
+      </div>
+
+      <div class="rq-mechanism-caption" data-caption>
+        <div class="rq-mechanism-caption-meta">
+          <span class="rq-mechanism-caption-step" data-caption-step>Step 01 / 06</span>
+          <span class="rq-mechanism-divider"></span>
+          <span class="rq-mechanism-caption-title" data-caption-title></span>
+        </div>
+        <p class="rq-mechanism-caption-desc" data-caption-desc></p>
+      </div>
+    </section>
   </div>
 </section>
 
@@ -1109,6 +1183,7 @@ footer {
 
       <div class="footer-col">
         <h4>Navigation</h4>
+        <a href="#how-it-works">How it works</a>
         <a href="#problem">Problem</a>
         <a href="#solution">Solution</a>
         <a href="#why">Why this matters</a>
@@ -1117,7 +1192,7 @@ footer {
 
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#mission-vision">Mission &amp; Vision</a>
+        <a href="mission-vision.html">Mission &amp; Vision</a>
         <a href="#contact">Contact</a>
         <a href="requivo-vs-llm.html">Requivo vs LLM models</a>
         <a href="impressum.html">Impressum</a>
@@ -1137,6 +1212,8 @@ footer {
     </div>
   </div>
 </footer>
+
+<script src="requivo-mechanism.js" defer></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
