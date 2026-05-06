@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Requivo vs General LLM Models — Requivo</title>
-<meta name="description" content="Requivo is not another generic AI assistant. See how it differs from ChatGPT, Claude, and similar general-purpose LLM tools." />
+<meta name="description" content="Requivo turns fragmented enterprise information and expert know-how into a governed operational knowledge layer that stays inside the organisation." />
 <link rel="icon" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -553,61 +553,51 @@ footer {
                 Requivo
               </th>
               <th scope="col" class="col-llm">
-                General LLM models
+                General-purpose LLMs
                 <span class="th-sub">e.g. ChatGPT, Claude</span>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="col-dim">Primary role</td>
-              <td class="col-requivo">Governed operational knowledge system</td>
-              <td class="col-llm">General-purpose AI assistant / language model</td>
+              <td class="col-dim">What it is</td>
+              <td class="col-requivo">An operational knowledge system</td>
+              <td class="col-llm">A general-purpose AI assistant</td>
             </tr>
             <tr>
-              <td class="col-dim">Core job</td>
-              <td class="col-requivo">Turns fragmented company data and expert input into a governed operational knowledge layer</td>
-              <td class="col-llm">Generates answers, summaries, drafts, and analysis from the context it is given</td>
+              <td class="col-dim">What it creates</td>
+              <td class="col-requivo">A governed operational knowledge layer that stays in the organisation</td>
+              <td class="col-llm">Responses, drafts, summaries, and analysis</td>
             </tr>
             <tr>
-              <td class="col-dim">Starting point</td>
-              <td class="col-requivo">Messy enterprise sources such as SharePoint, Jira, app dumps, wikis, docs, codebases, and department systems</td>
-              <td class="col-llm">Prompt + provided files / context</td>
+              <td class="col-dim">What it works with</td>
+              <td class="col-requivo">Large volumes of scattered enterprise information, documents, workflows, and expert know-how</td>
+              <td class="col-llm">Prompts and context supplied by the user</td>
             </tr>
             <tr>
-              <td class="col-dim">Knowledge handling</td>
-              <td class="col-requivo">Infers structure, hierarchy, currentness, correctness, conflicts, gaps, duplicates, and drift</td>
-              <td class="col-llm">Analyses and responds to the supplied context, but does not inherently maintain a governed enterprise knowledge layer</td>
+              <td class="col-dim">Role of experts</td>
+              <td class="col-requivo">Expert elicitation and validation are built into the core workflow</td>
+              <td class="col-llm">Expert input depends on the user’s own interaction with the model</td>
             </tr>
             <tr>
-              <td class="col-dim">Validation model</td>
-              <td class="col-requivo">Designed around expert verification, targeted follow-up, and governed workflows</td>
-              <td class="col-llm">Can suggest issues or draft questions, but does not natively provide governed enterprise validation workflows</td>
+              <td class="col-dim">How knowledge is handled</td>
+              <td class="col-requivo">Builds a maintained knowledge layer with structure, validation, and ownership</td>
+              <td class="col-llm">Uses available context to produce an immediate answer or output</td>
             </tr>
             <tr>
-              <td class="col-dim">Output type</td>
-              <td class="col-requivo">Reusable governed knowledge layer plus downstream modules such as Knowledge Writer, Knowledge Manager, Knowledge Verifier, and MCP / external AI access</td>
-              <td class="col-llm">Answers, chats, drafts, summaries, rewrites, and ad hoc analysis</td>
+              <td class="col-dim">How gaps are handled</td>
+              <td class="col-requivo">Continuously surfaces weak, missing, or conflicting knowledge areas and routes them into structured expert follow-up</td>
+              <td class="col-llm">Can identify gaps or conflicts when prompted, but only within the current interaction</td>
             </tr>
             <tr>
-              <td class="col-dim">Conflict / gap detection</td>
-              <td class="col-requivo">Intended as part of the proprietary core and knowledge-construction pipeline</td>
-              <td class="col-llm">Can identify possible gaps or conflicts in a prompt, but usually as a one-off analysis</td>
+              <td class="col-dim">Long-term value</td>
+              <td class="col-requivo">Builds a reusable organisational knowledge asset</td>
+              <td class="col-llm">Produces useful outputs, but not a maintained knowledge layer by itself</td>
             </tr>
             <tr>
-              <td class="col-dim">Duplicate / drift handling</td>
-              <td class="col-requivo">Designed as a hybrid system using semantic, lexical, structural, and version-aware signals</td>
-              <td class="col-llm">Can compare texts ad hoc, but does not maintain duplicate awareness or drift monitoring over time</td>
-            </tr>
-            <tr>
-              <td class="col-dim">Persistence</td>
-              <td class="col-requivo">Builds and maintains the CSK (Crowdsourced Structured Knowledgebase) as a reusable organisational asset</td>
-              <td class="col-llm">Session-oriented unless combined with external storage and workflows</td>
-            </tr>
-            <tr>
-              <td class="col-dim">Model strategy</td>
-              <td class="col-requivo">Model-agnostic / BYOK-oriented at application layer</td>
-              <td class="col-llm">Usually tied to the specific model provider and product ecosystem</td>
+              <td class="col-dim">Enterprise fit</td>
+              <td class="col-requivo">Model-flexible by design, allowing organisations to align model choice, infrastructure, and data-residency requirements</td>
+              <td class="col-llm">Usually tied to the model, policies, and infrastructure of a specific provider</td>
             </tr>
           </tbody>
         </table>
@@ -621,15 +611,15 @@ footer {
       <div class="insights-grid">
         <div class="insight-card reveal">
           <div class="insight-num">01</div>
-          <p>General LLMs work from the context they are given. Requivo is built to construct governed operational knowledge from fragmented enterprise data first.</p>
+          <p>General-purpose LLMs work from the context they are given. Requivo is built to transform fragmented enterprise information into a governed operational knowledge layer.</p>
         </div>
         <div class="insight-card reveal d1">
           <div class="insight-num">02</div>
-          <p>General LLMs depend on users asking the right question. Requivo is designed to surface conflicts, gaps, and unresolved knowledge systematically.</p>
+          <p>General-purpose LLMs can surface gaps when prompted. Requivo is designed to surface weak, missing, and conflicting knowledge systematically.</p>
         </div>
         <div class="insight-card reveal d2">
           <div class="insight-num">03</div>
-          <p>General LLMs generate responses. Requivo creates validated, maintained, and reusable operational knowledge across workflows.</p>
+          <p>General-purpose LLMs generate useful outputs. Requivo creates a maintained organisational knowledge asset that can be reused across teams, workflows, and AI systems.</p>
         </div>
       </div>
     </div>
@@ -638,7 +628,7 @@ footer {
   <section class="closing-section">
     <div class="wrap">
       <div class="closing-inner reveal">
-        <p class="closing-text">Requivo is not a wiki, a search layer, or a generic AI assistant. It is an operational knowledge system built to turn fragmented enterprise knowledge into governed, reusable operational knowledge.</p>
+        <p class="closing-text">Requivo turns fragmented enterprise information and expert know-how into a governed operational knowledge layer — a reusable organisational asset that can be validated, maintained, and used across teams, workflows, and AI systems.</p>
         <a class="back-link" href="index.html">Back to main page</a>
       </div>
     </div>
