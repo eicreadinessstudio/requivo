@@ -7,7 +7,7 @@
 <link rel="icon" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <!-- Requivo mechanism animation -->
 <link rel="stylesheet" href="requivo-mechanism.css" />
@@ -17,28 +17,58 @@
 </script>
 
 <style>
+/* =========================================================
+   DESIGN TOKENS
+   Golden-ratio typographic scale (φ ≈ 1.618, √φ ≈ 1.272)
+   Base = 16px. Stops: 10 · 13 · 16 · 20 · 26 · 33 · 42 · 54 · 68
+   ========================================================= */
 :root {
+  /* Color */
   --bg:          #ffffff;
-  --bg-off:      #f8f9fc;
+  --bg-off:      #f7f8fb;
   --bg-panel:    #f2f4f8;
-  --bg-deep:     #0f1c3a;
-  --line:        #dde3ed;
-  --line-soft:   #eaecf2;
-  --text:        #0d1424;
-  --text-mid:    #374259;
-  --text-soft:   #677390;
-  --text-dim:    #98a3b8;
-  --indigo:      #3730a3;
+  --bg-deep:     #0b1430;
+  --bg-deep-2:   #0e1839;
+  --line:        #e5e8ef;
+  --line-soft:   #eef0f5;
+  --line-strong: #d6dbe5;
+  --text:        #0a1124;
+  --text-mid:    #2d3552;
+  --text-soft:   #5a6584;
+  --text-dim:    #8a93ac;
+  --text-on-dark:        #e8ecf7;
+  --text-on-dark-soft:   #9aa6c4;
+  --text-on-dark-dim:    #6a7595;
+  --indigo:      #3730a3;     /* system / structural — buttons, links, focus */
   --indigo-mid:  #4f46e5;
   --indigo-soft: #eef2ff;
   --indigo-pale: #f5f6ff;
+  --indigo-on-dark: #a5b4fc;
+  --brand:       #4f46e5;     /* brand / identity — wordmark, labels, interaction lines */
   --sky:         #0ea5e9;
-  --sky-soft:    #e0f2fe;
-  --font-serif:  'Instrument Serif', Georgia, serif;
-  --font-sans:   'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono:   'IBM Plex Mono', monospace;
+
+  /* Type families */
+  --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Type scale (golden-ratio derived) */
+  --fs-micro:    11px;     /* mono uppercase labels (legacy) */
+  --fs-xs:       12px;
+  --fs-sm:       13.5px;   /* nav, small UI text */
+  --fs-base:     15.5px;   /* body */
+  --fs-lead:     17.5px;   /* hero sub, section sub */
+  --fs-label:    20px;     /* section sub-titles (Inter sentence case) */
+  --fs-card:     20px;     /* card titles */
+  --fs-h3:       26px;
+  --fs-h2:       clamp(28px, 3.2vw, 42px);   /* section title */
+  --fs-h1:       clamp(40px, 5.6vw, 64px);   /* hero title */
+
+  /* Spacing / radius / motion */
   --max:         1180px;
-  --ease:        cubic-bezier(.16,1,.3,1);
+  --radius:      6px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --ease:        cubic-bezier(.2,.7,.2,1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,13 +76,15 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
+  font-size: var(--fs-base);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
+  line-height: 1.6;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-feature-settings: "ss01" 1, "ss03" 1, "cv11" 1, "kern" 1, "calt" 1;
   overflow-x: hidden;
 }
 
@@ -60,17 +92,71 @@ a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
-/* NAV */
+/* =========================================================
+   ANNOUNCEMENT BAR
+   ========================================================= */
+.announce {
+  background: var(--bg-deep);
+  color: var(--text-on-dark);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.announce-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 38px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: -.005em;
+  color: #e8ecf7;
+}
+.announce-inner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.announce-tag {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: -.005em;
+  text-transform: none;
+  color: rgba(232,236,247,.62);
+  padding-right: 12px;
+  border-right: 1px solid rgba(255,255,255,.14);
+  margin-right: 4px;
+}
+.announce-arrow {
+  display: inline-flex;
+  margin-left: 4px;
+  opacity: .8;
+  transition: transform .2s var(--ease), opacity .2s;
+}
+.announce a:hover .announce-arrow {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
 nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line-soft);
-  transition: box-shadow .25s;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .25s, box-shadow .25s, background .25s;
 }
-nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09); }
+nav.raised {
+  background: rgba(255,255,255,.94);
+  border-bottom-color: var(--line-soft);
+  box-shadow: 0 1px 0 var(--line-soft);
+}
 
 .nav-inner {
   display: flex;
@@ -86,41 +172,44 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
   align-items: center;
   gap: 10px;
   font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 400;
+  font-size: 16.5px;
+  font-weight: 500;
   color: var(--text);
-  letter-spacing: -.02em;
+  letter-spacing: -.018em;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 30px;
 }
 
 .nav-links a {
-  font-size: 13.5px;
-  font-weight: 400;
-  color: var(--text-soft);
-  letter-spacing: .01em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 450;
+  color: var(--text-mid);
+  letter-spacing: -.005em;
   transition: color .18s;
 }
 
 .nav-links a:hover { color: var(--text); }
 
+/* outlined nav CTA — matches the secondary hero button */
 .nav-cta {
+  border: 1px solid var(--indigo) !important;
+  color: var(--indigo) !important;
+  padding: 7px 16px;
+  border-radius: var(--radius);
+  font-size: var(--fs-sm) !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  letter-spacing: -.005em;
+  transition: background .18s, color .18s !important;
+}
+.nav-cta:hover {
   background: var(--indigo) !important;
   color: #fff !important;
-  padding: 9px 20px;
-  border-radius: 6px;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  transition: background .18s, transform .18s !important;
-}
-
-.nav-cta:hover {
-  background: #312e81 !important;
-  transform: translateY(-1px) !important;
 }
 
 /* FOOTER LOGO */
@@ -129,67 +218,24 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
   align-items: center;
   gap: 10px;
   font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 400;
+  font-size: 16.5px;
+  font-weight: 500;
   color: #fff;
-  letter-spacing: -.02em;
+  letter-spacing: -.018em;
 }
 
-/* HERO */
+/* =========================================================
+   HERO  (no canvas grid — clean white)
+   ========================================================= */
 .hero {
   padding: 96px 0 92px;
   position: relative;
   overflow: hidden;
-  min-height: 96vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   isolation: isolate;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    180deg,
-    transparent,
-    transparent 31px,
-    rgba(55,48,163,.04) 31px,
-    rgba(55,48,163,.04) 32px
-  );
-  mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0,0,0,.42) 14%,
-    rgba(0,0,0,.42) 86%,
-    transparent 100%
-  );
-}
-
-#topo-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hero-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg,
-      rgba(250,251,255,.97) 0%,
-      rgba(250,251,255,.90) 25%,
-      rgba(250,251,255,.54) 50%,
-      rgba(250,251,255,.18) 72%,
-      transparent 100%
-    );
+  background: var(--bg);
 }
 
 .hero-inner {
@@ -202,47 +248,39 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
 }
 
 .hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
   font-weight: 500;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--indigo-mid);
-  background: var(--indigo-soft);
-  padding: 5px 12px 5px 10px;
-  border-radius: 4px;
-  margin-bottom: 28px;
-}
-
-.hero-tag::before {
-  content: none;
+  letter-spacing: -.012em;
+  text-transform: none;
+  color: var(--brand);
+  margin-bottom: 22px;
 }
 
 .hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(42px, 6vw, 82px);
-  font-weight: 400;
-  line-height: .98;
-  letter-spacing: -.03em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: 1.03;
+  letter-spacing: -.032em;
   color: var(--text);
-  margin-bottom: 24px;
-  max-width: 760px;
+  margin-bottom: 26px;
+  max-width: 720px;
 }
 
-.hero h1 .accent {
-  color: var(--indigo-mid);
-}
+.hero h1 .line { display: block; }
+.hero h1 .line + .line { margin-top: .04em; }
+.hero h1 .accent { color: var(--brand); }
 
 .hero-sub {
-  font-size: 18px;
-  line-height: 1.8;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
   color: var(--text-soft);
   max-width: 560px;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 36px;
+  letter-spacing: -.005em;
 }
 
 .hero-actions {
@@ -252,44 +290,43 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
   flex-wrap: wrap;
 }
 
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 26px;
-  border-radius: 6px;
+  padding: 11px 22px;
+  border-radius: var(--radius);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--fs-sm);
   font-weight: 500;
-  letter-spacing: .01em;
+  letter-spacing: -.005em;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: transform .2s var(--ease), box-shadow .2s, background .18s, border-color .18s;
+  transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease), box-shadow .2s var(--ease);
+  white-space: nowrap;
 }
-
-.btn:hover { transform: translateY(-2px); }
 
 .btn-primary {
   background: var(--indigo);
   color: #fff;
   border-color: var(--indigo);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.13), 0 2px 16px rgba(55,48,163,.20);
 }
-
 .btn-primary:hover {
-  background: #312e81;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.13), 0 6px 28px rgba(55,48,163,.30);
+  background: #2d2785;
+  border-color: #2d2785;
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--text-mid);
-  border-color: var(--line);
+  color: var(--indigo);
+  border-color: var(--indigo);
 }
-
 .btn-outline:hover {
-  border-color: var(--text-dim);
-  background: var(--bg-off);
+  background: var(--indigo);
+  color: #fff;
 }
 
 /* HERO IMAGE */
@@ -306,7 +343,7 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
 
 .hero-shot-frame {
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
   box-shadow:
@@ -339,8 +376,8 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
 .hero-shot-frame.hero-no-img::after {
   content: 'Interface fragment coming soon';
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: .1em;
+  font-size: var(--fs-micro);
+  letter-spacing: .12em;
   color: var(--text-dim);
   text-transform: uppercase;
   position: relative;
@@ -362,76 +399,98 @@ nav.raised { box-shadow: 0 1px 0 var(--line-soft), 0 4px 24px rgba(55,48,163,.09
   margin-top: 12px;
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--text-dim);
 }
 
-/* SECTIONS */
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 section { padding: 112px 0; }
 section + section { border-top: 1px solid var(--line-soft); }
 
 .section-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
   font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--indigo-mid);
+  letter-spacing: -.012em;
+  text-transform: none;
+  color: var(--brand);
   margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.section-label::before {
-  content: none;
+  display: block;
+  background: transparent;
+  padding: 0;
+  border: 0;
 }
 
 .section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(28px, 3.4vw, 46px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -.02em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -.024em;
   color: var(--text);
   margin-bottom: 18px;
   max-width: 820px;
 }
 
 .section-sub {
-  font-size: 17px;
-  line-height: 1.82;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
   color: var(--text-soft);
   max-width: 700px;
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: -.005em;
   margin-bottom: 52px;
 }
 
-/* HOW REQUIVO WORKS */
+/* =========================================================
+   HOW REQUIVO WORKS  (dark deep-tech section)
+   ========================================================= */
 #how-it-works {
-  background: var(--bg-off);
+  background: var(--bg-deep);
   padding: 112px 0;
+  border-top: 1px solid var(--bg-deep);
+  position: relative;
+}
+#how-it-works::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(79,70,229,.16) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 78%, rgba(14,165,233,.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+#how-it-works .wrap,
+#how-it-works .mechanism-shell {
+  position: relative;
+  z-index: 1;
 }
 
-.how-head {
-  margin-bottom: 48px;
-}
+#how-it-works .section-label { color: var(--indigo-on-dark); }
+#how-it-works .section-title { color: #fff; }
+#how-it-works .section-sub { color: var(--text-on-dark-soft); }
+
+.how-head { margin-bottom: 48px; }
 
 .mechanism-shell {
   width: min(100%, 1320px);
   margin: 0 auto;
-  border: 1px solid var(--line-soft);
-  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background: #fbfcff;
   box-shadow:
-    0 1px 2px rgba(15,28,58,.04),
-    0 12px 42px rgba(55,48,163,.08),
-    0 28px 80px rgba(15,28,58,.06);
+    0 1px 2px rgba(0,0,0,.20),
+    0 20px 60px rgba(0,0,0,.35),
+    0 40px 120px rgba(0,0,0,.25);
 }
 
-/* PROBLEM */
+/* =========================================================
+   PROBLEM
+   ========================================================= */
 .prob-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -439,50 +498,51 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 .prob-card {
-  border-top: 2px solid var(--line);
+  border-top: 1px solid var(--line);
   padding: 28px 0 0;
   position: relative;
 }
-
 .prob-card::before {
   content: '';
   position: absolute;
-  top: -2px;
+  top: -1px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--indigo-mid);
+  height: 1px;
+  background: var(--brand);
   transition: width .4s var(--ease);
 }
-
 .prob-card:hover::before { width: 100%; }
 
 .prob-num {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: .12em;
+  font-size: 10.5px;
+  letter-spacing: .14em;
   color: var(--text-dim);
   margin-bottom: 14px;
 }
 
 .prob-card h3 {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -.02em;
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  font-size: var(--fs-card);
+  font-weight: 500;
+  letter-spacing: -.018em;
+  line-height: 1.25;
   color: var(--text);
   margin-bottom: 12px;
 }
 
 .prob-card p {
-  font-size: 15px;
-  line-height: 1.82;
+  font-size: var(--fs-base);
+  line-height: 1.65;
   color: var(--text-soft);
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: -.003em;
 }
 
-/* SOLUTION */
+/* =========================================================
+   SOLUTION
+   ========================================================= */
 .solution-layout {
   display: grid;
   grid-template-columns: minmax(0,1.1fr) minmax(280px,.9fr);
@@ -491,13 +551,13 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 .sol-copy p {
-  font-size: 17px;
-  line-height: 1.88;
+  font-size: var(--fs-lead);
+  line-height: 1.68;
   color: var(--text-soft);
-  font-weight: 300;
+  font-weight: 400;
+  letter-spacing: -.005em;
   margin-bottom: 20px;
 }
-
 .sol-copy p:last-child { margin-bottom: 0; }
 
 .sol-panels { display: grid; gap: 1px; }
@@ -507,38 +567,40 @@ section + section { border-top: 1px solid var(--line-soft); }
   border-left: 2px solid var(--line);
   transition: border-color .25s var(--ease), background .25s var(--ease);
 }
-
 .sol-panel:hover {
-  border-left-color: var(--indigo-mid);
+  border-left-color: var(--indigo);
   background: var(--indigo-pale);
 }
 
 .sol-tag {
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: .14em;
+  letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 6px;
 }
 
 .sol-panel h3 {
-  font-family: var(--font-serif);
-  font-size: 17px;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
   color: var(--text);
   margin-bottom: 6px;
-  letter-spacing: -.01em;
+  letter-spacing: -.012em;
+  line-height: 1.3;
 }
 
 .sol-panel p {
   font-size: 13.5px;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--text-soft);
-  font-weight: 300;
+  font-weight: 400;
 }
 
-/* WHY */
+/* =========================================================
+   WHY
+   ========================================================= */
 #why { background: var(--bg-off); }
 
 .strata {
@@ -550,19 +612,18 @@ section + section { border-top: 1px solid var(--line-soft); }
 
 .strata-row {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 220px 1fr;
   align-items: stretch;
   transition: filter .18s;
 }
-
 .strata-row:hover { filter: brightness(.97); }
 
 .strata-label {
   padding: 24px 26px;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--fs-micro);
   font-weight: 500;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -571,11 +632,11 @@ section + section { border-top: 1px solid var(--line-soft); }
 
 .strata-body {
   padding: 24px 32px;
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: var(--fs-base);
+  line-height: 1.65;
   display: flex;
   align-items: center;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .strata-row:nth-child(1) { background: #d1d9f0; color: #1e2650; }
@@ -592,7 +653,9 @@ section + section { border-top: 1px solid var(--line-soft); }
   border-right-color: rgba(0,0,0,.08);
 }
 
-/* USE CASES */
+/* =========================================================
+   USE CASES
+   ========================================================= */
 .use-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -600,42 +663,42 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 .use-card {
-  border-top: 2px solid var(--line);
+  border-top: 1px solid var(--line);
   padding: 26px 0 0;
   position: relative;
 }
-
 .use-card::before {
   content: '';
   position: absolute;
-  top: -2px;
+  top: -1px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--sky);
+  height: 1px;
+  background: var(--brand);
   transition: width .4s var(--ease);
 }
-
 .use-card:hover::before { width: 100%; }
 
 .use-card h3 {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -.02em;
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  font-size: var(--fs-card);
+  font-weight: 500;
+  letter-spacing: -.018em;
+  line-height: 1.25;
   color: var(--text);
   margin-bottom: 12px;
 }
 
 .use-card p {
-  font-size: 15px;
-  line-height: 1.82;
+  font-size: var(--fs-base);
+  line-height: 1.65;
   color: var(--text-soft);
-  font-weight: 300;
+  font-weight: 400;
 }
 
-/* CONTACT */
+/* =========================================================
+   CONTACT
+   ========================================================= */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -647,7 +710,6 @@ section + section { border-top: 1px solid var(--line-soft); }
   padding: 24px 0 0;
   position: relative;
 }
-
 .contact-card::before {
   content: '';
   position: absolute;
@@ -655,42 +717,43 @@ section + section { border-top: 1px solid var(--line-soft); }
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--indigo-mid);
+  background: var(--brand);
   transition: width .4s var(--ease);
 }
-
 .contact-card:hover::before { width: 100%; }
 
 .contact-card h3 {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -.02em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-card);
+  font-weight: 500;
+  letter-spacing: -.018em;
   color: var(--text);
   margin-bottom: 4px;
 }
 
 .contact-role {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: .12em;
+  font-size: 10.5px;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--text-dim);
   margin-bottom: 14px;
 }
 
 .contact-email {
-  font-size: 14px;
-  color: var(--indigo-mid);
+  font-size: var(--fs-sm);
+  color: var(--indigo);
+  font-weight: 450;
   transition: color .18s;
 }
-
 .contact-email:hover {
-  color: var(--indigo);
+  color: var(--indigo-mid);
   text-decoration: underline;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 footer {
   background: var(--bg-deep);
   padding: 80px 0 60px;
@@ -711,79 +774,78 @@ footer {
 }
 
 .footer-brand p {
+  font-family: var(--font-sans);
   font-size: 14px;
-  line-height: 1.8;
-  font-weight: 300;
-  color: #7b8fad;
-  max-width: 280px;
+  line-height: 1.65;
+  font-weight: 400;
+  color: var(--text-on-dark-soft);
+  max-width: 300px;
+  letter-spacing: -.003em;
 }
 
 .footer-col h4 {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: #4a5e7a;
-  margin-bottom: 18px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: -.005em;
+  text-transform: none;
+  font-weight: 500;
+  color: var(--indigo-on-dark);
+  margin-bottom: 16px;
 }
 
 .footer-col a,
 .footer-col p {
   display: block;
+  font-family: var(--font-sans);
   font-size: 14px;
-  line-height: 2.1;
-  font-weight: 300;
-  color: #8fa3be;
+  line-height: 2;
+  font-weight: 400;
+  color: var(--text-on-dark-soft);
+  letter-spacing: -.003em;
   transition: color .18s;
 }
-
 .footer-col a:hover { color: #fff; }
 
 .footer-bottom {
   padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,.08);
+  font-family: var(--font-sans);
   font-size: 12px;
-  color: #506078;
+  color: var(--text-on-dark-dim);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* REVEAL */
+/* =========================================================
+   REVEAL
+   ========================================================= */
 .reveal {
   opacity: 1;
   transform: none;
   transition: opacity .65s var(--ease), transform .65s var(--ease);
 }
-
 .js .reveal {
   opacity: 0;
   transform: translateY(22px);
 }
-
 .js .reveal.in {
   opacity: 1;
   transform: none;
 }
-
 .d1 { transition-delay: .08s; }
 .d2 { transition-delay: .16s; }
 
-/* RESPONSIVE */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 1180px) {
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
-  .hero-aside {
-    justify-content: flex-start;
-  }
-
-  .hero-shot {
-    max-width: 680px;
-  }
-
+  .hero-aside { justify-content: flex-start; }
+  .hero-shot { max-width: 680px; }
   .solution-layout { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -792,6 +854,9 @@ footer {
   .wrap { width: calc(100% - 32px); }
   .nav-links { display: none; }
   section { padding: 80px 0; }
+
+  .announce-inner { font-size: 13px; height: 36px; }
+  .announce-tag { padding-right: 8px; margin-right: 4px; }
 
   .prob-grid,
   .use-grid,
@@ -807,37 +872,39 @@ footer {
 
   .hero-shot-frame {
     padding: 12px;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
   }
+  .hero-shot-frame.hero-no-img { min-height: 360px; }
+  .hero-shot-frame img { max-height: none; }
 
-  .hero-shot-frame.hero-no-img {
-    min-height: 360px;
-  }
+  .hero { min-height: auto; }
 
-  .hero-shot-frame img {
-    max-height: none;
-  }
-
-  .hero {
-    min-height: auto;
-  }
-
-  #how-it-works {
-    padding: 80px 0;
-  }
-
-  .mechanism-shell {
-    border-radius: 14px;
-  }
+  #how-it-works { padding: 80px 0; }
+  .mechanism-shell { border-radius: var(--radius-lg); }
 }
 </style>
 </head>
 <body>
 
+<!-- Announcement bar -->
+<div class="announce">
+  <div class="wrap announce-inner">
+    <a href="#contact" aria-label="Pre-seed round">
+      <span class="announce-tag">Pre-seed round</span>
+      <span>Selected pilot and validation collaborations open</span>
+      <span class="announce-arrow" aria-hidden="true">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</div>
+
 <nav id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="logo" aria-label="Requivo home">
-      <svg viewBox="0 0 44 36" width="36" height="29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg viewBox="0 0 44 36" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#2c2a7a" stroke-width="3" stroke-linecap="round" fill="none"/>
         <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#2c2a7a" stroke-width="3" stroke-linecap="round" fill="none"/>
         <rect x="16" y="12" width="12" height="12" rx="1" fill="#4f46e5" transform="rotate(45 22 18)"/>
@@ -857,14 +924,14 @@ footer {
 </nav>
 
 <section class="hero" id="top">
-  <canvas id="topo-canvas"></canvas>
-  <div class="hero-vignette"></div>
-
   <div class="wrap">
     <div class="hero-inner">
       <div>
         <div class="hero-tag">Operational knowledge system</div>
-        <h1>Critical knowledge exists. <span class="accent">Requivo makes it usable.</span></h1>
+        <h1>
+          <span class="line">Critical knowledge exists</span>
+          <span class="line"><span class="accent">Requivo</span> makes it usable</span>
+        </h1>
         <p class="hero-sub">Requivo turns scattered documents, systems, workflows, and expert know-how into a governed operational knowledge layer that teams and AI systems can use.</p>
         <div class="hero-actions">
           <a href="#how-it-works" class="btn btn-primary">Explore how it works</a>
@@ -891,7 +958,7 @@ footer {
   <div class="wrap">
     <div class="how-head">
       <div class="section-label">How Requivo works</div>
-      <div class="section-title reveal">From scattered evidence to governed operational knowledge.</div>
+      <div class="section-title reveal">From scattered evidence to governed operational knowledge</div>
       <div class="section-sub reveal d1">Requivo connects fragmented sources, identifies weak or conflicting knowledge, routes unresolved areas to experts, and builds a maintained knowledge layer for reuse across the organisation.</div>
     </div>
   </div>
@@ -1015,7 +1082,7 @@ footer {
 <section id="problem">
   <div class="wrap">
     <div class="section-label">Problem</div>
-    <div class="section-title reveal">Operational knowledge is everywhere — but rarely ready to use.</div>
+    <div class="section-title reveal">Operational knowledge is everywhere — but rarely ready to use</div>
     <div class="section-sub reveal d1">Most organisations do not fail because information does not exist. They fail because the knowledge they depend on is fragmented, difficult to validate, and often concentrated in a few individuals.</div>
 
     <div class="prob-grid">
@@ -1043,7 +1110,7 @@ footer {
 <section id="solution">
   <div class="wrap">
     <div class="section-label">Solution</div>
-    <div class="section-title reveal">Requivo creates a governed operational knowledge layer from scattered enterprise knowledge.</div>
+    <div class="section-title reveal">Requivo creates a governed operational knowledge layer from scattered enterprise knowledge</div>
 
     <div class="solution-layout">
       <div class="sol-copy reveal">
@@ -1078,7 +1145,7 @@ footer {
 <section id="why">
   <div class="wrap">
     <div class="section-label">Why Requivo</div>
-    <div class="section-title reveal">Better retrieval is not enough when the underlying knowledge is fragmented.</div>
+    <div class="section-title reveal">Better retrieval is not enough when the underlying knowledge is fragmented</div>
     <div class="section-sub reveal d1">Requivo focuses on the layer before answers: the structure, validation, ownership, and maintenance of operational knowledge.</div>
 
     <div class="strata reveal d1">
@@ -1118,7 +1185,7 @@ footer {
 <section id="use-cases">
   <div class="wrap">
     <div class="section-label">Use cases</div>
-    <div class="section-title reveal">Built for organisations where operational knowledge must be preserved, validated, and reused.</div>
+    <div class="section-title reveal">Built for organisations where operational knowledge must be preserved, validated, and reused</div>
 
     <div class="use-grid">
       <div class="use-card reveal">
@@ -1142,7 +1209,7 @@ footer {
 <section id="contact">
   <div class="wrap">
     <div class="section-label">Contact</div>
-    <div class="section-title reveal">Requivo is preparing selected pilot and validation collaborations. If your organisation depends on complex operational knowledge, we would be glad to discuss a potential use case.</div>
+    <div class="section-title reveal">Requivo is preparing selected pilot and validation collaborations. If your organisation depends on complex operational knowledge, we would be glad to discuss a potential use case</div>
 
     <div class="contact-grid">
       <div class="contact-card reveal">
@@ -1171,7 +1238,7 @@ footer {
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#top" class="footer-logo" aria-label="Requivo home">
-          <svg viewBox="0 0 44 36" width="36" height="29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg viewBox="0 0 44 36" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
             <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
             <rect x="16" y="12" width="12" height="12" rx="1" fill="#818cf8" transform="rotate(45 22 18)"/>
@@ -1179,7 +1246,7 @@ footer {
           Requivo
         </a>
 
-        <p>Turning fragmented enterprise knowledge into a governed operational knowledge layer.</p>
+        <p>Turning fragmented enterprise evidence into a governed operational knowledge layer.</p>
       </div>
 
       <div class="footer-col">
@@ -1249,802 +1316,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     reveals.forEach(el => observer.observe(el));
   }
-
-  (function () {
-    const canvas = document.getElementById('topo-canvas');
-    const ctx = canvas.getContext('2d', { alpha: true });
-    const hero = document.getElementById('top');
-    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    let profile = null;
-    let CFG = null;
-
-    let W = 0, H = 0, cellW = 0, cellH = 0, dpr = 1;
-    let pts = [];
-    let ghostPts = [];
-    let anchors = [];
-    let memoryTrails = [];
-    let time = 0;
-    let running = false;
-    let rafId = null;
-    let lastFrameTime = 0;
-
-    let mouse = {
-      x: -9999,
-      y: -9999,
-      active: false,
-      lastX: -9999,
-      lastY: -9999
-    };
-
-    function getProfile() {
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const isTouch = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
-      const lowPowerMode = isMobile || isTouch;
-
-      return {
-        isMobile,
-        isTouch,
-        lowPowerMode,
-        targetFPS: lowPowerMode ? 30 : 60
-      };
-    }
-
-    function buildConfig(currentProfile) {
-      const low = currentProfile.lowPowerMode;
-
-      return {
-        COLS: low ? 14 : 24,
-        ROWS: low ? 9 : 15,
-        GHOST_COLS: low ? 8 : 15,
-        GHOST_ROWS: low ? 5 : 9,
-
-        NOISE_SCALE: low ? 0.0092 : 0.0102,
-        NOISE_SPEED: low ? 0.00022 : 0.00034,
-
-        AMP_LEFT: low ? 42 : 74,
-        AMP_MID: low ? 9 : 14,
-        AMP_RIGHT: low ? 1.5 : 2.1,
-
-        SPRING_LEFT: 0.036,
-        SPRING_MID: 0.068,
-        SPRING_RIGHT: 0.128,
-
-        FRICTION_LEFT: 0.80,
-        FRICTION_MID: 0.72,
-        FRICTION_RIGHT: 0.56,
-
-        MOUSE_RADIUS: low ? 80 : 140,
-        MOUSE_PULL: low ? 0.06 : 0.10,
-        REVEAL_RADIUS: low ? 70 : 130,
-
-        DOT_R: low ? 0.92 : 1.12,
-        DOT_R_ACTIVE: low ? 1.55 : 2.15,
-
-        INDIGO: [55,48,163],
-        SKY: [14,165,233],
-        SLATE: [132,147,169],
-        VALID: [79,70,229]
-      };
-    }
-
-    function clamp(v, min, max) {
-      return Math.max(min, Math.min(max, v));
-    }
-
-    function lerp(a, b, t) {
-      return a + (b - a) * t;
-    }
-
-    function lerpColor(a, b, t) {
-      return [
-        Math.round(lerp(a[0], b[0], t)),
-        Math.round(lerp(a[1], b[1], t)),
-        Math.round(lerp(a[2], b[2], t))
-      ];
-    }
-
-    function smoothstep(a, b, x) {
-      const t = clamp((x - a) / (b - a), 0, 1);
-      return t * t * (3 - 2 * t);
-    }
-
-    function distance(x1, y1, x2, y2) {
-      const dx = x1 - x2;
-      const dy = y1 - y2;
-      return Math.sqrt(dx * dx + dy * dy);
-    }
-
-    function noise(x, y, t) {
-      const n = Math.sin(x * 127.1 + y * 311.7 + t * 74.3) * 43758.5453;
-      return (n - Math.floor(n)) * 2 - 1;
-    }
-
-    function smoothNoise(x, y, t) {
-      const ix = Math.floor(x), iy = Math.floor(y);
-      const fx = x - ix, fy = y - iy;
-      const ux = fx * fx * (3 - 2 * fx);
-      const uy = fy * fy * (3 - 2 * fy);
-
-      return (
-        noise(ix, iy, t) * (1 - ux) * (1 - uy) +
-        noise(ix + 1, iy, t) * ux * (1 - uy) +
-        noise(ix, iy + 1, t) * (1 - ux) * uy +
-        noise(ix + 1, iy + 1, t) * ux * uy
-      );
-    }
-
-    function resize() {
-      profile = getProfile();
-      CFG = buildConfig(profile);
-
-      dpr = Math.min(window.devicePixelRatio || 1, profile.lowPowerMode ? 1.5 : 2);
-
-      W = hero.offsetWidth;
-      H = hero.offsetHeight;
-
-      canvas.width = W * dpr;
-      canvas.height = H * dpr;
-      canvas.style.width = W + 'px';
-      canvas.style.height = H + 'px';
-
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.scale(dpr, dpr);
-
-      cellW = W / (CFG.COLS - 1);
-      cellH = H / (CFG.ROWS - 1);
-
-      buildGrid();
-      buildGhostGrid();
-      memoryTrails = [];
-    }
-
-    function buildGrid() {
-      pts = [];
-      anchors = [];
-
-      for (let row = 0; row < CFG.ROWS; row++) {
-        for (let col = 0; col < CFG.COLS; col++) {
-          const ox = col * cellW;
-          const oy = row * cellH;
-          const xn = ox / W;
-
-          const toMid = smoothstep(0.18, 0.52, xn);
-          const toRight = smoothstep(0.56, 0.90, xn);
-
-          const amp = lerp(lerp(CFG.AMP_LEFT, CFG.AMP_MID, toMid), CFG.AMP_RIGHT, toRight);
-          const spring = lerp(lerp(CFG.SPRING_LEFT, CFG.SPRING_MID, toMid), CFG.SPRING_RIGHT, toRight);
-          const friction = lerp(lerp(CFG.FRICTION_LEFT, CFG.FRICTION_MID, toMid), CFG.FRICTION_RIGHT, toRight);
-
-          const zone = xn < 0.34 ? 'fragmented' : xn < 0.66 ? 'aligned' : 'governed';
-
-          const validationHub =
-            !profile.lowPowerMode &&
-            zone === 'governed' &&
-            (col === CFG.COLS - 5 || col === CFG.COLS - 8 || col === CFG.COLS - 11) &&
-            (row === 3 || row === 7 || row === 11);
-
-          const anchor =
-            zone === 'governed' &&
-            (col === CFG.COLS - 7 || col === CFG.COLS - 10) &&
-            (row === Math.max(2, Math.floor(CFG.ROWS * 0.3)) || row === Math.max(4, Math.floor(CFG.ROWS * 0.7)));
-
-          const backbone =
-            zone === 'governed' &&
-            !profile.lowPowerMode &&
-            (col === CFG.COLS - 8 || col === CFG.COLS - 6);
-
-          const point = {
-            ox, oy,
-            x: ox, y: oy,
-            vx: 0, vy: 0,
-            col, row,
-            zone,
-            amp,
-            spring,
-            friction,
-            phase: Math.random() * Math.PI * 2,
-            edge: col === 0 || col === CFG.COLS - 1 || row === 0 || row === CFG.ROWS - 1,
-            validationHub,
-            anchor,
-            backbone
-          };
-
-          if (anchor) anchors.push(point);
-          pts.push(point);
-        }
-      }
-    }
-
-    function buildGhostGrid() {
-      ghostPts = [];
-
-      if (profile.lowPowerMode) return;
-
-      const gw = W / (CFG.GHOST_COLS - 1);
-      const gh = H / (CFG.GHOST_ROWS - 1);
-
-      for (let row = 0; row < CFG.GHOST_ROWS; row++) {
-        for (let col = 0; col < CFG.GHOST_COLS; col++) {
-          const ox = col * gw + (col % 2 ? gw * 0.10 : 0);
-          const oy = row * gh + ((row % 2) ? gh * 0.06 : 0);
-          const xn = clamp(ox / W, 0, 1);
-
-          ghostPts.push({
-            ox, oy,
-            x: ox, y: oy,
-            zone: xn < 0.34 ? 'fragmented' : xn < 0.66 ? 'aligned' : 'governed',
-            phase: Math.random() * Math.PI * 2,
-            col, row
-          });
-        }
-      }
-    }
-
-    function edgeClass(a, b) {
-      if (a.validationHub || b.validationHub) return 'validated';
-      if (a.anchor || b.anchor) return 'anchored';
-      if (a.backbone || b.backbone) return 'backbone';
-      if (a.zone === 'governed' && b.zone === 'governed') return 'supporting';
-      if (a.zone === 'aligned' || b.zone === 'aligned') return 'reconcile';
-      return 'tentative';
-    }
-
-    function updatePrimary() {
-      const t = time * CFG.NOISE_SPEED;
-
-      pts.forEach(p => {
-        const nx = p.ox * CFG.NOISE_SCALE;
-        const ny = p.oy * CFG.NOISE_SCALE;
-
-        let dx = smoothNoise(nx, ny, t) * p.amp;
-        let dy = smoothNoise(nx + 31, ny + 17, t) * p.amp;
-
-        dx += smoothNoise(nx * 2.05, ny * 2.05, t * 1.5) * p.amp * (profile.lowPowerMode ? 0.10 : 0.18);
-        dy += smoothNoise(nx * 2.05 + 3, ny * 2.05 + 2, t * 1.35) * p.amp * (profile.lowPowerMode ? 0.08 : 0.14);
-
-        if (p.zone === 'aligned') {
-          dx *= 0.58;
-          dy *= 0.50;
-        }
-
-        if (p.zone === 'governed') {
-          dx *= 0.10;
-          dy *= 0.09;
-          dx += Math.sin(t * 130 + p.row * 0.18) * (profile.lowPowerMode ? 0.12 : 0.22);
-          dy += Math.cos(t * 118 + p.col * 0.08) * (profile.lowPowerMode ? 0.03 : 0.06);
-        }
-
-        if (p.zone === 'fragmented') {
-          dx += Math.sin(t * 230 + p.phase) * (profile.lowPowerMode ? 2.0 : 3.2);
-          dy += Math.cos(t * 205 + p.phase) * (profile.lowPowerMode ? 1.2 : 2.0);
-        }
-
-        if (p.anchor) {
-          dx *= 0.18;
-          dy *= 0.16;
-        }
-        if (p.validationHub) {
-          dx *= 0.14;
-          dy *= 0.12;
-        }
-
-        if (p.zone === 'governed') {
-          const laneA = Math.round((W * 0.73) / cellW) * cellW;
-          const laneB = Math.round((W * 0.82) / cellW) * cellW;
-          const laneWeightA = Math.exp(-Math.abs(p.ox - laneA) / 118);
-          const laneWeightB = Math.exp(-Math.abs(p.ox - laneB) / 118);
-          const laneMix = Math.max(0.0001, laneWeightA + laneWeightB);
-          const snapTargetX = (laneA * laneWeightA + laneB * laneWeightB) / laneMix;
-
-          dx += (snapTargetX - p.ox) * 0.016 * laneMix;
-
-          const rowSnap = Math.round(p.oy / cellH) * cellH;
-          dy += (rowSnap - p.oy) * 0.014;
-        }
-
-        if (p.zone === 'governed' && !p.anchor && !p.validationHub && anchors.length) {
-          let basinX = 0;
-          let basinY = 0;
-          let basinW = 0;
-
-          for (let i = 0; i < anchors.length; i++) {
-            const a = anchors[i];
-            const d = distance(p.ox, p.oy, a.ox, a.oy);
-            if (d > 170) continue;
-            const w = 1 - d / 170;
-            basinX += a.ox * w;
-            basinY += a.oy * w;
-            basinW += w;
-          }
-
-          if (basinW > 0) {
-            dx += ((basinX / basinW) - p.ox) * 0.012;
-            dy += ((basinY / basinW) - p.oy) * 0.008;
-          }
-        }
-
-        let tx = p.ox + dx;
-        let ty = p.oy + dy;
-
-        const md = distance(p.x, p.y, mouse.x, mouse.y);
-        if (mouse.active && md < CFG.MOUSE_RADIUS && md > 0) {
-          const falloff = 1 - md / CFG.MOUSE_RADIUS;
-          const pull =
-            p.zone === 'fragmented' ? CFG.MOUSE_PULL :
-            p.zone === 'aligned' ? CFG.MOUSE_PULL * 0.62 :
-            CFG.MOUSE_PULL * 0.34;
-
-          tx += (mouse.x - p.x) * falloff * pull;
-          ty += (mouse.y - p.y) * falloff * pull;
-        }
-
-        p.vx += (tx - p.x) * p.spring;
-        p.vy += (ty - p.y) * p.spring;
-        p.vx *= p.friction;
-        p.vy *= p.friction;
-        p.x += p.vx;
-        p.y += p.vy;
-      });
-    }
-
-    function updateGhost() {
-      if (profile.lowPowerMode || ghostPts.length === 0) return;
-
-      const tt = time * 0.00022;
-      ghostPts.forEach(p => {
-        const amp = p.zone === 'fragmented' ? 10 : p.zone === 'aligned' ? 5 : 1.8;
-        p.x = p.ox + Math.sin(tt * 180 + p.phase + p.row * 0.08) * amp;
-        p.y = p.oy + Math.cos(tt * 145 + p.phase + p.col * 0.05) * amp * 0.38;
-      });
-    }
-
-    function updateMemoryTrails() {
-      if (profile.lowPowerMode) {
-        memoryTrails.length = 0;
-        return;
-      }
-
-      memoryTrails = memoryTrails
-        .map(t => ({ ...t, life: t.life - 1 }))
-        .filter(t => t.life > 0);
-    }
-
-    function update() {
-      time += 1;
-      updatePrimary();
-      updateGhost();
-      updateMemoryTrails();
-    }
-
-    function revealStrength(x, y) {
-      if (!mouse.active) return 0;
-      const d = distance(x, y, mouse.x, mouse.y);
-      if (d > CFG.REVEAL_RADIUS) return 0;
-      return 1 - d / CFG.REVEAL_RADIUS;
-    }
-
-    function zoneThreshold(zone) {
-      if (zone === 'fragmented') return 1.00;
-      if (zone === 'aligned') return 1.13;
-      return 1.18;
-    }
-
-    function drawAtmosphere() {
-      const leftGlow = ctx.createRadialGradient(W * 0.14, H * 0.48, 0, W * 0.14, H * 0.48, W * 0.32);
-      leftGlow.addColorStop(0, 'rgba(79,70,229,0.032)');
-      leftGlow.addColorStop(1, 'rgba(79,70,229,0)');
-      ctx.fillStyle = leftGlow;
-      ctx.fillRect(0, 0, W, H);
-
-      const rightGlow = ctx.createRadialGradient(W * 0.82, H * 0.44, 0, W * 0.82, H * 0.44, W * 0.22);
-      rightGlow.addColorStop(0, 'rgba(14,165,233,0.022)');
-      rightGlow.addColorStop(1, 'rgba(14,165,233,0)');
-      ctx.fillStyle = rightGlow;
-      ctx.fillRect(0, 0, W, H);
-    }
-
-    function drawGovernanceField() {
-      const x = W * 0.72;
-      const grad = ctx.createLinearGradient(x - 26, 0, x + 26, 0);
-      grad.addColorStop(0, 'rgba(255,255,255,0)');
-      grad.addColorStop(0.5, 'rgba(79,70,229,0.028)');
-      grad.addColorStop(1, 'rgba(255,255,255,0)');
-      ctx.fillStyle = grad;
-      ctx.fillRect(x - 26, 0, 52, H);
-    }
-
-    function drawPrimaryEdges() {
-      for (let i = 0; i < pts.length; i++) {
-        const a = pts[i];
-        const neighbours = [];
-
-        if (a.col < CFG.COLS - 1) neighbours.push(pts[i + 1]);
-        if (a.row < CFG.ROWS - 1) neighbours.push(pts[i + CFG.COLS]);
-        if (!profile.lowPowerMode && a.zone !== 'fragmented' && a.col < CFG.COLS - 1 && a.row < CFG.ROWS - 1) {
-          neighbours.push(pts[i + CFG.COLS + 1]);
-        }
-
-        for (let n = 0; n < neighbours.length; n++) {
-          const b = neighbours[n];
-          const dx = b.x - a.x;
-          const dy = b.y - a.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const expected = Math.max(cellW, cellH) * 1.16;
-
-          const zone =
-            a.zone === b.zone ? a.zone :
-            (a.zone === 'governed' || b.zone === 'governed') ? 'aligned' : 'fragmented';
-
-          if (dist > expected * zoneThreshold(zone)) continue;
-          if (zone === 'fragmented' && dist > expected * 0.84) continue;
-
-          const mx = (a.x + b.x) * 0.5;
-          const my = (a.y + b.y) * 0.5;
-          const xNorm = clamp(mx / W, 0, 1);
-          const wGov = smoothstep(0.46, 0.92, xNorm);
-
-          let rgb = lerpColor(CFG.INDIGO, CFG.SKY, wGov);
-          const kind = edgeClass(a, b);
-
-          const md = distance(mx, my, mouse.x, mouse.y);
-          const mouseBoost = mouse.active && md < CFG.MOUSE_RADIUS
-            ? (1 - md / CFG.MOUSE_RADIUS) * 0.045
-            : 0;
-
-          const tension = clamp(Math.abs(dist - expected) / expected, 0, 1);
-          let alpha = (0.016 + wGov * 0.065 + mouseBoost) * (1 - tension * 0.58);
-
-          if (zone === 'fragmented') alpha *= 0.78;
-          if (zone === 'governed') alpha *= 1.02;
-
-          if (kind === 'backbone') {
-            alpha *= 1.10;
-          } else if (kind === 'anchored') {
-            alpha *= 1.08;
-            rgb = lerpColor(CFG.INDIGO, CFG.SKY, 0.68);
-          } else if (kind === 'validated') {
-            alpha *= 1.14;
-            rgb = CFG.VALID;
-          } else if (kind === 'supporting') {
-            alpha *= 0.88;
-          } else if (kind === 'tentative') {
-            alpha *= 0.72;
-          }
-
-          if (profile.lowPowerMode) alpha *= 0.88;
-
-          ctx.globalAlpha = alpha;
-          ctx.strokeStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-          ctx.lineWidth =
-            kind === 'validated' ? 0.82 :
-            kind === 'anchored' ? 0.70 :
-            kind === 'backbone' ? 0.62 :
-            kind === 'supporting' ? 0.46 :
-            (a.edge || b.edge ? 0.34 : 0.46);
-
-          if (profile.lowPowerMode) {
-            ctx.lineWidth *= 0.92;
-          }
-
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    function drawGhostEdges() {
-      if (profile.lowPowerMode || ghostPts.length === 0) return;
-
-      for (let i = 0; i < ghostPts.length; i++) {
-        const a = ghostPts[i];
-        const neighbours = [];
-
-        if (a.col < CFG.GHOST_COLS - 1) neighbours.push(ghostPts[i + 1]);
-        if (a.row < CFG.GHOST_ROWS - 1) neighbours.push(ghostPts[i + CFG.GHOST_COLS]);
-
-        for (let n = 0; n < neighbours.length; n++) {
-          const b = neighbours[n];
-          const dx = b.x - a.x;
-          const dy = b.y - a.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const expected = Math.max(W / (CFG.GHOST_COLS - 1), H / (CFG.GHOST_ROWS - 1)) * 1.10;
-          if (dist > expected * 1.03) continue;
-          if (a.zone === 'fragmented' && dist > expected * 0.88) continue;
-
-          const mx = (a.x + b.x) * 0.5;
-          const my = (a.y + b.y) * 0.5;
-          const reveal = revealStrength(mx, my);
-          if (reveal < 0.09) continue;
-
-          const xNorm = clamp(mx / W, 0, 1);
-          const wGov = smoothstep(0.44, 0.94, xNorm);
-          const rgb = lerpColor(CFG.SLATE, CFG.SKY, wGov);
-
-          ctx.globalAlpha = (0.010 + wGov * 0.012) * reveal;
-          ctx.strokeStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-          ctx.lineWidth = 0.36;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    function drawBackboneLanes() {
-      if (profile.lowPowerMode) return;
-
-      const cols = [CFG.COLS - 8, CFG.COLS - 6];
-      cols.forEach((col, i) => {
-        ctx.beginPath();
-        for (let row = 1; row < CFG.ROWS - 1; row++) {
-          const p = pts[row * CFG.COLS + col];
-          if (!p) continue;
-          if (row === 1) ctx.moveTo(p.x, p.y);
-          else ctx.lineTo(p.x, p.y);
-        }
-        ctx.globalAlpha = 0.036 + Math.sin(time * 0.008 + i) * 0.004;
-        ctx.strokeStyle = i === 0 ? 'rgb(79,70,229)' : 'rgb(14,165,233)';
-        ctx.lineWidth = 0.52;
-        ctx.stroke();
-      });
-    }
-
-    function addMemoryTrail() {
-      if (profile.lowPowerMode || !mouse.active) return;
-      if (mouse.x < W * 0.64) return;
-
-      const moved = distance(mouse.x, mouse.y, mouse.lastX, mouse.lastY);
-      if (moved < 24) return;
-
-      const nearby = pts.filter(p => p.zone === 'governed' && distance(p.x, p.y, mouse.x, mouse.y) < 62).slice(0, 6);
-      if (nearby.length < 2) return;
-
-      for (let i = 0; i < nearby.length - 1; i++) {
-        const a = nearby[i];
-        const b = nearby[i + 1];
-        memoryTrails.push({
-          x1: a.x, y1: a.y,
-          x2: b.x, y2: b.y,
-          life: 14
-        });
-      }
-
-      mouse.lastX = mouse.x;
-      mouse.lastY = mouse.y;
-    }
-
-    function drawMemoryTrails() {
-      if (profile.lowPowerMode) return;
-
-      memoryTrails.forEach(t => {
-        const alpha = (t.life / 14) * 0.040;
-        ctx.globalAlpha = alpha;
-        ctx.strokeStyle = 'rgb(79,70,229)';
-        ctx.lineWidth = 0.50;
-        ctx.beginPath();
-        ctx.moveTo(t.x1, t.y1);
-        ctx.lineTo(t.x2, t.y2);
-        ctx.stroke();
-      });
-      ctx.globalAlpha = 1;
-    }
-
-    function drawInteractionField() {
-      if (!mouse.active) return;
-      if (mouse.x < W * 0.55) return;
-
-      const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, CFG.REVEAL_RADIUS);
-      grad.addColorStop(0, 'rgba(79,70,229,0.016)');
-      grad.addColorStop(0.55, 'rgba(14,165,233,0.010)');
-      grad.addColorStop(1, 'rgba(14,165,233,0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, CFG.REVEAL_RADIUS, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    function drawNodes() {
-      pts.forEach(p => {
-        const md = distance(p.x, p.y, mouse.x, mouse.y);
-        const mouseGlow = mouse.active && md < CFG.MOUSE_RADIUS ? (1 - md / CFG.MOUSE_RADIUS) : 0;
-
-        let rgb = CFG.SLATE;
-        let alpha = p.edge ? 0.05 : 0.13;
-        let radius = p.edge ? CFG.DOT_R * 0.72 : CFG.DOT_R;
-
-        if (p.zone === 'fragmented') {
-          rgb = CFG.INDIGO;
-          alpha *= 0.82;
-        } else if (p.zone === 'governed') {
-          rgb = CFG.SKY;
-          alpha *= 0.98;
-        }
-
-        if (p.backbone) {
-          rgb = CFG.SKY;
-          alpha *= 1.04;
-        }
-
-        if (p.anchor) {
-          rgb = CFG.INDIGO;
-          alpha = 0.28;
-          radius = profile.lowPowerMode ? 1.35 : 1.75;
-        }
-
-        if (p.validationHub) {
-          rgb = CFG.VALID;
-          alpha = 0.34 + Math.sin(time * 0.018 + p.row) * 0.014;
-          radius = profile.lowPowerMode ? 1.5 : 1.9;
-        }
-
-        alpha += mouseGlow * 0.18;
-        radius += mouseGlow * (CFG.DOT_R_ACTIVE - CFG.DOT_R);
-
-        if (!profile.lowPowerMode && ((mouseGlow > 0.14 && p.zone === 'governed') || p.validationHub)) {
-          const haloR = p.validationHub ? radius * 2.8 : radius * 2.8;
-          const haloA = p.validationHub ? 0.055 : mouseGlow * 0.05;
-          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, haloR);
-          grad.addColorStop(0, `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${haloA})`);
-          grad.addColorStop(1, `rgba(${rgb[0]},${rgb[1]},${rgb[2]},0)`);
-          ctx.fillStyle = grad;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, haloR, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        ctx.globalAlpha = Math.min(1, alpha);
-        ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (!profile.lowPowerMode && p.validationHub) {
-          const ring = 3.6 + Math.sin(time * 0.014 + p.col) * 0.10;
-          ctx.globalAlpha = 0.055;
-          ctx.strokeStyle = 'rgb(79,70,229)';
-          ctx.lineWidth = 0.50;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, ring, 0, Math.PI * 2);
-          ctx.stroke();
-        }
-      });
-
-      if (!profile.lowPowerMode) {
-        ghostPts.forEach(p => {
-          const reveal = revealStrength(p.x, p.y);
-          if (reveal < 0.10) return;
-
-          const xNorm = clamp(p.x / W, 0, 1);
-          const wGov = smoothstep(0.46, 0.94, xNorm);
-          const rgb = lerpColor(CFG.SLATE, CFG.SKY, wGov);
-
-          ctx.globalAlpha = (0.018 + wGov * 0.012) * reveal;
-          ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 0.62, 0, Math.PI * 2);
-          ctx.fill();
-        });
-      }
-
-      ctx.globalAlpha = 1;
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      drawAtmosphere();
-      drawGovernanceField();
-
-      if (!profile.lowPowerMode) {
-        drawGhostEdges();
-      }
-
-      drawPrimaryEdges();
-
-      if (!profile.lowPowerMode) {
-        drawBackboneLanes();
-        drawMemoryTrails();
-      }
-
-      drawInteractionField();
-      drawNodes();
-      ctx.globalAlpha = 1;
-    }
-
-    function stopLoop() {
-      running = false;
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-    }
-
-    function loop(timestamp = 0) {
-      if (!running) return;
-
-      const interval = 1000 / profile.targetFPS;
-      if (!lastFrameTime || timestamp - lastFrameTime >= interval) {
-        lastFrameTime = timestamp;
-        update();
-        addMemoryTrail();
-        draw();
-      }
-
-      rafId = requestAnimationFrame(loop);
-    }
-
-    function startLoop() {
-      if (prefersReducedMotion) return;
-      if (running) return;
-      running = true;
-      lastFrameTime = 0;
-      rafId = requestAnimationFrame(loop);
-    }
-
-    function handlePointerMove(clientX, clientY) {
-      const r = canvas.getBoundingClientRect();
-      mouse.x = clientX - r.left;
-      mouse.y = clientY - r.top;
-      mouse.active = true;
-    }
-
-    function resetMouse() {
-      mouse.x = -9999;
-      mouse.y = -9999;
-      mouse.active = false;
-      mouse.lastX = -9999;
-      mouse.lastY = -9999;
-    }
-
-    if (!profile) {
-      profile = getProfile();
-    }
-
-    if (!profile.isTouch) {
-      hero.addEventListener('mousemove', e => {
-        handlePointerMove(e.clientX, e.clientY);
-      }, { passive: true });
-
-      hero.addEventListener('mouseleave', resetMouse, { passive: true });
-    }
-
-    window.addEventListener('resize', () => {
-      const prevLowPower = profile ? profile.lowPowerMode : null;
-      resize();
-
-      if (prevLowPower !== null && prevLowPower !== profile.lowPowerMode) {
-        resetMouse();
-      }
-
-      if (prefersReducedMotion) {
-        draw();
-      }
-    }, { passive: true });
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopLoop();
-      } else if (!prefersReducedMotion) {
-        startLoop();
-      }
-    });
-
-    window.addEventListener('pagehide', stopLoop);
-    window.addEventListener('pageshow', () => {
-      if (!prefersReducedMotion) startLoop();
-    });
-
-    resize();
-
-    if (prefersReducedMotion) {
-      draw();
-    } else {
-      startLoop();
-    }
-  })();
 });
 </script>
 
