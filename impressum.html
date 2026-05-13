@@ -4,31 +4,64 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Impressum — Requivo</title>
+<meta name="description" content="Angaben gemäß ECG für den aktuellen Informationsauftritt von Requivo in der Vorgründungsphase." />
 <link rel="icon" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script>document.documentElement.classList.add('js');</script>
 
 <style>
+/* =========================================================
+   DESIGN TOKENS — matches main index.html
+   ========================================================= */
 :root {
+  /* Color */
   --bg:          #ffffff;
-  --bg-off:      #f8f9fc;
-  --bg-deep:     #0f1c3a;
-  --line:        #dde3ed;
-  --line-soft:   #eaecf2;
-  --text:        #0d1424;
-  --text-mid:    #374259;
-  --text-soft:   #677390;
-  --text-dim:    #98a3b8;
+  --bg-off:      #f7f8fb;
+  --bg-panel:    #f2f4f8;
+  --bg-deep:     #0b1430;
+  --bg-deep-2:   #0e1839;
+  --line:        #e5e8ef;
+  --line-soft:   #eef0f5;
+  --line-strong: #d6dbe5;
+  --text:        #0a1124;
+  --text-mid:    #2d3552;
+  --text-soft:   #5a6584;
+  --text-dim:    #8a93ac;
+  --text-on-dark:        #e8ecf7;
+  --text-on-dark-soft:   #9aa6c4;
+  --text-on-dark-dim:    #6a7595;
   --indigo:      #3730a3;
   --indigo-mid:  #4f46e5;
   --indigo-soft: #eef2ff;
   --indigo-pale: #f5f6ff;
-  --font-serif:  'Instrument Serif', Georgia, serif;
-  --font-sans:   'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono:   'IBM Plex Mono', monospace;
+  --indigo-on-dark: #a5b4fc;
+  --brand:       #4f46e5;
+
+  /* Type families */
+  --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Type scale (golden-ratio derived) */
+  --fs-micro:    11px;
+  --fs-xs:       12px;
+  --fs-sm:       13.5px;
+  --fs-base:     15.5px;
+  --fs-lead:     17.5px;
+  --fs-label:    20px;
+  --fs-card:     20px;
+  --fs-h3:       26px;
+  --fs-h2:       clamp(28px, 3.2vw, 42px);
+  --fs-h1-page:  clamp(34px, 4.4vw, 52px);
+
+  /* Spacing / radius / motion */
   --max:         1180px;
-  --ease:        cubic-bezier(.16,1,.3,1);
+  --radius:      6px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --ease:        cubic-bezier(.2,.7,.2,1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,17 +69,71 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
+  font-size: var(--fs-base);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.65;
+  line-height: 1.6;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01" 1, "ss03" 1, "cv11" 1, "kern" 1, "calt" 1;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
 .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
 
-/* NAV */
+/* =========================================================
+   ANNOUNCEMENT BAR
+   ========================================================= */
+.announce {
+  background: var(--bg-deep);
+  color: var(--text-on-dark);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.announce-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 38px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: -.005em;
+  color: #e8ecf7;
+}
+.announce-inner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.announce-tag {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 450;
+  letter-spacing: -.005em;
+  text-transform: none;
+  color: rgba(232,236,247,.62);
+  padding-right: 12px;
+  border-right: 1px solid rgba(255,255,255,.14);
+  margin-right: 4px;
+}
+.announce-arrow {
+  display: inline-flex;
+  margin-left: 4px;
+  opacity: .8;
+  transition: transform .2s var(--ease), opacity .2s;
+}
+.announce a:hover .announce-arrow {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
 nav {
   position: sticky;
   top: 0;
@@ -56,8 +143,7 @@ nav {
   border-bottom: 1px solid var(--line-soft);
   transition: box-shadow .25s;
 }
-
-nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
+nav.raised { box-shadow: 0 1px 18px rgba(11,20,48,.06); }
 
 .nav-inner {
   display: flex;
@@ -73,9 +159,9 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
   gap: 10px;
   font-family: var(--font-sans);
   font-size: 19px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--text);
-  letter-spacing: -.02em;
+  letter-spacing: -.022em;
 }
 
 .nav-links {
@@ -85,92 +171,101 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
 }
 
 .nav-links a {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-soft);
-  letter-spacing: .01em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 450;
+  color: var(--text-mid);
+  letter-spacing: -.005em;
   transition: color .18s;
 }
-
 .nav-links a:hover { color: var(--text); }
 
 .nav-cta {
+  background: transparent !important;
+  color: var(--indigo) !important;
+  border: 1px solid var(--indigo) !important;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  font-size: var(--fs-sm) !important;
+  font-weight: 500 !important;
+  transition: background .18s, color .18s !important;
+}
+.nav-cta:hover {
   background: var(--indigo) !important;
   color: #fff !important;
-  padding: 9px 20px;
-  border-radius: 6px;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  transition: background .18s, transform .18s !important;
 }
 
-.nav-cta:hover {
-  background: #312e81 !important;
-  transform: translateY(-1px) !important;
-}
-
-/* PAGE */
-.page { padding: 80px 0 100px; }
+/* =========================================================
+   PAGE
+   ========================================================= */
+.page { padding: 84px 0 100px; }
 
 .page-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
   font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--indigo-mid);
-  margin-bottom: 16px;
+  letter-spacing: -.012em;
+  color: var(--brand);
+  margin-bottom: 18px;
+  display: block;
 }
 
 .page h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(38px, 5vw, 64px);
-  font-weight: 400;
-  line-height: 1.04;
-  letter-spacing: -.025em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-h1-page);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -.028em;
   color: var(--text);
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 .page-intro {
-  font-size: 18px;
-  line-height: 1.8;
-  font-weight: 300;
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.62;
+  font-weight: 400;
+  letter-spacing: -.005em;
   color: var(--text-soft);
   max-width: 720px;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
-/* LEGAL CARD */
+/* =========================================================
+   LEGAL CARD
+   ========================================================= */
 .legal-card {
   background: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: 0 4px 24px rgba(11,20,48,.03);
 }
 
 .legal-section {
-  padding: 28px 36px;
+  padding: 32px 40px;
   border-bottom: 1px solid var(--line-soft);
 }
 
 .legal-section:last-child { border-bottom: none; }
 
 .legal-section h2 {
-  font-family: var(--font-mono);
-  font-size: 10px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-label);
   font-weight: 500;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--indigo-mid);
-  margin-bottom: 12px;
+  letter-spacing: -.012em;
+  text-transform: none;
+  color: var(--brand);
+  margin-bottom: 14px;
 }
 
 .legal-section p {
-  font-size: 15px;
-  line-height: 1.85;
-  font-weight: 300;
-  color: var(--text-soft);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: -.003em;
+  color: var(--text-mid);
   margin-bottom: 10px;
 }
 
@@ -182,34 +277,45 @@ nav.raised { box-shadow: 0 1px 18px rgba(55,48,163,.07); }
 }
 
 .legal-section a {
-  color: var(--indigo-mid);
-  border-bottom: 1px solid rgba(79,70,229,.2);
+  color: var(--brand);
+  border-bottom: 1px solid rgba(79,70,229,.25);
   transition: color .18s, border-color .18s;
 }
-
 .legal-section a:hover {
   color: var(--indigo);
-  border-color: rgba(55,48,163,.4);
+  border-color: rgba(55,48,163,.5);
 }
 
-/* BACK LINK */
+/* =========================================================
+   BACK LINK
+   ========================================================= */
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 32px;
-  font-family: var(--font-mono);
-  font-size: 12px;
+  margin-top: 44px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
   font-weight: 500;
-  letter-spacing: .08em;
-  color: var(--text-dim);
-  transition: color .18s;
+  letter-spacing: -.003em;
+  color: var(--text-soft);
+  transition: color .18s, gap .2s var(--ease);
+}
+.back-link::before {
+  content: '←';
+  font-weight: 400;
+  transition: transform .2s var(--ease);
+}
+.back-link:hover {
+  color: var(--brand);
+}
+.back-link:hover::before {
+  transform: translateX(-3px);
 }
 
-.back-link:hover { color: var(--indigo-mid); }
-.back-link::before { content: '←'; }
-
-/* FOOTER */
+/* =========================================================
+   FOOTER — matches main index.html
+   ========================================================= */
 footer {
   background: var(--bg-deep);
   padding: 80px 0 60px;
@@ -235,51 +341,58 @@ footer {
   gap: 10px;
   font-family: var(--font-sans);
   font-size: 19px;
-  font-weight: 400;
+  font-weight: 500;
   color: #fff;
-  letter-spacing: -.02em;
+  letter-spacing: -.022em;
 }
 
 .footer-brand p {
+  font-family: var(--font-sans);
   font-size: 14px;
-  line-height: 1.8;
-  font-weight: 300;
-  color: #7b8fad;
-  max-width: 280px;
+  line-height: 1.65;
+  font-weight: 400;
+  color: var(--text-on-dark-soft);
+  max-width: 300px;
+  letter-spacing: -.003em;
 }
 
 .footer-col h4 {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: #4a5e7a;
-  margin-bottom: 18px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: -.005em;
+  text-transform: none;
+  font-weight: 500;
+  color: var(--indigo-on-dark);
+  margin-bottom: 16px;
 }
 
 .footer-col a,
 .footer-col p {
   display: block;
+  font-family: var(--font-sans);
   font-size: 14px;
-  line-height: 2.1;
-  font-weight: 300;
-  color: #8fa3be;
+  line-height: 2;
+  font-weight: 400;
+  color: var(--text-on-dark-soft);
+  letter-spacing: -.003em;
   transition: color .18s;
 }
-
 .footer-col a:hover { color: #fff; }
 
 .footer-bottom {
   padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,.06);
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-family: var(--font-sans);
   font-size: 12px;
-  color: #3d5070;
+  color: var(--text-on-dark-dim);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* RESPONSIVE */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 1040px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -287,14 +400,34 @@ footer {
 @media (max-width: 768px) {
   .wrap { width: calc(100% - 32px); }
   .nav-links { display: none; }
+
+  .announce-inner { font-size: 13px; height: 36px; }
+  .announce-tag { padding-right: 8px; margin-right: 4px; }
+
   .page { padding: 56px 0 80px; }
-  .legal-section { padding: 24px 20px; }
+  .legal-section { padding: 26px 24px; }
+  .legal-section h2 { font-size: 18px; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 8px; }
 }
 </style>
 </head>
 <body>
+
+<!-- Announcement bar -->
+<div class="announce">
+  <div class="wrap announce-inner">
+    <a href="index.html#contact" aria-label="Pre-seed round">
+      <span class="announce-tag">Pre-seed round</span>
+      <span>Selected pilot and validation collaborations open</span>
+      <span class="announce-arrow" aria-hidden="true">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</div>
 
 <nav id="nav">
   <div class="wrap nav-inner">
@@ -388,14 +521,14 @@ footer {
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo" aria-label="Requivo home">
-          <svg viewBox="0 0 44 36" width="36" height="29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg viewBox="0 0 44 36" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
             <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
             <rect x="16" y="12" width="12" height="12" rx="1" fill="#818cf8" transform="rotate(45 22 18)"/>
           </svg>
           Requivo
         </a>
-        <p>Governed operational knowledge from fragmented enterprise evidence.</p>
+        <p>Turning fragmented enterprise evidence into a governed operational knowledge layer.</p>
       </div>
 
       <div class="footer-col">
@@ -408,7 +541,7 @@ footer {
 
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="index.html#mission-vision">Mission &amp; Vision</a>
+        <a href="mission-vision.html">Mission &amp; Vision</a>
         <a href="index.html#contact">Contact</a>
         <a href="requivo-vs-llm.html">Requivo vs LLM models</a>
         <a href="impressum.html">Impressum</a>
@@ -442,7 +575,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   updateNav();
-  window.addEventListener('scroll', updateNav);
+  window.addEventListener('scroll', updateNav, { passive: true });
 });
 </script>
 
