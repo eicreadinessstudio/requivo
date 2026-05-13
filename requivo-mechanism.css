@@ -979,3 +979,407 @@
   --cream: #FAFBFF !important;
   --ivory: #FAFBFF !important;
 }
+
+/* ============================================================
+   Requivo Mechanism — Specimen / engineering-grade override
+   Replace the older visual language with a flatter, instrument-panel
+   treatment: fewer glows, less SaaS gradient, more system diagram.
+============================================================ */
+
+.rq-mechanism {
+  --rq-bg: #f8f8f4 !important;
+  --rq-bg-wash: #f0f0ea !important;
+  --rq-ink: #111827 !important;
+  --rq-ink-2: #3f4654 !important;
+  --rq-ink-3: #737986 !important;
+  --rq-ink-4: #aeb3bd !important;
+  --rq-hair: rgba(17, 24, 39, 0.14) !important;
+  --rq-hair-strong: rgba(17, 24, 39, 0.24);
+  --rq-accent: #2c2a7a !important;
+  --rq-accent-2: #4b49a6 !important;
+  --rq-conflict: #9a6a1c !important;
+  --rq-gap: #6b7280 !important;
+  --rq-routed: #2c2a7a !important;
+  --rq-verified: #28755b !important;
+  --rq-serif: 'Instrument Serif', Georgia, serif !important;
+  --rq-sans: 'IBM Plex Sans', system-ui, sans-serif !important;
+  --rq-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace !important;
+
+  background: #f8f8f4 !important;
+  color: var(--rq-ink);
+  border-radius: 0;
+  padding: 0 0 28px;
+}
+
+.rq-mechanism-header {
+  padding: 16px 24px;
+  background: #fbfbf8 !important;
+  border-bottom: 1px solid var(--rq-hair) !important;
+  backdrop-filter: none;
+}
+
+.rq-mechanism-brand {
+  align-items: center;
+  gap: 12px;
+}
+
+.rq-mechanism-wordmark {
+  font-family: var(--rq-sans);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: var(--rq-ink);
+}
+
+.rq-mechanism-divider {
+  height: 18px;
+  background: var(--rq-hair-strong);
+}
+
+.rq-mechanism-eyebrow {
+  font-family: var(--rq-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--rq-ink-3);
+}
+
+.rq-mechanism-controls {
+  gap: 14px;
+}
+
+.rq-mechanism-dots {
+  align-items: center;
+  gap: 5px;
+}
+
+.rq-mechanism-dot {
+  height: 4px;
+  width: 18px;
+  border-radius: 2px;
+  border: 0;
+  background: rgba(17, 24, 39, 0.16);
+  transition: width 220ms ease, background 220ms ease;
+}
+
+.rq-mechanism-dot--done {
+  background: rgba(44, 42, 122, 0.45);
+}
+
+.rq-mechanism-dot--active {
+  width: 32px;
+  background: var(--rq-accent);
+}
+
+.rq-mechanism-play {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1px solid var(--rq-hair);
+  color: var(--rq-ink-2);
+  box-shadow: none;
+}
+
+.rq-mechanism-play:hover {
+  background: #f4f4ef;
+}
+
+.rq-mechanism-play-label {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+}
+
+.rq-mechanism-stage-wrap {
+  margin-top: 0;
+  background: #f8f8f4 !important;
+}
+
+.rq-mechanism-stage {
+  background: #f8f8f4 !important;
+}
+
+.rq-mechanism-bg rect:first-of-type {
+  opacity: 0.55;
+}
+
+.rq-mechanism-bg rect:nth-of-type(2) {
+  display: none;
+}
+
+.rq-mechanism-label {
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  color: rgba(17,24,39,0.48);
+}
+
+.rq-mechanism-evidence-dot,
+.rq-mechanism-expert-dot,
+.rq-mechanism-app-dot {
+  border-radius: 2px;
+  box-shadow: none !important;
+}
+
+.rq-mechanism-evidence-row.is-lit .rq-mechanism-evidence-dot {
+  background: var(--rq-accent);
+  box-shadow: none;
+}
+
+.rq-mechanism-evidence-id,
+.rq-mechanism-evidence-name,
+.rq-mechanism-kl-text,
+.rq-mechanism-rail-item,
+.rq-mechanism-caption-step {
+  font-family: var(--rq-mono);
+}
+
+.rq-mechanism-evidence-name {
+  color: var(--rq-ink-2);
+}
+
+.rq-mechanism-evidence-name-text {
+  color: var(--rq-ink);
+}
+
+.rq-mechanism-mark {
+  display: none;
+}
+
+.rq-mechanism-engine,
+.rq-mechanism-kl {
+  border-radius: 8px;
+  background: #ffffff !important;
+  border: 1px solid var(--rq-hair);
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 14px 36px rgba(17,24,39,.065);
+  backdrop-filter: none;
+}
+
+.rq-mechanism-engine {
+  border-top: 3px solid var(--rq-accent);
+}
+
+.rq-mechanism-kl {
+  border-top: 3px solid rgba(17,24,39,.56);
+}
+
+.rq-mechanism-engine.is-active,
+.rq-mechanism-kl.is-active {
+  transform: translateY(0);
+}
+
+.rq-mechanism-kl:hover {
+  border-color: var(--rq-hair);
+  border-top-color: rgba(17,24,39,.56);
+  box-shadow: 0 1px 0 rgba(255,255,255,.8) inset, 0 14px 36px rgba(17,24,39,.065);
+}
+
+.rq-mechanism-engine-header,
+.rq-mechanism-kl-header {
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  color: rgba(17,24,39,.62);
+}
+
+.rq-mechanism-engine-rule,
+.rq-mechanism-kl-rule {
+  background: var(--rq-hair);
+}
+
+.rq-mechanism-engine-row {
+  grid-template-columns: 8px 24px 74px minmax(0, 1fr);
+}
+
+.rq-mechanism-engine-statusdot {
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(17,24,39,.20);
+  box-shadow: none !important;
+}
+
+.rq-mechanism-engine-label {
+  font-family: var(--rq-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--rq-ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rq-mechanism-engine-detail {
+  font-family: var(--rq-mono);
+  font-style: normal;
+  font-size: 10.5px;
+  color: var(--rq-ink-3);
+}
+
+.rq-mechanism-anchor {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: #ffffff;
+  border: 1px solid var(--rq-accent);
+  box-shadow: 0 0 0 3px rgba(44,42,122,.09);
+}
+
+.rq-mechanism-loop path {
+  stroke: rgba(17,24,39,.20) !important;
+  stroke-dasharray: 4 6;
+}
+
+.rq-mechanism-zone-label {
+  color: rgba(17,24,39,.58);
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+}
+
+.rq-mechanism-zone-tick {
+  background: rgba(17,24,39,.30);
+}
+
+.rq-mechanism-question,
+.rq-mechanism-return {
+  border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid var(--rq-hair);
+  color: var(--rq-ink-2);
+  box-shadow: none;
+}
+
+.rq-mechanism-question.is-selected {
+  background: #f4f3fb;
+  border-color: rgba(44,42,122,.35);
+  color: var(--rq-accent);
+  box-shadow: none;
+}
+
+.rq-mechanism-expert-role {
+  font-family: var(--rq-mono);
+  font-size: 11px;
+  color: var(--rq-ink-2);
+}
+
+.rq-mechanism-expert.is-selected .rq-mechanism-expert-role {
+  color: var(--rq-ink);
+  font-weight: 500;
+}
+
+.rq-mechanism-expert.is-selected .rq-mechanism-expert-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--rq-accent);
+  box-shadow: none;
+}
+
+.rq-mechanism-return.is-active {
+  background: #ffffff;
+  border-color: rgba(40,117,91,.28);
+  box-shadow: none;
+}
+
+.rq-mechanism-return-check {
+  border-radius: 3px;
+  background: rgba(40,117,91,.08);
+  border-color: rgba(40,117,91,.28);
+  color: var(--rq-verified);
+}
+
+.rq-mechanism-kl-icon {
+  border-radius: 4px;
+  background: #f6f6f2;
+  border: 1px solid var(--rq-hair);
+  color: var(--rq-accent);
+}
+
+.rq-mechanism-density {
+  bottom: -30px;
+  font-size: 9px;
+  color: rgba(17,24,39,.48);
+}
+
+.rq-mechanism-app-dot {
+  background: var(--rq-accent);
+}
+
+.rq-mechanism-app-name {
+  font-family: var(--rq-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.rq-mechanism-rail {
+  top: 758px;
+  gap: 22px;
+}
+
+.rq-mechanism-rail-item {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(17,24,39,.46);
+}
+
+.rq-mechanism-rail-item.is-active {
+  color: var(--rq-accent);
+}
+
+.rq-mechanism-rail-arrow {
+  color: rgba(17,24,39,.28);
+}
+
+.rq-mechanism-connectors path {
+  stroke-linecap: square;
+  transition:
+    stroke-dashoffset 760ms cubic-bezier(.25,.1,.25,1),
+    opacity 260ms ease;
+}
+
+.rq-mechanism-caption {
+  margin: 6px 24px 0;
+  max-width: none;
+  padding: 14px 0 0;
+  text-align: left;
+  border-top: 1px solid var(--rq-hair);
+}
+
+.rq-mechanism-caption-meta {
+  justify-content: flex-start;
+}
+
+.rq-mechanism-caption-title {
+  font-family: var(--rq-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rq-ink);
+}
+
+.rq-mechanism-caption-desc {
+  max-width: 760px;
+  margin-top: 4px;
+  font-family: var(--rq-sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--rq-ink-2);
+}
+
+@media (max-width: 768px) {
+  .rq-mechanism-header {
+    padding: 14px 16px;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .rq-mechanism-brand {
+    flex-wrap: wrap;
+  }
+
+  .rq-mechanism-controls {
+    gap: 10px;
+  }
+
+  .rq-mechanism-caption {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
