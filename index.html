@@ -96,48 +96,74 @@ img { display: block; max-width: 100%; }
    ANNOUNCEMENT BAR
    ========================================================= */
 .announce {
+  position: relative;
   background: var(--bg-deep);
-  color: var(--text-on-dark);
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  background-image:
+    radial-gradient(120% 160% at 50% -50%, rgba(79,70,229,.30) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0));
+  border-bottom: 1px solid rgba(255,255,255,.07);
 }
+/* hairline accent glow on the lower edge */
+.announce::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(129,140,248,.55), transparent);
+}
+
 .announce-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  height: 38px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 450;
-  letter-spacing: -.005em;
-  color: #e8ecf7;
+  min-height: 42px;
+  padding: 6px 0;
 }
-.announce-inner a {
+.announce-inner > a {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-}
-.announce-tag {
+  gap: 12px;
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 450;
   letter-spacing: -.005em;
-  text-transform: none;
-  color: rgba(232,236,247,.62);
-  padding-right: 12px;
-  border-right: 1px solid rgba(255,255,255,.14);
-  margin-right: 4px;
+  line-height: 1.4;
+  color: #e8ecf7;
 }
-.announce-arrow {
+
+/* label */
+.announce-badge {
+  flex: none;
   display: inline-flex;
-  margin-left: 4px;
-  opacity: .8;
-  transition: transform .2s var(--ease), opacity .2s;
+  align-items: center;
+  color: #c7d2fe;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-right: 14px;
+  border-right: 1px solid rgba(129,140,248,.28);
 }
-.announce a:hover .announce-arrow {
-  transform: translateX(2px);
+
+.announce-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.announce-msg { color: rgba(232,236,247,.90); }
+
+.announce-arrow {
+  flex: none;
+  display: inline-flex;
+  opacity: .72;
+  transition: transform .22s var(--ease), opacity .22s;
+}
+.announce-inner > a:hover .announce-arrow {
+  transform: translateX(3px);
   opacity: 1;
 }
+.announce-inner > a:hover .announce-msg { color: #fff; }
 
 /* =========================================================
    NAV
@@ -855,8 +881,14 @@ footer {
   .nav-links { display: none; }
   section { padding: 80px 0; }
 
-  .announce-inner { font-size: 13px; height: 36px; }
-  .announce-tag { padding-right: 8px; margin-right: 4px; }
+  .announce-inner { padding: 8px 0; }
+  .announce-inner > a {
+    flex-direction: column;
+    gap: 6px;
+    font-size: 12.5px;
+    text-align: center;
+  }
+  .announce-badge { font-size: 11.5px; padding-right: 0; border-right: none; }
 
   .prob-grid,
   .use-grid,
@@ -889,13 +921,17 @@ footer {
 <!-- Announcement bar -->
 <div class="announce">
   <div class="wrap announce-inner">
-    <a href="#contact" aria-label="Pre-seed round">
-      <span class="announce-tag">Pre-seed round</span>
-      <span>Selected pilot and validation collaborations open</span>
-      <span class="announce-arrow" aria-hidden="true">
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <a href="#contact" aria-label="Pre-seed round — selected pilot and validation collaborations open">
+      <span class="announce-badge">
+        Pre-seed round
+      </span>
+      <span class="announce-line">
+        <span class="announce-msg">Selected pilot &amp; validation collaborations open</span>
+        <span class="announce-arrow" aria-hidden="true">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
       </span>
     </a>
   </div>
