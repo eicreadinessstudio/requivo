@@ -9,8 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<!-- Requivo mechanism animation -->
-<link rel="stylesheet" href="requivo-mechanism.css" />
 
 <script>
   document.documentElement.classList.add('js');
@@ -19,11 +17,8 @@
 <style>
 /* =========================================================
    DESIGN TOKENS
-   Golden-ratio typographic scale (φ ≈ 1.618, √φ ≈ 1.272)
-   Base = 16px. Stops: 10 · 13 · 16 · 20 · 26 · 33 · 42 · 54 · 68
    ========================================================= */
 :root {
-  /* Color */
   --bg:          #ffffff;
   --bg-off:      #f7f8fb;
   --bg-panel:    #f2f4f8;
@@ -39,31 +34,28 @@
   --text-on-dark:        #e8ecf7;
   --text-on-dark-soft:   #9aa6c4;
   --text-on-dark-dim:    #6a7595;
-  --indigo:      #3730a3;     /* system / structural — buttons, links, focus */
+  --indigo:      #3730a3;
   --indigo-mid:  #4f46e5;
   --indigo-soft: #eef2ff;
   --indigo-pale: #f5f6ff;
   --indigo-on-dark: #a5b4fc;
-  --brand:       #4f46e5;     /* brand / identity — wordmark, labels, interaction lines */
+  --brand:       #4f46e5;
   --sky:         #0ea5e9;
 
-  /* Type families */
   --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
 
-  /* Type scale (golden-ratio derived) */
-  --fs-micro:    11px;     /* mono uppercase labels (legacy) */
+  --fs-micro:    11px;
   --fs-xs:       12px;
-  --fs-sm:       13.5px;   /* nav, small UI text */
-  --fs-base:     15.5px;   /* body */
-  --fs-lead:     17.5px;   /* hero sub, section sub */
-  --fs-label:    20px;     /* section sub-titles (Inter sentence case) */
-  --fs-card:     20px;     /* card titles */
+  --fs-sm:       13.5px;
+  --fs-base:     15.5px;
+  --fs-lead:     17.5px;
+  --fs-label:    20px;
+  --fs-card:     20px;
   --fs-h3:       26px;
-  --fs-h2:       clamp(28px, 3.2vw, 42px);   /* section title */
-  --fs-h1:       clamp(40px, 5.6vw, 64px);   /* hero title */
+  --fs-h2:       clamp(28px, 3.2vw, 42px);
+  --fs-h1:       clamp(40px, 5.6vw, 64px);
 
-  /* Spacing / radius / motion */
   --max:         1180px;
   --radius:      6px;
   --radius-lg:   14px;
@@ -103,7 +95,6 @@ img { display: block; max-width: 100%; }
     linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0));
   border-bottom: 1px solid rgba(255,255,255,.07);
 }
-/* hairline accent glow on the lower edge */
 .announce::after {
   content: '';
   position: absolute;
@@ -131,7 +122,6 @@ img { display: block; max-width: 100%; }
   color: #e8ecf7;
 }
 
-/* label */
 .announce-badge {
   flex: none;
   display: inline-flex;
@@ -190,7 +180,6 @@ nav.raised {
   gap: 32px;
 }
 
-/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -219,7 +208,6 @@ nav.raised {
 
 .nav-links a:hover { color: var(--text); }
 
-/* outlined nav CTA — matches the secondary hero button */
 .nav-cta {
   border: 1px solid var(--indigo) !important;
   color: var(--indigo) !important;
@@ -236,7 +224,6 @@ nav.raised {
   color: #fff !important;
 }
 
-/* FOOTER LOGO */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -249,7 +236,7 @@ nav.raised {
 }
 
 /* =========================================================
-   HERO  (no canvas grid — clean white)
+   HERO
    ========================================================= */
 .hero {
   padding: 96px 0 92px;
@@ -353,7 +340,6 @@ nav.raised {
   color: #fff;
 }
 
-/* HERO IMAGE */
 .hero-aside {
   display: flex;
   justify-content: flex-end;
@@ -470,49 +456,6 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 /* =========================================================
-   HOW REQUIVO WORKS  (dark deep-tech section)
-   ========================================================= */
-#how-it-works {
-  background: var(--bg-deep);
-  padding: 112px 0;
-  border-top: 1px solid var(--bg-deep);
-  position: relative;
-}
-#how-it-works::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 18% 22%, rgba(79,70,229,.16) 0%, transparent 55%),
-    radial-gradient(ellipse at 82% 78%, rgba(14,165,233,.10) 0%, transparent 55%);
-  pointer-events: none;
-}
-#how-it-works .wrap,
-#how-it-works .mechanism-shell {
-  position: relative;
-  z-index: 1;
-}
-
-#how-it-works .section-label { color: var(--indigo-on-dark); }
-#how-it-works .section-title { color: #fff; }
-#how-it-works .section-sub { color: var(--text-on-dark-soft); }
-
-.how-head { margin-bottom: 48px; }
-
-.mechanism-shell {
-  width: min(100%, 1320px);
-  margin: 0 auto;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  background: #fbfcff;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.20),
-    0 20px 60px rgba(0,0,0,.35),
-    0 40px 120px rgba(0,0,0,.25);
-}
-
-/* =========================================================
    PROBLEM
    ========================================================= */
 .prob-grid {
@@ -623,9 +566,9 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 /* =========================================================
-   WHY
+   WHY  — pure white background, sits cleanly after dark
    ========================================================= */
-#why { background: var(--bg-off); }
+#why { background: var(--bg); }
 
 .strata {
   display: grid;
@@ -678,7 +621,7 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 /* =========================================================
-   USE CASES
+   USE CASES (white, inherited)
    ========================================================= */
 .use-grid {
   display: grid;
@@ -721,8 +664,20 @@ section + section { border-top: 1px solid var(--line-soft); }
 }
 
 /* =========================================================
-   CONTACT
+   CONTACT (white, inherited)
+   Tightened: smaller intro, less padding, names closer to "Contact"
    ========================================================= */
+#contact { padding: 96px 0; }
+#contact .section-title {
+  font-size: clamp(20px, 2.2vw, 25px);
+  font-weight: 450;
+  line-height: 1.5;
+  letter-spacing: -.014em;
+  color: var(--text-mid);
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -909,8 +864,560 @@ footer {
 
   .hero { min-height: auto; }
 
-  #how-it-works { padding: 80px 0; }
-  .mechanism-shell { border-radius: var(--radius-lg); }
+  #contact { padding: 72px 0; }
+}
+
+
+/* =========================================================
+   REQUIVO · WHAT-YOU-GET SPOTLIGHT SUITE
+   Five outcome spotlights · one running scenario
+   (starting a new customer project) · alternating zigzag
+   on the dark instrument field.
+   ========================================================= */
+.rqw-suite {
+  --rqw-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --rqw-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  --rqw-bg-deep: #0b1430;
+  --rqw-indigo: #3730a3;
+  --rqw-indigo-mid: #4f46e5;
+  --rqw-indigo-on-dark: #a5b4fc;
+  --rqw-indigo-pale: #eef2ff;
+  --rqw-card: #ffffff;
+  --rqw-card-2: #f7f8fb;
+  --rqw-line: #e5e8ef;
+  --rqw-line-soft: #eef0f5;
+  --rqw-text: #0a1124;
+  --rqw-text-soft: #5a6584;
+  --rqw-text-dim: #8a93ac;
+  --rqw-on-dark: #e8ecf7;
+  --rqw-on-dark-soft: #9aa6c4;
+  --rqw-on-dark-dim: #6a7595;
+  --rqw-ok: #0e7a53;
+  --rqw-ok-bg: #e7f6ee;
+  --rqw-ok-line: #c9ead9;
+  --rqw-red: #b23227;
+  --rqw-red-bg: #fdecea;
+  --rqw-red-line: #f4d2cd;
+  --rqw-amber-bg: #fdf4e3;
+  --rqw-amber-line: #f0e2bd;
+  --rqw-ease: cubic-bezier(.2,.7,.2,1);
+
+  position: relative;
+  overflow: hidden;
+  background: var(--rqw-bg-deep);
+  padding: 104px 0 112px;
+  font-family: var(--rqw-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.rqw-suite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 82% 10%, rgba(79,70,229,.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 14% 62%, rgba(14,165,233,.08) 0%, transparent 52%),
+    radial-gradient(ellipse at 88% 92%, rgba(79,70,229,.10) 0%, transparent 50%);
+  pointer-events: none;
+}
+.rqw-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.rqw-head { max-width: 740px; margin: 0 0 16px; }
+.rqw-head .rqw-eyebrow {
+  display: inline-block;
+  font-family: var(--rqw-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rqw-indigo-on-dark);
+  margin-bottom: 18px;
+}
+.rqw-head h2 {
+  margin: 0 0 18px;
+  font-family: var(--rqw-sans);
+  font-size: clamp(28px, 3.3vw, 44px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.028em;
+  color: #fff;
+}
+.rqw-head p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -.005em;
+  color: var(--rqw-on-dark-soft);
+  max-width: 660px;
+}
+
+.rqw-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 84px);
+  align-items: center;
+  padding: clamp(60px, 6.5vw, 88px) 0;
+}
+.rqw-row + .rqw-row { border-top: 1px solid rgba(255,255,255,.07); }
+.rqw-row--flip .rqw-copy { order: 1; }
+
+.rqw-copy { max-width: 480px; }
+.rqw-fragment {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+}
+.rqw-row--flip .rqw-fragment { justify-self: start; }
+
+.rqw-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  font-family: var(--rqw-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rqw-indigo-on-dark);
+}
+.rqw-mark-ord { flex: none; color: var(--rqw-on-dark-dim); }
+.rqw-mark-rule {
+  flex: none;
+  width: 26px;
+  height: 1px;
+  background: rgba(165,180,252,.5);
+}
+.rqw-mark-label { flex: none; }
+
+.rqw-title {
+  font-family: var(--rqw-sans);
+  font-size: clamp(26px, 2.9vw, 35px);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -.026em;
+  color: #fff;
+  margin: 0 0 18px;
+}
+.rqw-sub {
+  font-size: 16.5px;
+  line-height: 1.62;
+  font-weight: 400;
+  letter-spacing: -.005em;
+  color: var(--rqw-on-dark-soft);
+  margin: 0 0 26px;
+}
+
+.rqw-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.rqw-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--rqw-sans);
+  font-size: 12.5px;
+  font-weight: 450;
+  letter-spacing: -.003em;
+  color: rgba(232,236,247,.94);
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(165,180,252,.22);
+  border-radius: 100px;
+  padding: 7px 13px 7px 11px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.rqw-meta-pill svg {
+  display: block;
+  color: var(--rqw-indigo-on-dark);
+  flex: none;
+}
+
+.rqw-card {
+  background: var(--rqw-card);
+  border: 1px solid var(--rqw-line);
+  border-radius: 16px;
+  box-shadow:
+    0 1px 2px rgba(8,14,38,.30),
+    0 18px 48px rgba(8,14,38,.42),
+    0 40px 96px rgba(8,14,38,.28);
+}
+.rqw-card-pad { padding: 18px 18px 20px; }
+
+.rqw-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.rqw-card-head h4 {
+  margin: 0;
+  font-family: var(--rqw-mono);
+  font-size: 10.5px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--rqw-text-dim);
+}
+.rqw-pill-soft {
+  font-family: var(--rqw-mono);
+  font-size: 10.5px; font-weight: 500; letter-spacing: .04em;
+  color: var(--rqw-indigo);
+  background: var(--rqw-indigo-pale);
+  border: 1px solid #e0e4ff;
+  border-radius: 100px; padding: 4px 10px;
+}
+
+.rqw-flow {
+  position: relative; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+}
+.rqw-flow--solo { height: auto; margin-top: -8px; padding-top: 18px; }
+.rqw-thread {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 0; border-left: 2px dashed rgba(79,70,229,.45);
+  transform: translateX(-50%);
+  transform-origin: top center;
+}
+.rqw-verb {
+  position: relative; z-index: 2;
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--rqw-sans);
+  font-size: 13px; font-weight: 500; letter-spacing: -.005em;
+  color: #fff; background: var(--rqw-indigo);
+  border: 1px solid var(--rqw-indigo);
+  border-radius: 100px; padding: 9px 16px;
+  box-shadow: 0 2px 8px rgba(55,48,163,.45), 0 8px 24px rgba(8,14,38,.35);
+}
+.rqw-verb svg { display: block; }
+.rqw-verb .rqw-spark { color: var(--rqw-indigo-on-dark); }
+
+.rqw-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.rqw-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--rqw-sans);
+  font-size: 12.5px; font-weight: 450; color: var(--rqw-text-soft);
+  background: var(--rqw-card-2); border: 1px solid var(--rqw-line);
+  border-radius: 7px; padding: 6px 10px 6px 6px;
+}
+.rqw-chip b {
+  font-family: var(--rqw-mono);
+  font-size: 9px; font-weight: 600; letter-spacing: .06em;
+  color: #fff; background: var(--rqw-text-dim);
+  border-radius: 4px; padding: 3px 5px;
+}
+.rqw-chip[data-t="pdf"]   b { background: #d8453a; }
+.rqw-chip[data-t="doc"]   b { background: #2563eb; }
+.rqw-chip[data-t="wiki"]  b { background: #4f46e5; }
+.rqw-chip[data-t="crm"]   b { background: #0e9488; }
+.rqw-chip[data-t="mail"]  b { background: #b45309; }
+.rqw-chip[data-t="tpl"]   b { background: #6b7280; }
+
+.rqw-badge {
+  flex: none;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--rqw-mono);
+  font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 100px;
+}
+.rqw-badge svg { display: block; }
+.rqw-badge--ok { color: var(--rqw-ok); background: var(--rqw-ok-bg); border: 1px solid var(--rqw-ok-line); }
+.rqw-badge--review {
+  color: #8a5d0f;
+  background: var(--rqw-amber-bg);
+  border: 1px solid var(--rqw-amber-line);
+}
+
+.rqw-cites { display: flex; flex-wrap: wrap; gap: 6px; }
+.rqw-cite {
+  font-family: var(--rqw-mono);
+  font-size: 10px; font-weight: 400; letter-spacing: .02em;
+  color: var(--rqw-indigo);
+  background: var(--rqw-indigo-pale); border: 1px solid #e3e7ff;
+  border-radius: 5px; padding: 3px 7px;
+}
+
+/* findings (conflict / gap) */
+.rqw-finding {
+  border-radius: 12px; padding: 14px 16px; margin-bottom: 12px;
+  border: 1px solid;
+}
+.rqw-finding:last-child { margin-bottom: 0; }
+.rqw-finding--conflict { background: var(--rqw-red-bg); border-color: var(--rqw-red-line); }
+.rqw-finding--gap { background: var(--rqw-amber-bg); border-color: var(--rqw-amber-line); }
+
+.rqw-finding-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-bottom: 6px;
+}
+.rqw-finding-label {
+  font-family: var(--rqw-sans);
+  font-size: 14px; font-weight: 500; letter-spacing: -.01em;
+}
+.rqw-finding--conflict .rqw-finding-label { color: #7a241c; }
+.rqw-finding--gap .rqw-finding-label { color: #6a4708; }
+.rqw-finding-desc {
+  margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--rqw-text-soft);
+}
+.rqw-finding--conflict .rqw-finding-desc { color: #944238; }
+.rqw-finding--gap .rqw-finding-desc { color: #7c5a1e; }
+
+.rqw-tag {
+  flex: none;
+  font-family: var(--rqw-mono);
+  font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 5px;
+}
+.rqw-tag--conflict { color: #fff; background: var(--rqw-red); }
+.rqw-tag--gap { color: #fff; background: #b8821a; }
+
+.rqw-vals { display: flex; gap: 8px; margin-top: 12px; }
+.rqw-val {
+  flex: 1 1 0; min-width: 0;
+  background: #fff; border: 1px solid var(--rqw-red-line);
+  border-radius: 9px; padding: 10px 6px; text-align: center;
+}
+.rqw-val-n {
+  display: block;
+  font-family: var(--rqw-sans);
+  font-size: 14px; font-weight: 500; letter-spacing: -.01em; color: var(--rqw-text);
+  line-height: 1.2;
+}
+.rqw-val-src {
+  display: block; margin-top: 4px;
+  font-family: var(--rqw-mono); font-size: 9px; letter-spacing: .02em; color: var(--rqw-text-dim);
+}
+
+/* person card (verifier) */
+.rqw-person-top {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+}
+.rqw-person-id { display: flex; align-items: center; gap: 11px; }
+.rqw-avatar {
+  flex: none; width: 38px; height: 38px; border-radius: 50%;
+  background: var(--rqw-indigo); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--rqw-sans); font-size: 13px; font-weight: 500; letter-spacing: .02em;
+}
+.rqw-person-name { font-size: 14.5px; font-weight: 500; letter-spacing: -.01em; color: var(--rqw-text); }
+.rqw-person-role { font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim); margin-top: 2px; }
+.rqw-person-note {
+  margin: 14px 0 0; padding-left: 12px;
+  border-left: 2px solid var(--rqw-indigo-pale);
+  font-size: 13px; line-height: 1.5; color: var(--rqw-text-soft);
+}
+
+/* message / confirm (verifier output) */
+.rqw-msg {
+  background: var(--rqw-indigo-pale); border: 1px solid #e0e4ff;
+  border-radius: 12px 12px 12px 4px; padding: 11px 13px;
+  font-size: 13px; line-height: 1.5; color: #2c2a5e;
+}
+.rqw-msg-meta {
+  font-family: var(--rqw-mono); font-size: 9.5px; letter-spacing: .06em;
+  color: var(--rqw-text-dim); margin-bottom: 8px;
+}
+.rqw-confirm {
+  display: flex; align-items: flex-start; gap: 10px; margin-top: 14px;
+  padding-top: 12px; border-top: 1px solid var(--rqw-line-soft);
+  font-size: 13px; line-height: 1.45; color: var(--rqw-text);
+}
+.rqw-confirm .rqw-check {
+  flex: none; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--rqw-ok-bg); color: var(--rqw-ok);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.rqw-confirm-body b { font-weight: 500; }
+.rqw-confirm-meta {
+  display: block; margin-top: 4px;
+  font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim);
+}
+
+/* article (writer output) */
+.rqw-article-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.rqw-article-head h3 {
+  margin: 0;
+  font-family: var(--rqw-sans);
+  font-size: 16px; font-weight: 500; letter-spacing: -.014em; line-height: 1.3;
+  color: var(--rqw-text);
+}
+.rqw-article-meta {
+  font-family: var(--rqw-mono); font-size: 10.5px; letter-spacing: .04em;
+  color: var(--rqw-text-dim); margin: 6px 0 16px;
+}
+.rqw-rule { height: 1px; background: var(--rqw-line-soft); margin: 0 0 14px; }
+.rqw-step { margin-bottom: 11px; }
+.rqw-step:last-of-type { margin-bottom: 0; }
+.rqw-step-head { display: flex; align-items: baseline; gap: 10px; }
+.rqw-step-n { flex: none; font-family: var(--rqw-mono); font-size: 11px; font-weight: 500; color: var(--rqw-indigo); width: 16px; }
+.rqw-step-title { font-size: 13.5px; font-weight: 450; letter-spacing: -.01em; color: var(--rqw-text); line-height: 1.4; }
+.rqw-foot {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rqw-line-soft);
+  font-family: var(--rqw-mono); font-size: 10.5px; letter-spacing: .04em; color: var(--rqw-text-dim);
+}
+.rqw-foot i { width: 3px; height: 3px; border-radius: 50%; background: var(--rqw-text-dim); opacity: .55; }
+.rqw-foot .rqw-foot-ok { color: var(--rqw-ok); }
+
+/* knowledge manager: search + results */
+.rqw-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--rqw-card-2);
+  border: 1px solid var(--rqw-line);
+  border-radius: 9px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+.rqw-search-icon { color: var(--rqw-text-dim); display: flex; flex: none; }
+.rqw-search-q {
+  flex: 1 1 auto;
+  font-family: var(--rqw-sans);
+  font-size: 13px;
+  font-weight: 450;
+  letter-spacing: -.005em;
+  color: var(--rqw-text);
+}
+.rqw-search-cursor {
+  flex: none;
+  display: inline-block;
+  width: 1.5px;
+  height: 13px;
+  background: var(--rqw-indigo);
+  animation: rqw-blink 1.1s steps(1) infinite;
+}
+@keyframes rqw-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+.rqw-results-meta {
+  font-family: var(--rqw-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--rqw-text-dim);
+  margin-bottom: 4px;
+}
+.rqw-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--rqw-line-soft);
+}
+.rqw-result:last-of-type { padding-bottom: 0; }
+.rqw-result-main { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.rqw-result-title {
+  font-family: var(--rqw-sans);
+  font-size: 13.5px; font-weight: 450; letter-spacing: -.008em;
+  color: var(--rqw-text);
+}
+.rqw-result-meta {
+  font-family: var(--rqw-mono);
+  font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim);
+}
+
+/* ask / answer (mcp) */
+.rqw-ask {
+  align-self: flex-end; max-width: 90%;
+  margin-left: auto;
+  background: var(--rqw-card-2); border: 1px solid var(--rqw-line);
+  border-radius: 12px 12px 4px 12px; padding: 11px 14px;
+  font-size: 13.5px; line-height: 1.45; color: var(--rqw-text);
+}
+.rqw-ask-from {
+  display: block; margin-bottom: 4px;
+  font-family: var(--rqw-mono); font-size: 9.5px; letter-spacing: .06em; color: var(--rqw-text-dim);
+}
+.rqw-answer-body { font-size: 13.5px; line-height: 1.55; color: var(--rqw-text); margin: 0 0 12px; }
+.rqw-answer-body b { font-weight: 500; }
+.rqw-source {
+  display: flex; align-items: center; gap: 9px;
+  background: var(--rqw-card-2); border: 1px solid var(--rqw-line);
+  border-radius: 8px; padding: 8px 11px; margin-bottom: 12px;
+}
+.rqw-source-icon { flex: none; color: var(--rqw-indigo); display: flex; }
+.rqw-source-name { font-size: 12.5px; font-weight: 450; color: var(--rqw-text); }
+.rqw-source-name span { color: var(--rqw-ok); font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; margin-left: 6px; }
+.rqw-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.rqw-tag-mono {
+  font-family: var(--rqw-mono);
+  font-size: 10px; letter-spacing: .04em;
+  color: var(--rqw-text-soft); background: var(--rqw-card-2);
+  border: 1px solid var(--rqw-line); border-radius: 100px; padding: 4px 10px;
+}
+.rqw-tag-mono b { color: var(--rqw-indigo); font-weight: 500; }
+
+/* scroll-in motion cascade */
+@media (prefers-reduced-motion: no-preference) {
+  .rqw-suite.rqw-anim .rqw-copy,
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-card,
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-verb,
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-thread {
+    will-change: opacity, transform;
+  }
+  .rqw-suite.rqw-anim .rqw-copy {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease);
+  }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-card {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease);
+  }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-card:nth-of-type(2) { transition-delay: .42s; }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-thread {
+    transform: translateX(-50%) scaleY(0);
+    transition: transform .5s var(--rqw-ease) .22s;
+  }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-verb {
+    opacity: 0;
+    transform: scale(.9);
+    transition: opacity .45s var(--rqw-ease) .34s, transform .45s var(--rqw-ease) .34s, box-shadow .6s var(--rqw-ease);
+  }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-copy {
+    opacity: 1; transform: none; transition-delay: .04s;
+  }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-card {
+    opacity: 1; transform: none;
+  }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-thread {
+    transform: translateX(-50%) scaleY(1);
+  }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-verb {
+    opacity: 1; transform: none;
+    animation: rqw-verb-glow .9s var(--rqw-ease) .42s 1;
+  }
+  @keyframes rqw-verb-glow {
+    0%   { box-shadow: 0 2px 8px rgba(55,48,163,.45), 0 8px 24px rgba(8,14,38,.35), 0 0 0 0 rgba(165,180,252,.55); }
+    55%  { box-shadow: 0 2px 8px rgba(55,48,163,.45), 0 8px 24px rgba(8,14,38,.35), 0 0 0 12px rgba(165,180,252,0); }
+    100% { box-shadow: 0 2px 8px rgba(55,48,163,.45), 0 8px 24px rgba(8,14,38,.35), 0 0 0 0 rgba(165,180,252,0); }
+  }
+  .rqw-card { transition: transform .35s var(--rqw-ease), box-shadow .35s var(--rqw-ease); }
+  .rqw-fragment:hover .rqw-card:last-child {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 4px rgba(8,14,38,.30), 0 24px 60px rgba(8,14,38,.46), 0 50px 110px rgba(8,14,38,.30);
+  }
+}
+
+@media (max-width: 980px) {
+  .rqw-suite { padding: 72px 0 80px; }
+  .rqw-row { grid-template-columns: 1fr; gap: 40px; padding: 56px 0; }
+  .rqw-row--flip .rqw-copy { order: 0; }
+  .rqw-copy { max-width: 600px; }
+  .rqw-fragment, .rqw-row--flip .rqw-fragment { justify-self: start; }
+}
+@media (max-width: 560px) {
+  .rqw-inner { width: calc(100% - 32px); }
+  .rqw-vals { flex-wrap: wrap; }
+  .rqw-val { flex: 1 1 30%; }
 }
 </style>
 </head>
@@ -920,9 +1427,7 @@ footer {
 <div class="announce">
   <div class="wrap announce-inner">
     <a href="#contact" aria-label="Pre-seed round — selected pilot and validation collaborations open">
-      <span class="announce-badge">
-        Pre-seed round
-      </span>
+      <span class="announce-badge">Pre-seed round</span>
       <span class="announce-line">
         <span class="announce-msg">Selected pilot &amp; validation collaborations open</span>
         <span class="announce-arrow" aria-hidden="true">
@@ -947,8 +1452,8 @@ footer {
     </a>
 
     <div class="nav-links">
-      <a href="#how-it-works">How it works</a>
       <a href="#problem">Problem</a>
+      <a href="#what-you-get">What you get</a>
       <a href="#solution">Solution</a>
       <a href="#why">Why Requivo</a>
       <a href="#use-cases">Use cases</a>
@@ -966,10 +1471,10 @@ footer {
           <span class="line">Critical knowledge exists</span>
           <span class="line"><span class="accent">Requivo</span> makes it usable</span>
         </h1>
-        <p class="hero-sub">Requivo turns your scattered documents, systems, and expert know-how into one governed knowledge layer — a validated, traceable source your teams and AI tools can query, reuse, and trust.</p>
+        <p class="hero-sub">Requivo turns scattered documents, internal systems, and expert know-how into a governed operational knowledge layer your teams and AI tools can safely query, reuse, and trust.</p>
         <div class="hero-actions">
-          <a href="#how-it-works" class="btn btn-primary">Explore how it works</a>
-          <a href="#contact" class="btn btn-outline">Contact the team</a>
+          <a href="#what-you-get" class="btn btn-primary">See what users get</a>
+          <a href="#solution" class="btn btn-outline">See the solution</a>
         </div>
       </div>
 
@@ -988,135 +1493,10 @@ footer {
   </div>
 </section>
 
-<section id="how-it-works">
-  <div class="wrap">
-    <div class="how-head">
-      <div class="section-label">How Requivo works</div>
-      <div class="section-title reveal">From scattered evidence to a knowledge layer you can rely on</div>
-      <div class="section-sub reveal d1">Requivo connects your fragmented sources, surfaces weak or conflicting knowledge, routes the open questions to the right experts, and maintains one governed layer your whole organisation can reuse — for answers, documents and controlled AI access.</div>
-    </div>
-  </div>
-
-  <div class="mechanism-shell reveal d1">
-    <section class="rq-mechanism" aria-label="Requivo knowledge mechanism">
-      <div class="rq-mechanism-header">
-        <div class="rq-mechanism-brand">
-          <span class="rq-mechanism-wordmark">Requivo</span>
-          <span class="rq-mechanism-divider"></span>
-          <span class="rq-mechanism-eyebrow">Knowledge Mechanism</span>
-        </div>
-        <div class="rq-mechanism-controls">
-          <div class="rq-mechanism-dots" role="tablist" aria-label="Steps"></div>
-          <button class="rq-mechanism-play" type="button" aria-label="Pause autoplay">
-            <span class="rq-mechanism-play-icon"></span>
-            <span class="rq-mechanism-play-label">Pause</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="rq-mechanism-stage-wrap">
-        <div class="rq-mechanism-stage" data-stage>
-          <svg class="rq-mechanism-bg" viewBox="0 0 1660 860" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <pattern id="rqMechGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
-                <circle cx="0.5" cy="0.5" r="0.5" fill="oklch(72% 0.025 275 / 0.20)"/>
-              </pattern>
-              <radialGradient id="rqMechWash" cx="50%" cy="50%" r="42%">
-                <stop offset="0%" stop-color="oklch(94% 0.035 275 / 0.45)"/>
-                <stop offset="100%" stop-color="oklch(98.6% 0.006 275 / 0)"/>
-              </radialGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#rqMechGrid)"/>
-            <rect width="100%" height="100%" fill="url(#rqMechWash)"/>
-          </svg>
-
-          <div class="rq-mechanism-label" style="left:70px;top:92px">FRAGMENTED EVIDENCE</div>
-          <div class="rq-mechanism-label rq-mechanism-label--center" style="left:350px;top:92px;width:340px">REQUIVO RESOLUTION ENGINE</div>
-          <div class="rq-mechanism-label rq-mechanism-label--center" style="left:706px;top:92px;width:309px">EXPERT CAPTURE LOOP</div>
-          <div class="rq-mechanism-label rq-mechanism-label--center" style="left:1156px;top:92px;width:276px">GOVERNED KNOWLEDGE LAYER</div>
-          <div class="rq-mechanism-label" style="left:1462px;top:92px">REQUIVO APPLICATIONS</div>
-
-          <svg class="rq-mechanism-connectors" viewBox="0 0 1660 860" data-connectors aria-hidden="true">
-            <defs>
-              <linearGradient id="rqMechAccent" x1="0" x2="1">
-                <stop offset="0%" stop-color="oklch(78% 0.08 282)"/>
-                <stop offset="100%" stop-color="oklch(58% 0.16 282)"/>
-              </linearGradient>
-              <linearGradient id="rqMechAccentBack" x1="1" x2="0">
-                <stop offset="0%" stop-color="oklch(58% 0.16 282)"/>
-                <stop offset="100%" stop-color="oklch(78% 0.08 282)"/>
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <div class="rq-mechanism-evidence" data-evidence></div>
-
-          <div class="rq-mechanism-mark" data-mark>Requivo</div>
-
-          <div class="rq-mechanism-engine" data-engine>
-            <div class="rq-mechanism-engine-header">
-              <span>Resolution Engine</span>
-            </div>
-            <div class="rq-mechanism-engine-rule"></div>
-            <div class="rq-mechanism-engine-rows" data-engine-rows></div>
-            <div class="rq-mechanism-anchor rq-mechanism-anchor--right"></div>
-          </div>
-
-          <svg class="rq-mechanism-loop" viewBox="0 0 350 420" preserveAspectRatio="none" aria-hidden="true"
-               style="left:702px;top:170px;width:350px;height:420px">
-            <path d="M 12 30 C 12 8, 50 6, 175 6 C 300 6, 338 8, 338 30 L 338 390 C 338 412, 300 414, 175 414 C 50 414, 12 412, 12 390 Z"
-                  fill="none" stroke="oklch(72% 0.08 282 / 0.28)" stroke-width="1" stroke-dasharray="2 4"/>
-          </svg>
-
-          <div class="rq-mechanism-zone-label" style="left:720px;top:188px" data-zone-out>
-            <span class="rq-mechanism-zone-tick"></span>
-            <span>Routed → selected experts</span>
-          </div>
-          <div class="rq-mechanism-zone-label" style="left:720px;top:402px" data-zone-in>
-            <span class="rq-mechanism-zone-tick"></span>
-            <span>Captured ← retained</span>
-          </div>
-
-          <div class="rq-mechanism-questions" data-questions></div>
-          <div class="rq-mechanism-experts" data-experts></div>
-          <div class="rq-mechanism-returns" data-returns></div>
-
-          <div class="rq-mechanism-kl" data-kl>
-            <div class="rq-mechanism-kl-header"><span>Knowledge Layer</span></div>
-            <div class="rq-mechanism-kl-rule"></div>
-            <div class="rq-mechanism-kl-rows" data-kl-rows></div>
-            <div class="rq-mechanism-anchor rq-mechanism-anchor--left"></div>
-            <div class="rq-mechanism-density" data-density>
-              <span data-density-1>validated</span>
-              <span class="rq-mechanism-density-dot"></span>
-              <span data-density-2>retained</span>
-              <span class="rq-mechanism-density-dot"></span>
-              <span data-density-3>reusable</span>
-            </div>
-          </div>
-
-          <div class="rq-mechanism-apps" data-apps></div>
-
-          <div class="rq-mechanism-rail" data-rail></div>
-        </div>
-      </div>
-
-      <div class="rq-mechanism-caption" data-caption>
-        <div class="rq-mechanism-caption-meta">
-          <span class="rq-mechanism-caption-step" data-caption-step>Step 01 / 06</span>
-          <span class="rq-mechanism-divider"></span>
-          <span class="rq-mechanism-caption-title" data-caption-title></span>
-        </div>
-        <p class="rq-mechanism-caption-desc" data-caption-desc></p>
-      </div>
-    </section>
-  </div>
-</section>
-
 <section id="problem">
   <div class="wrap">
     <div class="section-label">Problem</div>
-    <div class="section-title reveal">Operational knowledge is everywhere - but rarely ready to use</div>
+    <div class="section-title reveal">Operational knowledge is everywhere — but rarely ready to use</div>
     <div class="section-sub reveal d1">Most organisations don’t struggle because the information is missing. They struggle because the knowledge they run on is scattered across systems, hard to validate, and held in a few people’s heads.</div>
 
     <div class="prob-grid">
@@ -1141,6 +1521,355 @@ footer {
   </div>
 </section>
 
+<!-- =====================================================
+     WHAT YOU GET · 5-block spotlight suite
+     ===================================================== -->
+<section class="rqw-suite" id="what-you-get" aria-label="What you get">
+  <div class="rqw-inner">
+
+    <header class="rqw-head">
+      <span class="rqw-eyebrow">What you get</span>
+      <h2>From scattered knowledge to outputs your team can trust</h2>
+      <p>Follow one everyday problem — starting a new customer project — as Requivo turns scattered documents, conflicting instructions, and expert memory into a governed knowledge layer your team can use.</p>
+    </header>
+
+    <!-- ============ 01 · CONFLICT & GAP ============ -->
+    <div class="rqw-row">
+      <div class="rqw-copy">
+        <div class="rqw-mark">
+          <span class="rqw-mark-ord">01</span>
+          <span class="rqw-mark-rule" aria-hidden="true"></span>
+          <span class="rqw-mark-label">Conflict &amp; gap detection</span>
+        </div>
+        <h2 class="rqw-title">Catch the contradictions nobody noticed</h2>
+        <p class="rqw-sub">
+          Requivo reads across every source at once and flags where they disagree —
+          and where a step was never written down at all. The problems you couldn’t
+          see, made visible before they reach the floor.
+        </p>
+        <div class="rqw-meta">
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Contradictions surfaced</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Missing steps flagged</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Silent drift caught</span>
+        </div>
+      </div>
+
+      <div class="rqw-fragment">
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-card-head">
+            <h4>Analysis</h4>
+            <span class="rqw-pill-soft">Automated</span>
+          </div>
+
+          <div class="rqw-finding rqw-finding--conflict">
+            <div class="rqw-finding-head">
+              <span class="rqw-finding-label">Customer kickoff approval timeline</span>
+              <span class="rqw-tag rqw-tag--conflict">Conflict</span>
+            </div>
+            <p class="rqw-finding-desc">Three sources give three different answers.</p>
+            <div class="rqw-vals">
+              <div class="rqw-val"><span class="rqw-val-n">2 days</span><span class="rqw-val-src">Sales playbook · 2022</span></div>
+              <div class="rqw-val"><span class="rqw-val-n">5 days</span><span class="rqw-val-src">Ops handbook · 2024</span></div>
+              <div class="rqw-val"><span class="rqw-val-n">Before signing</span><span class="rqw-val-src">Team wiki · 2021</span></div>
+            </div>
+          </div>
+
+          <div class="rqw-finding rqw-finding--gap">
+            <div class="rqw-finding-head">
+              <span class="rqw-finding-label">Handover from sales to delivery</span>
+              <span class="rqw-tag rqw-tag--gap">Gap</span>
+            </div>
+            <p class="rqw-finding-desc">No approved source explains what must be transferred before the project starts.</p>
+          </div>
+        </div>
+
+        <div class="rqw-flow rqw-flow--solo">
+          <span class="rqw-verb">
+            Routed to the right expert
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 02 · KNOWLEDGE VERIFIER ============ -->
+    <div class="rqw-row rqw-row--flip">
+      <div class="rqw-copy">
+        <div class="rqw-mark">
+          <span class="rqw-mark-ord">02</span>
+          <span class="rqw-mark-rule" aria-hidden="true"></span>
+          <span class="rqw-mark-label">Knowledge Verifier</span>
+        </div>
+        <h2 class="rqw-title">The right question reaches the right person</h2>
+        <p class="rqw-sub">
+          Requivo knows who actually owns each answer, and sends them one focused
+          question. They confirm from their phone — no meeting, nothing to write up.
+          Open questions get resolved, not buried in a backlog.
+        </p>
+        <div class="rqw-meta">
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Right person, automatically</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>One precise question</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmed, not chased</span>
+        </div>
+      </div>
+
+      <div class="rqw-fragment">
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-card-head">
+            <h4>Verification queue</h4>
+            <span class="rqw-pill-soft">1 pending</span>
+          </div>
+          <div class="rqw-person-top">
+            <div class="rqw-person-id">
+              <div class="rqw-avatar" aria-hidden="true">PL</div>
+              <div>
+                <div class="rqw-person-name">Petra Lang</div>
+                <div class="rqw-person-role">Process owner · operations</div>
+              </div>
+            </div>
+            <span class="rqw-pill-soft">Auto-selected</span>
+          </div>
+          <p class="rqw-person-note">Owns the customer onboarding process and has resolved similar approval questions before — so the question goes to her, not the whole team.</p>
+        </div>
+
+        <div class="rqw-flow">
+          <span class="rqw-thread" aria-hidden="true"></span>
+          <span class="rqw-verb">
+            Send one question
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-msg-meta">REQUIVO · 14:32</div>
+          <div class="rqw-msg">Sources disagree on when customer kickoff approval is required. Which rule applies for new customer projects?</div>
+          <div class="rqw-confirm">
+            <span class="rqw-check" aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="rqw-confirm-body">
+              Approval must be completed <b>before internal kickoff</b>. Current rule: Ops handbook 2024.
+              <span class="rqw-confirm-meta">Confirmed by Petra · 2 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 03 · KNOWLEDGE WRITER ============ -->
+    <div class="rqw-row">
+      <div class="rqw-copy">
+        <div class="rqw-mark">
+          <span class="rqw-mark-ord">03</span>
+          <span class="rqw-mark-rule" aria-hidden="true"></span>
+          <span class="rqw-mark-label">Knowledge Writer</span>
+        </div>
+        <h2 class="rqw-title">Living knowledge articles nobody had to write from scratch</h2>
+        <p class="rqw-sub">
+          Once an answer is confirmed, Requivo writes and maintains it as a structured,
+          fully cited article — the know-how that lived in one person’s head, now a
+          living document the whole team can read, follow and trust.
+        </p>
+        <div class="rqw-meta">
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto-detected topics</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Procedure steps</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Every line cited</span>
+        </div>
+      </div>
+
+      <div class="rqw-fragment">
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-card-head">
+            <h4>Source evidence</h4>
+            <span class="rqw-pill-soft">6 sources linked</span>
+          </div>
+          <div class="rqw-chips">
+            <span class="rqw-chip" data-t="pdf"><b>PDF</b>Sales playbook</span>
+            <span class="rqw-chip" data-t="doc"><b>DOC</b>Ops handbook</span>
+            <span class="rqw-chip" data-t="wiki"><b>WIKI</b>Team wiki</span>
+            <span class="rqw-chip" data-t="crm"><b>CRM</b>Account notes</span>
+            <span class="rqw-chip" data-t="mail"><b>MAIL</b>Email thread</span>
+            <span class="rqw-chip" data-t="tpl"><b>TPL</b>Project template</span>
+          </div>
+        </div>
+
+        <div class="rqw-flow">
+          <span class="rqw-thread" aria-hidden="true"></span>
+          <span class="rqw-verb">
+            <svg class="rqw-spark" width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5l1.4 3.9 3.9 1.4-3.9 1.4L8 12.1 6.6 8.2 2.7 6.8l3.9-1.4L8 1.5z" fill="currentColor"/></svg>
+            Generate article
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-article-head">
+            <h3>Starting a new customer project</h3>
+            <span class="rqw-badge rqw-badge--ok">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified
+            </span>
+          </div>
+          <div class="rqw-article-meta">Auto-generated · approved by P. Lang · updated today</div>
+          <div class="rqw-rule"></div>
+
+          <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">01</span><span class="rqw-step-title">Confirm contract and scope</span></div></div>
+          <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">02</span><span class="rqw-step-title">Complete internal kickoff approval</span></div></div>
+          <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">03</span><span class="rqw-step-title">Assign delivery owner</span></div></div>
+          <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">04</span><span class="rqw-step-title">Transfer customer context from sales to delivery</span></div></div>
+          <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">05</span><span class="rqw-step-title">Create project workspace and first milestone plan</span></div></div>
+
+          <div class="rqw-foot">
+            <span>6 sources cited</span><i></i>
+            <span class="rqw-foot-ok">0 open conflicts</span><i></i>
+            <span>Approved by process owner</span><i></i>
+            <span>Living document</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 04 · KNOWLEDGE MANAGER ============ -->
+    <div class="rqw-row rqw-row--flip">
+      <div class="rqw-copy">
+        <div class="rqw-mark">
+          <span class="rqw-mark-ord">04</span>
+          <span class="rqw-mark-rule" aria-hidden="true"></span>
+          <span class="rqw-mark-label">Knowledge Manager</span>
+        </div>
+        <h2 class="rqw-title">One place to find the verified answer</h2>
+        <p class="rqw-sub">
+          Knowledge Manager is your team’s direct interface to the governed layer.
+          Search, browse and read the verified answer — with its sources, validation
+          and approvers attached. No AI required; just the trusted version everyone
+          shares.
+        </p>
+        <div class="rqw-meta">
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Direct browse &amp; search</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Sources attached</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Same version for the team</span>
+        </div>
+      </div>
+
+      <div class="rqw-fragment">
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-card-head">
+            <h4>Knowledge Manager</h4>
+            <span class="rqw-pill-soft">Live</span>
+          </div>
+
+          <div class="rqw-search">
+            <span class="rqw-search-icon" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </span>
+            <span class="rqw-search-q">starting a new customer project</span>
+            <span class="rqw-search-cursor" aria-hidden="true"></span>
+          </div>
+
+          <div class="rqw-results-meta">3 results · governed knowledge</div>
+
+          <div class="rqw-result">
+            <div class="rqw-result-main">
+              <span class="rqw-result-title">Starting a new customer project</span>
+              <span class="rqw-result-meta">Process · 5 steps · 6 sources</span>
+            </div>
+            <span class="rqw-badge rqw-badge--ok">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified
+            </span>
+          </div>
+          <div class="rqw-result">
+            <div class="rqw-result-main">
+              <span class="rqw-result-title">Customer kickoff approval policy</span>
+              <span class="rqw-result-meta">Policy · 1 rule · 4 sources</span>
+            </div>
+            <span class="rqw-badge rqw-badge--ok">
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Verified
+            </span>
+          </div>
+          <div class="rqw-result">
+            <div class="rqw-result-main">
+              <span class="rqw-result-title">Sales-to-delivery handover</span>
+              <span class="rqw-result-meta">Process · 7 steps · 5 sources</span>
+            </div>
+            <span class="rqw-badge rqw-badge--review">Review</span>
+          </div>
+        </div>
+
+        <div class="rqw-flow rqw-flow--solo">
+          <span class="rqw-verb">
+            Open the verified answer
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 05 · CONNECTED AI / MCP ============ -->
+    <div class="rqw-row">
+      <div class="rqw-copy">
+        <div class="rqw-mark">
+          <span class="rqw-mark-ord">05</span>
+          <span class="rqw-mark-rule" aria-hidden="true"></span>
+          <span class="rqw-mark-label">Connected AI · MCP</span>
+        </div>
+        <h2 class="rqw-title">Your AI, grounded in your organisation’s truth</h2>
+        <p class="rqw-sub">
+          Wire the external AI tools your team already uses — copilots, assistants,
+          agents — into the same governed layer through MCP. They answer from your
+          verified knowledge instead of raw documents, with source evidence,
+          validation state and approval history attached.
+        </p>
+        <div class="rqw-meta">
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Bring your own key</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Model-agnostic</span>
+          <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Always cited</span>
+        </div>
+      </div>
+
+      <div class="rqw-fragment">
+        <div class="rqw-card rqw-card-pad">
+          <div class="rqw-card-head">
+            <h4>Your assistant</h4>
+            <span class="rqw-pill-soft">via MCP</span>
+          </div>
+          <div class="rqw-ask">
+            <span class="rqw-ask-from">USER</span>
+            What do I need to do before starting a new customer project?
+          </div>
+        </div>
+
+        <div class="rqw-flow">
+          <span class="rqw-thread" aria-hidden="true"></span>
+          <span class="rqw-verb">Answered from approved knowledge</span>
+        </div>
+
+        <div class="rqw-card rqw-card-pad">
+          <p class="rqw-answer-body">
+            Confirm contract and scope, complete internal kickoff approval, assign the
+            delivery owner, transfer customer context from sales to delivery, and create
+            the project workspace. This answer is based on the <b>approved customer
+            project start procedure</b>.
+          </p>
+          <div class="rqw-source">
+            <span class="rqw-source-icon" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 2.5h6l2.5 2.5v8.5H4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 7.5h4M6 9.8h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="rqw-source-name">Starting a new customer project <span>· approved</span></span>
+          </div>
+          <div class="rqw-tags">
+            <span class="rqw-tag-mono"><b>BYOK</b> · your key</span>
+            <span class="rqw-tag-mono">Model-agnostic</span>
+            <span class="rqw-tag-mono">Approved by P. Lang</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="solution">
   <div class="wrap">
     <div class="section-label">Solution</div>
@@ -1148,15 +1877,15 @@ footer {
 
     <div class="solution-layout">
       <div class="sol-copy reveal">
-        <p>Requivo works where your critical knowledge actually lives — across documents, systems, workflows, and people.</p>
-        <p>It structures those fragmented inputs into a single governed layer, flags what’s weak, missing, or contradictory, and routes those areas to the right expert to confirm.</p>
-        <p>What comes back isn’t a one-off answer. It’s a reusable knowledge asset your teams can query for validated answers, your new hires can learn from, and your AI tools can safely build on — with every item carrying its source, validation status, and evidence trail.</p>
+        <p>Requivo works where your critical knowledge already lives — across documents, systems, workflows, and people.</p>
+        <p>It structures fragmented evidence, detects gaps and conflicts, and routes unresolved areas to the right expert for confirmation.</p>
+        <p>The result is not a one-off answer. It is a reusable knowledge layer your teams can use for answers, procedures, onboarding, handovers, and controlled AI access.</p>
       </div>
 
       <div class="sol-panels reveal d1">
         <div class="sol-panel">
           <div class="sol-tag">Core flow</div>
-          <h3>Fragmented evidence → structure → governed knowledge</h3>
+          <h3>Fragmented evidence → governed knowledge</h3>
           <p>Connect what’s scattered and turn it into maintained, validated operational knowledge.</p>
         </div>
 
@@ -1169,53 +1898,8 @@ footer {
         <div class="sol-panel">
           <div class="sol-tag">Application layer</div>
           <h3>One layer, many uses</h3>
-          <p>The same governed layer powers answers, documents, verification, and controlled AI access.</p>
+          <p>The same governed layer powers verified answers, living procedures, expert review tasks, onboarding, handover, and controlled AI access.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="what-you-get">
-  <div class="wrap">
-    <div class="section-label">What you get</div>
-    <div class="section-title reveal">A knowledge layer that works the way your organisation does</div>
-    <div class="section-sub reveal d1">Once your knowledge is governed, it stops being a pile of files and becomes something you use every day, across every team.</div>
-
-    <div class="sol-panels reveal d1">
-      <div class="sol-panel">
-        <h3>Answers you can stand behind</h3>
-        <p>Ask a specific operational question and get a validated answer that carries its source revision, who approved it, and the evidence behind it.</p>
-      </div>
-
-      <div class="sol-panel">
-        <h3>A record of what you knew, when</h3>
-        <p>Because every item is committed with its provenance and approval history, Requivo can show what your organisation knew, what was approved, and what was permitted at any past moment.</p>
-      </div>
-
-      <div class="sol-panel">
-        <h3>Open questions routed to the right expert</h3>
-        <p>Gaps and conflicts don’t sit in a backlog. They’re routed automatically to the named expert who should resolve them — quality lead, engineering owner, process owner, senior specialist — as a tracked task. They confirm; they don’t get buried in busywork.</p>
-      </div>
-
-      <div class="sol-panel">
-        <h3>The problems you couldn’t see, made visible</h3>
-        <p>Requivo surfaces where procedures are missing, work instructions contradict each other, documents have gone out of date or been duplicated, and where written process has drifted from how work is actually done.</p>
-      </div>
-
-      <div class="sol-panel">
-        <h3>Onboarding without re-explaining</h3>
-        <p>A ready, governed knowledge package for new people — so they learn from validated procedures instead of asking around and hoping the answer is current. Less senior time spent explaining the same things.</p>
-      </div>
-
-      <div class="sol-panel">
-        <h3>Living documents, not static files</h3>
-        <p>Procedures, work instructions, and templates maintained as validated, living objects with citations to their sources — instead of files that quietly go out of date the moment they’re saved.</p>
-      </div>
-
-      <div class="sol-panel">
-        <h3>Your AI, grounded in your truth — with your own key</h3>
-        <p>Connect the AI tools your teams already use through your own key (BYOK). They read from your governed knowledge layer instead of generic data, so answers about your organisation are grounded in what you’ve actually validated. Requivo stays model-agnostic — your knowledge is the durable asset, and you’re never locked to one vendor.</p>
       </div>
     </div>
   </div>
@@ -1224,8 +1908,8 @@ footer {
 <section id="why">
   <div class="wrap">
     <div class="section-label">Why Requivo</div>
-    <div class="section-title reveal">Better retrieval isn’t enough when the underlying knowledge is fragmented</div>
-    <div class="section-sub reveal d1">Requivo is not another AI assistant. General AI tools are trained on broad, public knowledge, but they do not understand how your organisation actually works — your procedures, decisions, exceptions, responsibilities, and validated internal answers. Requivo creates the governed knowledge layer that holds this organisational truth in a structured, traceable, and maintainable form. Once this layer exists, the AI tools your teams already use can become far more useful.</div>
+    <div class="section-title reveal">Why better search is not enough</div>
+    <div class="section-sub reveal d1">Search tools find documents. AI assistants generate answers. Documentation tools store what people write. Requivo starts earlier: it makes organisational knowledge trustworthy before people and AI reuse it.</div>
 
     <div class="strata reveal d1">
       <div class="strata-row">
@@ -1264,22 +1948,22 @@ footer {
 <section id="use-cases">
   <div class="wrap">
     <div class="section-label">Use cases</div>
-    <div class="section-title reveal">Built for organisations where operational knowledge must be preserved, validated, and reused</div>
+    <div class="section-title reveal">Where Requivo creates value first</div>
 
     <div class="use-grid">
       <div class="use-card reveal">
         <h3>Operations &amp; manufacturing</h3>
-        <p>Preserve procedures, incidents, maintenance knowledge, and operational context so teams are not dependent on scattered files or individual memory.</p>
+        <p>Validated procedures, maintenance knowledge, incident learnings, restart guidance, and shift-critical know-how.</p>
       </div>
 
       <div class="use-card reveal d1">
         <h3>Engineering &amp; technical services</h3>
-        <p>Keep documentation, configurations, decisions, and practical know-how aligned across teams, projects, and versions.</p>
+        <p>Technical documentation, configuration decisions, project handovers, exception logic, and expert reasoning.</p>
       </div>
 
       <div class="use-card reveal d2">
         <h3>Regulated and process-heavy environments</h3>
-        <p>Support traceability, validation, and knowledge ownership where operational reliability depends on trusted internal knowledge.</p>
+        <p>Traceable procedures, audit-ready evidence, validated work instructions, and controlled AI access.</p>
       </div>
     </div>
   </div>
@@ -1288,7 +1972,7 @@ footer {
 <section id="contact">
   <div class="wrap">
     <div class="section-label">Contact</div>
-    <div class="section-title reveal">Requivo is preparing selected pilot and validation collaborations. If your organisation depends on complex operational knowledge, we would be glad to discuss a potential use case</div>
+    <div class="section-title reveal">Requivo is preparing selected pilot and validation collaborations. If your organisation depends on complex operational knowledge, we would be glad to explore one high-value workflow together.</div>
 
     <div class="contact-grid">
       <div class="contact-card reveal">
@@ -1330,11 +2014,10 @@ footer {
 
       <div class="footer-col">
         <h4>Product</h4>
-        <a href="#how-it-works">How it works</a>
         <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
         <a href="#what-you-get">What you get</a>
-        <a href="#why">Why Requivo</a>
+        <a href="#solution">Solution</a>
+          <a href="#why">Why Requivo</a>
         <a href="#use-cases">Use cases</a>
         <a href="requivo-vs-llm.html">Requivo vs LLM models</a>
       </div>
@@ -1365,7 +2048,22 @@ footer {
   </div>
 </footer>
 
-<script src="requivo-mechanism.js" defer></script>
+<!-- spotlight scroll-in cascade -->
+<script>
+(function () {
+  var s = document.getElementById('what-you-get');
+  if (!s || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  s.classList.add('rqw-anim');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('rqw-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+  s.querySelectorAll('.rqw-row').forEach(function (r) { io.observe(r); });
+})();
+</script>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -1373,11 +2071,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const reveals = document.querySelectorAll('.reveal');
 
   function updateNav() {
-    if (window.scrollY > 8) {
-      nav.classList.add('raised');
-    } else {
-      nav.classList.remove('raised');
-    }
+    if (window.scrollY > 8) { nav.classList.add('raised'); }
+    else { nav.classList.remove('raised'); }
   }
 
   updateNav();
@@ -1393,10 +2088,7 @@ document.addEventListener('DOMContentLoaded', function () {
           obs.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     reveals.forEach(el => observer.observe(el));
   }
