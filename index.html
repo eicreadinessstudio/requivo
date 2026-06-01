@@ -8,11 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-<script>
-  document.documentElement.classList.add('js');
-</script>
-
+<script>document.documentElement.classList.add('js');</script>
 <style>
 /* =========================================================
    DESIGN TOKENS
@@ -40,10 +36,8 @@
   --indigo-on-dark: #a5b4fc;
   --brand:       #4f46e5;
   --sky:         #0ea5e9;
-
   --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
-
   --fs-micro:    11px;
   --fs-xs:       12px;
   --fs-sm:       13.5px;
@@ -54,7 +48,6 @@
   --fs-h3:       26px;
   --fs-h2:       clamp(28px, 3.2vw, 42px);
   --fs-h1:       clamp(40px, 5.6vw, 64px);
-
   --max:         1180px;
   --radius:      6px;
   --radius-lg:   14px;
@@ -64,7 +57,6 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-sans);
   font-size: var(--fs-base);
@@ -78,90 +70,11 @@ body {
   font-feature-settings: "ss01" 1, "ss03" 1, "cv11" 1, "kern" 1, "calt" 1;
   overflow-x: hidden;
 }
-
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 .wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-
-/* Craft details — branded text selection + keyboard focus */
-::selection {
-  background: #c7d2fe;
-  color: #1a1147;
-}
-:focus-visible {
-  outline: 2px solid var(--indigo-mid);
-  outline-offset: 3px;
-  border-radius: 3px;
-}
-
-/* =========================================================
-   ANNOUNCEMENT BAR
-   ========================================================= */
-.announce {
-  position: relative;
-  background: var(--bg-deep);
-  background-image:
-    radial-gradient(120% 160% at 50% -50%, rgba(79,70,229,.30) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,0));
-  border-bottom: 1px solid rgba(255,255,255,.07);
-}
-.announce::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(129,140,248,.55), transparent);
-}
-
-.announce-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  padding: 6px 0;
-}
-.announce-inner > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 450;
-  letter-spacing: -.005em;
-  line-height: 1.4;
-  color: #e8ecf7;
-}
-
-.announce-badge {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  color: #c7d2fe;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.announce-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-.announce-msg { color: rgba(232,236,247,.92); font-weight: 450; letter-spacing: -.004em; }
-
-.announce-arrow {
-  flex: none;
-  display: inline-flex;
-  opacity: .72;
-  transition: transform .22s var(--ease), opacity .22s;
-}
-.announce-inner > a:hover .announce-arrow {
-  transform: translateX(3px);
-  opacity: 1;
-}
-.announce-inner > a:hover .announce-msg { color: #fff; }
+::selection { background: #c7d2fe; color: #1a1147; }
+:focus-visible { outline: 2px solid var(--indigo-mid); outline-offset: 3px; border-radius: 3px; }
 
 /* =========================================================
    NAV
@@ -181,8 +94,6 @@ nav.raised {
   border-bottom-color: var(--line-soft);
   box-shadow: 0 1px 0 var(--line-soft);
 }
-
-
 .nav-inner {
   display: flex;
   align-items: center;
@@ -190,24 +101,17 @@ nav.raised {
   height: 64px;
   gap: 32px;
 }
-
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   font-family: var(--font-sans);
   font-size: 16.5px;
   font-weight: 500;
   color: var(--text);
   letter-spacing: -.018em;
 }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
+.nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a {
   font-family: var(--font-sans);
   font-size: var(--fs-sm);
@@ -216,13 +120,11 @@ nav.raised {
   letter-spacing: -.005em;
   transition: color .18s;
 }
-
 .nav-links a:hover { color: var(--text); }
-
 .nav-cta {
   border: 1px solid var(--indigo) !important;
   color: var(--indigo) !important;
-  padding: 7px 16px;
+  padding: 8px 20px;
   border-radius: var(--radius);
   font-size: var(--fs-sm) !important;
   font-weight: 500 !important;
@@ -230,11 +132,7 @@ nav.raised {
   letter-spacing: -.005em;
   transition: background .18s, color .18s !important;
 }
-.nav-cta:hover {
-  background: var(--indigo) !important;
-  color: #fff !important;
-}
-
+.nav-cta:hover { background: var(--indigo) !important; color: #fff !important; }
 .footer-logo {
   display: flex;
   align-items: center;
@@ -259,7 +157,6 @@ nav.raised {
   isolation: isolate;
   background: var(--bg);
 }
-/* Subtle depth — ties the white hero to the dark section's texture language */
 .hero::before {
   content: '';
   position: absolute;
@@ -271,7 +168,6 @@ nav.raised {
   background-size: 30px 30px, 100% 100%;
   pointer-events: none;
 }
-
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -280,22 +176,21 @@ nav.raised {
   gap: clamp(32px, 5vw, 64px);
   align-items: center;
 }
-
 .hero-tag {
   display: block;
-  font-family: var(--font-sans);
-  font-size: var(--fs-label);
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: -.012em;
-  text-transform: none;
-  color: var(--brand);
-  margin-bottom: 22px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--indigo-mid);
+  opacity: .72;
+  margin-bottom: 20px;
 }
-
 .hero h1 {
   font-family: var(--font-sans);
   font-size: var(--fs-h1);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.03;
   letter-spacing: -.032em;
   color: var(--text);
@@ -303,11 +198,9 @@ nav.raised {
   max-width: 720px;
   text-wrap: balance;
 }
-
 .hero h1 .line { display: block; }
 .hero h1 .line + .line { margin-top: .04em; }
 .hero h1 .accent { color: var(--brand); }
-
 .hero-sub {
   font-size: var(--fs-lead);
   line-height: 1.6;
@@ -317,7 +210,6 @@ nav.raised {
   margin-bottom: 36px;
   letter-spacing: -.005em;
 }
-
 .hero-actions {
   display: flex;
   align-items: center;
@@ -343,7 +235,6 @@ nav.raised {
   transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease), box-shadow .2s var(--ease), transform .2s var(--ease);
   white-space: nowrap;
 }
-
 .btn-primary {
   background: linear-gradient(145deg, #5b52f0 0%, #3730a3 100%);
   color: #fff;
@@ -362,28 +253,14 @@ nav.raised {
     inset 0 1px 0 rgba(255,255,255,.18);
   transform: translateY(-1px);
 }
-
 .btn-outline {
   background: transparent;
   color: var(--indigo);
   border-color: var(--indigo);
 }
-.btn-outline:hover {
-  background: var(--indigo);
-  color: #fff;
-}
-
-.hero-aside {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.hero-shot {
-  width: 100%;
-  max-width: 540px;
-}
-
+.btn-outline:hover { background: var(--indigo); color: #fff; }
+.hero-aside { display: flex; justify-content: flex-end; width: 100%; }
+.hero-shot { width: 100%; max-width: 540px; }
 .hero-shot-frame {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
@@ -395,7 +272,6 @@ nav.raised {
     0 20px 56px rgba(15,28,58,.07);
   padding: 18px;
 }
-
 .hero-shot-frame.hero-no-img {
   min-height: 360px;
   display: flex;
@@ -405,7 +281,6 @@ nav.raised {
   position: relative;
   overflow: hidden;
 }
-
 .hero-shot-frame.hero-no-img::before {
   content: '';
   position: absolute;
@@ -415,7 +290,6 @@ nav.raised {
     linear-gradient(90deg, rgba(55,48,163,.05) 1px, transparent 1px);
   background-size: 32px 32px;
 }
-
 .hero-shot-frame.hero-no-img::after {
   content: 'Interface fragment coming soon';
   font-family: var(--font-mono);
@@ -426,7 +300,6 @@ nav.raised {
   position: relative;
   z-index: 1;
 }
-
 .hero-shot-frame img {
   width: 100%;
   height: auto;
@@ -438,91 +311,88 @@ nav.raised {
   border: 1px solid #e7ebf2;
 }
 
-.hero-shot-caption {
-  margin-top: 12px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
 /* =========================================================
-   HERO INGESTION PANEL — black floating instrument
-   No frame. Sits directly on white hero background.
+   HERO INGESTION PANEL — arctic blue instrument
+   Sits directly on white hero background.
    ========================================================= */
-
-/* Panel floats on white hero bg — drama comes from its own shadow */
 .hi-panel {
   width: 100%;
-  max-width: 486px;
-  background: #000000;
-  border: 1px solid rgba(165,180,252,.18);
+  max-width: 440px;
+  background: rgba(8,14,32,0.90);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 0.5px solid rgba(165,180,252,0.14);
   border-radius: 16px;
   overflow: hidden;
   box-shadow:
-    0 1px 2px   rgba(0,0,0,.50),
-    0 8px 28px  rgba(0,0,0,.36),
-    0 24px 60px rgba(0,0,0,.26),
-    0 0 0 1px   rgba(79,70,229,.08),
-    0 20px 56px rgba(79,70,229,.18);
+    0 0 0 0.5px rgba(165,180,252,0.08),
+    0 1px 3px   rgba(0,0,0,0.32),
+    0 6px 18px  rgba(0,0,0,0.24),
+    0 20px 50px rgba(0,0,0,0.22),
+    0 48px 96px rgba(0,0,0,0.18),
+    0 0 80px    rgba(79,70,229,0.14);
 }
 
-/* Panel header: step label + connector title + status */
+/* Panel header */
 .hi-panel-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 11px 16px 10px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 12px 18px 10px;
+  border-bottom: 0.5px solid rgba(130,170,255,0.07);
+  background: rgba(4,10,24,0.55);
 }
 .hi-panel-meta { display: flex; flex-direction: column; gap: 2px; }
 .hi-panel-step {
   font-family: var(--font-mono);
   font-size: 9px;
-  font-weight: 500;
-  letter-spacing: .18em;
+  font-weight: 400;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: #a5b4fc;
+  color: rgba(148,192,255,0.36);
+  margin-bottom: 4px;
 }
 .hi-panel-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: .12em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.36);
+  color: rgba(186,215,255,0.58);
 }
 
-/* Status pill — dark variants */
+/* Status badge — rectangular */
 .hi-status {
   font-family: var(--font-mono);
-  font-size: 9.5px;
-  font-weight: 500;
-  letter-spacing: .07em;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .10em;
   text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 100px;
-  border: 1px solid transparent;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 0.5px solid transparent;
 }
 .hi-status--active {
   color: #a5b4fc;
-  background: rgba(79,70,229,.22);
-  border-color: rgba(165,180,252,.28);
+  background: rgba(99,102,241,0.16);
+  border-color: rgba(99,102,241,0.36);
 }
 .hi-status--ok {
-  color: #6ee7b7;
-  background: rgba(16,185,129,.16);
-  border-color: rgba(52,211,153,.26);
+  color: #a5b4fc;
+  background: rgba(99,102,241,0.16);
+  border-color: rgba(99,102,241,0.36);
 }
+
+/* Rows container */
+#hi-rows { padding: 3px 0; }
 
 /* Source rows */
 .hi-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 16px;
-  border-bottom: 1px solid rgba(255,255,255,.04);
+  gap: 9px;
+  padding: 8px 18px;
+  border-bottom: 0.5px solid rgba(130,170,255,0.06);
 }
 .hi-row:last-child { border-bottom: none; }
 
@@ -530,36 +400,35 @@ nav.raised {
   flex: none;
   width: 24px;
   height: 24px;
-  border-radius: 6px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,.92);
   font-family: var(--font-mono);
   font-size: 7px;
   font-weight: 600;
-  letter-spacing: .02em;
+  letter-spacing: .04em;
 }
 
 .hi-name {
-  flex: 0 0 auto;
-  max-width: 158px;
+  flex: 1 1 auto;
+  min-width: 0;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 400;
-  color: rgba(255,255,255,.75);
+  color: rgba(210,228,255,0.68);
   letter-spacing: -.005em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Precision-thin progress track */
+/* Arctic blue progress track */
 .hi-bar-wrap {
-  flex: 1 1 auto;
-  min-width: 0;
+  flex: none;
+  width: 90px;
   height: 3px;
-  background: rgba(255,255,255,.07);
+  background: rgba(148,192,255,0.08);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -567,34 +436,34 @@ nav.raised {
   height: 100%;
   width: 0%;
   border-radius: 2px;
-  background: linear-gradient(90deg, #5b52f0 0%, #818cf8 100%);
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
 }
 
-/* Percentage / type pill */
+/* Percentage / type badge */
 .hi-pct {
   flex: none;
-  width: 52px;
+  min-width: 46px;
   text-align: right;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: .02em;
-  color: rgba(255,255,255,.28);
+  color: rgba(148,192,255,0.35);
   white-space: nowrap;
 }
 .hi-pct--done { /* marker only — styling on .hi-type-pill child */ }
 
-/* Colored type pills — dark background variants */
+/* Colored type badges — arctic blue family, rectangular */
 .hi-type-pill {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 600;
-  letter-spacing: .07em;
+  letter-spacing: .09em;
   text-transform: uppercase;
-  padding: 3px 7px;
-  border-radius: 100px;
-  border: 1px solid;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 0.5px solid;
   white-space: nowrap;
   animation: hi-badge-in .26s cubic-bezier(.34,1.56,.64,1) both;
 }
@@ -603,24 +472,54 @@ nav.raised {
   to   { opacity: 1; transform: none; }
 }
 
-/* Footer: subtle green completion strip at card base */
+/* Footer: arctic blue completion strip */
 .hi-footer {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  padding: 9px 16px 11px;
-  border-top: 1px solid rgba(52,211,153,.16);
-  background: rgba(16,185,129,.055);
-  font-family: var(--font-sans);
-  font-size: 11.5px;
-  line-height: 1.5;
-  color: rgba(110,231,183,.85);
+  gap: 10px;
+  padding: 10px 18px 12px;
+  border-top: 0.5px solid rgba(130,170,255,0.07);
+  background: rgba(4,10,24,0.55);
   opacity: 0;
 }
-.hi-footer-icon { flex: none; margin-top: 1px; color: #34d399; }
-.hi-footer b { font-weight: 600; color: #a7f3d0; }
+.hi-footer-icon { flex: none; margin-top: 2px; color: #60a5fa; }
+.hi-footer-body { display: flex; flex-direction: column; gap: 4px; }
+.hi-footer-count {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  color: rgba(186,215,255,0.88);
+  letter-spacing: -0.020em;
+  line-height: 1;
+}
+.hi-footer-label {
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  color: rgba(186,215,255,0.42);
+  line-height: 1.4;
+  letter-spacing: -0.002em;
+}
 
+/* Status badge — single confirm snap, never repeats */
+@keyframes hi-status-confirm {
+  0%   { opacity: 0; transform: scale(0.88); }
+  65%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.hi-status--confirmed {
+  animation: hi-status-confirm 420ms cubic-bezier(.34,1.56,.64,1) 1 both;
+}
 
+/* Panel caption strip */
+.hi-caption {
+  padding: 5px 18px;
+  border-top: 0.5px solid rgba(130,170,255,0.05);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: rgba(148,192,255,0.26);
+}
 
 .trust-inner {
   min-height: 58px;
@@ -630,7 +529,6 @@ nav.raised {
   gap: 18px;
   flex-wrap: wrap;
 }
-
 .trust-item {
   font-family: var(--font-mono);
   font-size: 10.5px;
@@ -640,7 +538,6 @@ nav.raised {
   color: var(--text-soft);
   white-space: nowrap;
 }
-
 .trust-dot {
   width: 3px;
   height: 3px;
@@ -650,25 +547,17 @@ nav.raised {
 }
 
 @media (max-width: 768px) {
-  .trust-inner {
-    min-height: auto;
-    padding: 18px 0;
-    justify-content: flex-start;
-    gap: 10px 14px;
-  }
+  .trust-inner { min-height: auto; padding: 18px 0; justify-content: flex-start; gap: 10px 14px; }
   .trust-dot { display: none; }
-  .trust-item {
-    font-size: 10px;
-    letter-spacing: .11em;
-  }
+  .trust-item { font-size: 10px; letter-spacing: .11em; }
 }
 
 /* =========================================================
    SECTIONS
    ========================================================= */
-section { padding: 112px 0; }
-section + section { border-top: 1px solid var(--line-soft); }
-
+section { padding: 96px 0; }
+#solution { background: var(--bg-deep); }
+#use-cases { border-top: 1px solid var(--line-soft); }
 .section-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -676,13 +565,15 @@ section + section { border-top: 1px solid var(--line-soft); }
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--indigo-mid);
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   display: block;
   background: transparent;
   padding: 0;
   border: 0;
 }
-
+/* section-label on dark backgrounds */
+#solution .section-label,
+#contact .section-label { color: var(--indigo-on-dark); }
 .section-title {
   font-family: var(--font-sans);
   font-size: var(--fs-h2);
@@ -690,72 +581,39 @@ section + section { border-top: 1px solid var(--line-soft); }
   line-height: 1.12;
   letter-spacing: -.024em;
   color: var(--text);
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   max-width: 820px;
   text-wrap: balance;
 }
-
+#solution .section-title,
+#contact .section-title { color: #fff; }
 .section-sub {
-  font-size: var(--fs-lead);
+  font-size: 16px;
   line-height: 1.6;
   color: var(--text-soft);
   max-width: 700px;
   font-weight: 400;
   letter-spacing: -.005em;
-  margin-bottom: 52px;
+  margin-bottom: 36px;
 }
 
 /* =========================================================
    PROBLEM
    ========================================================= */
-.prob-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 24px;
-}
-
-.prob-card {
-  border-top: 1px solid var(--line);
-  padding: 28px 0 0;
-  position: relative;
-}
+.prob-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.prob-card { border-top: 1px solid var(--line); padding: 28px 0 0; position: relative; }
 .prob-card::before {
   content: '';
   position: absolute;
-  top: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
+  top: -1px; left: 0;
+  width: 0; height: 1px;
   background: var(--brand);
   transition: width .4s var(--ease);
 }
 .prob-card:hover::before { width: 100%; }
-
-.prob-num {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: .14em;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-}
-
-.prob-card h3 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-card);
-  font-weight: 500;
-  letter-spacing: -.018em;
-  line-height: 1.25;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.prob-card p {
-  font-size: var(--fs-base);
-  line-height: 1.65;
-  color: var(--text-soft);
-  font-weight: 400;
-  letter-spacing: -.003em;
-}
+.prob-num { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em; color: var(--text-dim); margin-bottom: 14px; }
+.prob-card h3 { font-family: var(--font-sans); font-size: var(--fs-card); font-weight: 500; letter-spacing: -.018em; line-height: 1.25; color: var(--text); margin-bottom: 12px; }
+.prob-card p { font-size: var(--fs-base); line-height: 1.65; color: var(--text-soft); font-weight: 400; letter-spacing: -.003em; }
 
 /* =========================================================
    SOLUTION
@@ -766,67 +624,31 @@ section + section { border-top: 1px solid var(--line-soft); }
   gap: 56px;
   align-items: start;
 }
-
-.sol-copy p {
-  font-size: var(--fs-lead);
-  line-height: 1.68;
-  color: var(--text-soft);
-  font-weight: 400;
-  letter-spacing: -.005em;
-  margin-bottom: 20px;
-}
+.sol-copy p { font-size: var(--fs-lead); line-height: 1.68; color: var(--text-soft); font-weight: 400; letter-spacing: -.005em; margin-bottom: 20px; }
+#solution .sol-copy p { color: var(--text-on-dark-soft); }
 .sol-copy p:last-child { margin-bottom: 0; }
-
-.sol-panels { display: grid; gap: 1px; }
-
+.sol-panels { display: grid; gap: 2px; }
 .sol-panel {
   padding: 22px 24px;
-  border-left: 2px solid var(--line);
+  border-left: 2px solid var(--indigo-soft);
   transition: border-color .25s var(--ease), background .25s var(--ease);
 }
-.sol-panel:hover {
-  border-left-color: var(--indigo);
-  background: var(--indigo-pale);
-}
-
-.sol-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 6px;
-}
-
-.sol-panel h3 {
-  font-family: var(--font-sans);
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 6px;
-  letter-spacing: -.012em;
-  line-height: 1.3;
-}
-
-.sol-panel p {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-soft);
-  font-weight: 400;
-}
+.sol-panel:hover { border-left-color: var(--indigo); background: var(--indigo-pale); }
+#solution .sol-panel { border-left-color: rgba(165,180,252,.25); background: transparent; }
+#solution .sol-panel:hover { border-left-color: var(--indigo-on-dark); background: rgba(255,255,255,.04); }
+.sol-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+#solution .sol-tag { color: var(--text-on-dark-dim); }
+.sol-panel h3 { font-family: var(--font-sans); font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 6px; letter-spacing: -.012em; line-height: 1.3; }
+#solution .sol-panel h3 { color: var(--text-on-dark); }
+.sol-panel p { font-size: 13.5px; line-height: 1.6; color: var(--text-soft); font-weight: 400; }
+#solution .sol-panel p { color: var(--text-on-dark-soft); }
 
 /* =========================================================
-   WHY  — pure white background, sits cleanly after dark
+   WHY
    ========================================================= */
-#why { background: var(--bg); }
-
-.strata {
-  display: grid;
-  gap: 1px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
+#why { background: var(--bg-off); padding: 104px 0; }
+#use-cases { padding: 88px 0; }
+.strata { display: grid; gap: 1px; border-radius: 10px; overflow: hidden; }
 .strata-row {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -834,7 +656,6 @@ section + section { border-top: 1px solid var(--line-soft); }
   transition: filter .18s;
 }
 .strata-row:hover { filter: brightness(.97); }
-
 .strata-label {
   padding: 24px 26px;
   font-family: var(--font-mono);
@@ -846,193 +667,71 @@ section + section { border-top: 1px solid var(--line-soft); }
   align-items: center;
   border-right: 1px solid rgba(255,255,255,.08);
 }
-
-.strata-body {
-  padding: 24px 32px;
-  font-size: var(--fs-base);
-  line-height: 1.65;
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-}
-
-.strata-row:nth-child(1) { background: #c7d0f2; color: #1f2550; }
-.strata-row:nth-child(2) { background: #aab8ea; color: #1b2248; }
-.strata-row:nth-child(3) { background: #8794dc; color: #14193c; }
-.strata-row:nth-child(4) { background: #5b5fc2; color: #ffffff; }
-.strata-row:nth-child(5) { background: #443ead; color: #eef0ff; }
-.strata-row:nth-child(6) { background: #2e2890; color: #dfe4ff; }
-
+.strata-body { padding: 24px 32px; font-size: var(--fs-base); line-height: 1.65; display: flex; align-items: center; font-weight: 400; }
+.strata-row:nth-child(1) { background: #dde3f5; color: #1e2348; }
+.strata-row:nth-child(2) { background: #bbc8ec; color: #181f40; }
+.strata-row:nth-child(3) { background: #8b9fda; color: #0f1530; }
+.strata-row:nth-child(4) { background: var(--indigo-mid); color: #ffffff; }
+.strata-row:nth-child(5) { background: var(--indigo); color: #e8ecf7; }
+.strata-row:nth-child(6) { background: var(--bg-deep); color: var(--text-on-dark); }
 .strata-row:nth-child(1) .strata-label,
 .strata-row:nth-child(2) .strata-label,
 .strata-row:nth-child(3) .strata-label,
-.strata-row:nth-child(4) .strata-label {
-  border-right-color: rgba(0,0,0,.08);
-}
-
+.strata-row:nth-child(4) .strata-label { border-right-color: rgba(0,0,0,.10); }
 
 /* =========================================================
    GOVERNANCE
    ========================================================= */
-#governance {
-  background: var(--bg-off);
-}
-
-.gov-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-}
-
-.gov-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 24px 22px;
-  box-shadow: 0 1px 2px rgba(15,28,58,.035);
-}
-
-.gov-kicker {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-}
-
-.gov-card h3 {
-  font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -.016em;
-  line-height: 1.3;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-
-.gov-card p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-soft);
-}
-
-@media (max-width: 980px) {
-  .gov-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  .gov-grid { grid-template-columns: 1fr; }
-}
+#governance { background: var(--bg-off); padding: 88px 0; }
+.gov-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.gov-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 24px 22px; box-shadow: 0 1px 3px rgba(15,28,58,.06), 0 6px 20px rgba(15,28,58,.09); }
+.gov-kicker { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+.gov-card h3 { font-family: var(--font-sans); font-size: 18px; font-weight: 500; letter-spacing: -.016em; line-height: 1.3; color: var(--text); margin-bottom: 10px; }
+.gov-card p { font-size: 14px; line-height: 1.6; color: var(--text-soft); }
+@media (max-width: 980px) { .gov-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .gov-grid { grid-template-columns: 1fr; } }
 
 /* =========================================================
-   USE CASES (white, inherited)
+   USE CASES
    ========================================================= */
-.use-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 24px;
-}
-
+.use-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
 .use-card {
-  border-top: 1px solid var(--line);
-  padding: 26px 0 0;
-  position: relative;
+  background: var(--bg-off);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px 24px;
+  transition: border-color .22s var(--ease);
 }
-.use-card::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--brand);
-  transition: width .4s var(--ease);
-}
-.use-card:hover::before { width: 100%; }
-
-.use-card h3 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-card);
-  font-weight: 500;
-  letter-spacing: -.018em;
-  line-height: 1.25;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.use-card p {
-  font-size: var(--fs-base);
-  line-height: 1.65;
-  color: var(--text-soft);
-  font-weight: 400;
-}
+.use-card:hover { border-color: var(--indigo-mid); }
+.use-card h3 { font-family: var(--font-sans); font-size: var(--fs-card); font-weight: 500; letter-spacing: -.018em; line-height: 1.25; color: var(--text); margin-bottom: 12px; }
+.use-card p { font-size: var(--fs-base); line-height: 1.65; color: var(--text-soft); font-weight: 400; }
 
 /* =========================================================
-   CONTACT (white, inherited)
+   CONTACT
    ========================================================= */
-#contact { padding: 96px 0; }
+#contact { padding: 80px 0; background: var(--bg-deep); border-top: 1px solid rgba(129,140,248,.20); }
 #contact .section-title {
-  font-size: clamp(20px, 2.2vw, 25px);
-  font-weight: 450;
-  line-height: 1.5;
-  letter-spacing: -.014em;
-  color: var(--text-mid);
-  max-width: 760px;
-  margin-bottom: 40px;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 24px;
-}
-
-.contact-card {
-  border-top: 1px solid var(--line);
-  padding: 24px 0 0;
-  position: relative;
-}
-.contact-card::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--brand);
-  transition: width .4s var(--ease);
-}
-.contact-card:hover::before { width: 100%; }
-
-.contact-card h3 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-card);
+  font-size: clamp(22px, 2.4vw, 28px);
   font-weight: 500;
-  letter-spacing: -.018em;
-  color: var(--text);
-  margin-bottom: 4px;
+  line-height: 1.4;
+  letter-spacing: -.020em;
+  color: #fff;
+  max-width: 760px;
+  margin-bottom: 36px;
 }
-
-.contact-role {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 14px;
+.contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.contact-card {
+  background: rgba(255,255,255,.04);
+  border: 0.5px solid rgba(165,180,252,.16);
+  border-radius: 8px;
+  padding: 24px;
+  transition: border-color .22s var(--ease);
 }
-
-.contact-email {
-  font-size: var(--fs-sm);
-  color: var(--indigo);
-  font-weight: 450;
-  transition: color .18s;
-}
-.contact-email:hover {
-  color: var(--indigo-mid);
-  text-decoration: underline;
-}
+.contact-card:hover { border-color: rgba(165,180,252,.42); }
+.contact-card h3 { font-family: var(--font-sans); font-size: var(--fs-card); font-weight: 500; letter-spacing: -.018em; color: var(--text-on-dark); margin-bottom: 6px; }
+.contact-role { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-on-dark-dim); margin-bottom: 14px; }
+.contact-email { font-size: var(--fs-sm); color: var(--indigo-on-dark); font-weight: 450; transition: color .18s; }
+.contact-email:hover { color: #fff; text-decoration: underline; }
 
 /* =========================================================
    FOOTER
@@ -1043,26 +742,18 @@ footer {
   position: relative;
   overflow: hidden;
 }
-/* dot-grid texture, same language as the dark What-you-get section */
 footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  content: ''; position: absolute; inset: 0; z-index: 0;
   background: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
   background-size: 28px 28px;
   pointer-events: none;
 }
-/* top accent line — bookends the page against the announce bar */
 footer::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(129,140,248,.45), transparent);
 }
 footer .wrap { position: relative; z-index: 1; }
-
 .footer-grid {
   display: grid;
   grid-template-columns: 1.2fr .9fr .7fr .6fr 1fr;
@@ -1070,46 +761,11 @@ footer .wrap { position: relative; z-index: 1; }
   margin-bottom: 56px;
   align-items: start;
 }
-
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.footer-brand p {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.65;
-  font-weight: 400;
-  color: var(--text-on-dark-soft);
-  max-width: 300px;
-  letter-spacing: -.003em;
-}
-
-.footer-col h4 {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  letter-spacing: -.005em;
-  text-transform: none;
-  font-weight: 500;
-  color: var(--indigo-on-dark);
-  margin-bottom: 16px;
-}
-
-.footer-col a,
-.footer-col p {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 2;
-  font-weight: 400;
-  color: var(--text-on-dark-soft);
-  letter-spacing: -.003em;
-  transition: color .18s;
-}
+.footer-brand { display: flex; flex-direction: column; gap: 16px; }
+.footer-brand p { font-family: var(--font-sans); font-size: 14px; line-height: 1.65; font-weight: 400; color: var(--text-on-dark-soft); max-width: 300px; letter-spacing: -.003em; }
+.footer-col h4 { font-family: var(--font-sans); font-size: 14px; letter-spacing: -.005em; text-transform: none; font-weight: 500; color: var(--indigo-on-dark); margin-bottom: 16px; }
+.footer-col a, .footer-col p { display: block; font-family: var(--font-sans); font-size: 14px; line-height: 2; font-weight: 400; color: var(--text-on-dark-soft); letter-spacing: -.003em; transition: color .18s; }
 .footer-col a:hover { color: #fff; }
-
 .footer-bottom {
   padding-top: 24px;
   border-top: 1px solid rgba(255,255,255,.08);
@@ -1124,30 +780,17 @@ footer .wrap { position: relative; z-index: 1; }
 /* =========================================================
    REVEAL
    ========================================================= */
-.reveal {
-  opacity: 1;
-  transform: none;
-  transition: opacity .65s var(--ease), transform .65s var(--ease);
-}
-.js .reveal {
-  opacity: 0;
-  transform: translateY(22px);
-}
-.js .reveal.in {
-  opacity: 1;
-  transform: none;
-}
+.reveal { opacity: 1; transform: none; transition: opacity .65s var(--ease), transform .65s var(--ease); }
+.js .reveal { opacity: 0; transform: translateY(22px); }
+.js .reveal.in { opacity: 1; transform: none; }
 .d1 { transition-delay: .08s; }
 .d2 { transition-delay: .16s; }
 
 /* =========================================================
-   HERO ENTRANCE — staggered rise on load
+   HERO ENTRANCE
    ========================================================= */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hero-rise {
-    opacity: 0;
-    animation: hero-rise-in .72s var(--ease) forwards;
-  }
+  .js .hero-rise { opacity: 0; animation: hero-rise-in .72s var(--ease) forwards; }
   .js .hero-rise-1 { animation-delay: .05s; }
   .js .hero-rise-2 { animation-delay: .14s; }
   .js .hero-rise-3 { animation-delay: .23s; }
@@ -1163,55 +806,28 @@ footer .wrap { position: relative; z-index: 1; }
    RESPONSIVE
    ========================================================= */
 @media (max-width: 1180px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .hero-aside { justify-content: flex-start; }
   .hero-shot { max-width: 680px; }
   .solution-layout { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
-
 @media (max-width: 768px) {
   .wrap { width: calc(100% - 32px); }
   .nav-links { display: none; }
   section { padding: 80px 0; }
-
-  .announce-inner { padding: 8px 0; }
-  .announce-inner > a {
-    flex-direction: column;
-    gap: 6px;
-    font-size: 12.5px;
-    text-align: center;
-  }
-  .announce-badge { font-size: 11.5px; padding-right: 0; border-right: none; }
-
-  .prob-grid,
-  .use-grid,
-  .contact-grid,
-  .gov-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .prob-grid, .use-grid, .contact-grid, .gov-grid { grid-template-columns: 1fr; }
   .strata-row { grid-template-columns: 1fr; }
   .strata-label { padding: 16px 20px 6px; border-right: none; }
   .strata-body { padding: 0 20px 16px; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 8px; }
-
-  .hero-shot-frame {
-    padding: 12px;
-    border-radius: var(--radius-lg);
-  }
+  .hero-shot-frame { padding: 12px; border-radius: var(--radius-lg); }
   .hero-shot-frame.hero-no-img { min-height: 360px; }
   .hero-shot-frame img { max-height: none; }
-
   .hero { min-height: auto; }
-
   #contact { padding: 72px 0; }
 }
-
 
 /* =========================================================
    REQUIVO · WHAT-YOU-GET SPOTLIGHT SUITE
@@ -1243,7 +859,6 @@ footer .wrap { position: relative; z-index: 1; }
   --rqw-amber-bg: #fdf4e3;
   --rqw-amber-line: #f0e2bd;
   --rqw-ease: cubic-bezier(.2,.7,.2,1);
-
   position: relative;
   overflow: hidden;
   background: var(--rqw-bg-deep);
@@ -1257,51 +872,18 @@ footer .wrap { position: relative; z-index: 1; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle, rgba(255,255,255,.048) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,.036) 1px, transparent 1px),
     radial-gradient(ellipse at 82% 10%,  rgba(79,70,229,.22)  0%, transparent 50%),
     radial-gradient(ellipse at 14% 62%,  rgba(14,165,233,.10) 0%, transparent 52%),
     radial-gradient(ellipse at 88% 92%,  rgba(79,70,229,.13)  0%, transparent 50%);
-  background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
+  background-size: 22px 22px, 100% 100%, 100% 100%, 100% 100%;
   pointer-events: none;
 }
-.rqw-inner {
-  position: relative;
-  z-index: 1;
-  width: min(1180px, calc(100% - 48px));
-  margin: 0 auto;
-}
-
+.rqw-inner { position: relative; z-index: 1; width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
 .rqw-head { max-width: 740px; margin: 0 0 16px; }
-.rqw-head .rqw-eyebrow {
-  display: inline-block;
-  font-family: var(--rqw-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--rqw-indigo-on-dark);
-  margin-bottom: 18px;
-}
-.rqw-head h2 {
-  margin: 0 0 18px;
-  font-family: var(--rqw-sans);
-  font-size: clamp(28px, 3.3vw, 44px);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -.028em;
-  color: #fff;
-  text-wrap: balance;
-}
-.rqw-head p {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.6;
-  font-weight: 400;
-  letter-spacing: -.005em;
-  color: var(--rqw-on-dark-soft);
-  max-width: 660px;
-}
-
+.rqw-head .rqw-eyebrow { display: inline-block; font-family: var(--rqw-mono); font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--rqw-indigo-on-dark); margin-bottom: 18px; }
+.rqw-head h2 { margin: 0 0 18px; font-family: var(--rqw-sans); font-size: clamp(28px, 3.3vw, 44px); font-weight: 500; line-height: 1.1; letter-spacing: -.028em; color: #fff; text-wrap: balance; }
+.rqw-head p { margin: 0; font-size: 17px; line-height: 1.6; font-weight: 400; letter-spacing: -.005em; color: var(--rqw-on-dark-soft); max-width: 660px; }
 .rqw-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1311,455 +893,153 @@ footer .wrap { position: relative; z-index: 1; }
 }
 .rqw-row + .rqw-row {
   border-top: 1px solid transparent;
-  border-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,.13) 22%,
-    rgba(255,255,255,.13) 78%,
-    transparent 100%
-  ) 1;
+  border-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.13) 22%, rgba(255,255,255,.13) 78%, transparent 100%) 1;
 }
 .rqw-row--flip .rqw-copy { order: 1; }
-
 .rqw-copy { max-width: 480px; }
-.rqw-fragment {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  justify-self: end;
-}
+.rqw-fragment { position: relative; width: 100%; max-width: 520px; justify-self: end; }
 .rqw-row--flip .rqw-fragment { justify-self: start; }
-
-.rqw-mark {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 22px;
-  font-family: var(--rqw-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--rqw-indigo-on-dark);
-}
+.rqw-mark { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-family: var(--rqw-mono); font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--rqw-indigo-on-dark); }
 .rqw-mark-ord { flex: none; color: var(--rqw-on-dark-dim); }
-.rqw-mark-rule {
-  flex: none;
-  width: 26px;
-  height: 1px;
-  background: rgba(165,180,252,.5);
-}
+.rqw-mark-rule { flex: none; width: 16px; height: 1px; background: rgba(165,180,252,.45); }
 .rqw-mark-label { flex: none; }
-
-.rqw-title {
-  font-family: var(--rqw-sans);
-  font-size: clamp(26px, 2.9vw, 40px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -.030em;
-  color: #fff;
-  margin: 0 0 18px;
-  text-wrap: balance;
-}
-.rqw-sub {
-  font-size: 16px;
-  line-height: 1.62;
-  font-weight: 400;
-  letter-spacing: -.005em;
-  color: var(--rqw-on-dark-soft);
-  margin: 0 0 26px;
-}
-
-.rqw-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
+.rqw-title { font-family: var(--rqw-sans); font-size: clamp(26px, 2.9vw, 40px); font-weight: 600; line-height: 1.1; letter-spacing: -.030em; color: #fff; margin: 0 0 18px; text-wrap: balance; }
+.rqw-sub { font-size: 16px; line-height: 1.62; font-weight: 400; letter-spacing: -.005em; color: var(--rqw-on-dark-soft); margin: 0 0 26px; }
+.rqw-meta { display: flex; flex-wrap: wrap; gap: 9px; }
 .rqw-meta-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--rqw-sans);
-  font-size: 12.5px;
-  font-weight: 450;
-  letter-spacing: -.003em;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--rqw-sans); font-size: 12.5px; font-weight: 450; letter-spacing: -.003em;
   color: rgba(232,236,247,.96);
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(165,180,252,.36);
-  border-radius: 100px;
-  padding: 7px 13px 7px 11px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border-radius: 5px; padding: 7px 13px 7px 11px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
 }
-.rqw-meta-pill svg {
-  display: block;
-  color: var(--rqw-indigo-on-dark);
-  flex: none;
-}
-
+.rqw-meta-pill svg { display: block; color: var(--rqw-indigo-on-dark); flex: none; }
 .rqw-card {
   background: var(--rqw-card);
-  border: 1px solid var(--rqw-line);
-  border-radius: 16px;
+  border: 0.5px solid rgba(15,28,58,.09);
+  border-radius: 10px;
   box-shadow:
-    0 1px 2px  rgba(8,14,38,.30),
-    0 18px 48px rgba(8,14,38,.42),
-    0 40px 96px rgba(8,14,38,.28),
-    0 0 0 1px  rgba(79,70,229,.07),
-    0 20px 60px rgba(79,70,229,.18);
+    0 0 0 0.5px rgba(15,28,58,.06),
+    0 1px 3px   rgba(8,14,38,.14),
+    0 4px 10px  rgba(8,14,38,.18),
+    0 16px 40px rgba(8,14,38,.36),
+    0 40px 80px rgba(8,14,38,.22),
+    0 0 0 1px   rgba(79,70,229,.05),
+    0 18px 52px rgba(79,70,229,.15);
 }
-.rqw-card-pad { padding: 20px 20px 22px; }
-
-.rqw-card-head {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-bottom: 12px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid var(--rqw-line-soft);
-}
-.rqw-card-head h4 {
-  margin: 0;
-  font-family: var(--rqw-mono);
-  font-size: 10.5px; font-weight: 500;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--rqw-text-dim);
-}
-.rqw-pill-soft {
-  font-family: var(--rqw-mono);
-  font-size: 10.5px; font-weight: 500; letter-spacing: .04em;
-  color: var(--rqw-indigo);
-  background: var(--rqw-indigo-pale);
-  border: 1px solid #e0e4ff;
-  border-radius: 100px; padding: 4px 10px;
-}
-
-.rqw-flow {
-  position: relative; height: 46px;
-  display: flex; align-items: center; justify-content: center;
-}
+.rqw-card-pad { padding: 20px 22px; }
+.rqw-card-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 0.5px solid var(--rqw-line-soft); }
+.rqw-card-head h4 { margin: 0; font-family: var(--rqw-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--rqw-text-dim); }
+.rqw-pill-soft { font-family: var(--rqw-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .04em; color: var(--rqw-indigo); background: var(--rqw-indigo-pale); border: 0.5px solid #d4d9ff; border-radius: 4px; padding: 4px 10px; }
+.rqw-flow { position: relative; height: 46px; display: flex; align-items: center; justify-content: center; }
 .rqw-flow--solo { height: auto; margin-top: -8px; padding-top: 18px; }
-.rqw-thread {
-  position: absolute; top: 0; bottom: 0; left: 50%;
-  width: 0; border-left: 1px dashed rgba(79,70,229,.32);
-  transform: translateX(-50%);
-  transform-origin: top center;
-}
+.rqw-thread { position: absolute; top: 0; bottom: 0; left: 50%; width: 0; border-left: 1px solid rgba(165,180,252,.20); transform: translateX(-50%); transform-origin: top center; }
 .rqw-verb {
   position: relative; z-index: 2;
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--rqw-sans);
-  font-size: 13px; font-weight: 500; letter-spacing: -.005em;
+  font-family: var(--rqw-sans); font-size: 13px; font-weight: 500; letter-spacing: -.005em;
   color: #fff;
   background: linear-gradient(145deg, #5b52f0 0%, #3730a3 100%);
   border: 1px solid rgba(165,180,252,.28);
-  border-radius: 100px; padding: 9px 16px;
-  box-shadow:
-    0 2px 8px  rgba(55,48,163,.52),
-    0 8px 24px rgba(8,14,38,.38),
-    inset 0 1px 0 rgba(255,255,255,.16);
+  border-radius: 8px; padding: 9px 18px;
+  box-shadow: 0 2px 8px rgba(55,48,163,.52), 0 8px 24px rgba(8,14,38,.38), inset 0 1px 0 rgba(255,255,255,.16);
   transition: box-shadow .28s var(--rqw-ease), transform .22s var(--rqw-ease);
 }
-.rqw-verb:hover {
-  box-shadow:
-    0 4px 16px rgba(55,48,163,.62),
-    0 14px 36px rgba(8,14,38,.44),
-    inset 0 1px 0 rgba(255,255,255,.16);
-  transform: translateY(-1px);
-}
+.rqw-verb:hover { box-shadow: 0 4px 16px rgba(55,48,163,.62), 0 14px 36px rgba(8,14,38,.44), inset 0 1px 0 rgba(255,255,255,.16); transform: translateY(-1px); }
 .rqw-verb svg { display: block; }
 .rqw-verb .rqw-spark { color: var(--rqw-indigo-on-dark); }
-
 .rqw-chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.rqw-chip {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--rqw-sans);
-  font-size: 12.5px; font-weight: 450; color: var(--rqw-text-soft);
-  background: var(--rqw-card-2); border: 1px solid var(--rqw-line);
-  border-radius: 7px; padding: 6px 10px 6px 6px;
-}
-.rqw-chip b {
-  font-family: var(--rqw-mono);
-  font-size: 9px; font-weight: 600; letter-spacing: .06em;
-  color: #fff; background: var(--rqw-text-dim);
-  border-radius: 4px; padding: 3px 5px;
-}
-.rqw-chip[data-t="pdf"]   b { background: #d8453a; }
-.rqw-chip[data-t="doc"]   b { background: #2563eb; }
-.rqw-chip[data-t="wiki"]  b { background: #4f46e5; }
-.rqw-chip[data-t="crm"]   b { background: #0e9488; }
-.rqw-chip[data-t="mail"]  b { background: #b45309; }
-.rqw-chip[data-t="tpl"]   b { background: #6b7280; }
-
-.rqw-badge {
-  flex: none;
-  display: inline-flex; align-items: center; gap: 5px;
-  font-family: var(--rqw-mono);
-  font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-  padding: 4px 9px; border-radius: 100px;
-}
+.rqw-chip { display: inline-flex; align-items: center; gap: 7px; font-family: var(--rqw-sans); font-size: 12.5px; font-weight: 450; color: var(--rqw-text-soft); background: var(--rqw-card-2); border: 1px solid var(--rqw-line); border-radius: 7px; padding: 6px 10px 6px 6px; }
+.rqw-chip b { font-family: var(--rqw-mono); font-size: 9px; font-weight: 600; letter-spacing: .06em; color: #fff; background: var(--rqw-text-dim); border-radius: 4px; padding: 3px 5px; }
+.rqw-chip[data-t="pdf"]  b { background: #d8453a; }
+.rqw-chip[data-t="doc"]  b { background: #2563eb; }
+.rqw-chip[data-t="wiki"] b { background: #4f46e5; }
+.rqw-chip[data-t="crm"]  b { background: #0e9488; }
+.rqw-chip[data-t="mail"] b { background: #b45309; }
+.rqw-chip[data-t="tpl"]  b { background: #6b7280; }
+.rqw-badge { flex: none; display: inline-flex; align-items: center; gap: 5px; font-family: var(--rqw-mono); font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 4px; }
 .rqw-badge svg { display: block; }
 .rqw-badge--ok { color: var(--rqw-ok); background: var(--rqw-ok-bg); border: 1px solid var(--rqw-ok-line); }
-.rqw-badge--review {
-  color: #8a5d0f;
-  background: var(--rqw-amber-bg);
-  border: 1px solid var(--rqw-amber-line);
-}
-
+.rqw-badge--review { color: #8a5d0f; background: var(--rqw-amber-bg); border: 1px solid var(--rqw-amber-line); }
 .rqw-cites { display: flex; flex-wrap: wrap; gap: 6px; }
-.rqw-cite {
-  font-family: var(--rqw-mono);
-  font-size: 10px; font-weight: 400; letter-spacing: .02em;
-  color: var(--rqw-indigo);
-  background: var(--rqw-indigo-pale); border: 1px solid #e3e7ff;
-  border-radius: 5px; padding: 3px 7px;
-}
-
-/* findings (conflict / gap) */
-.rqw-finding {
-  border-radius: 12px; padding: 14px 16px; margin-bottom: 12px;
-  border: 1px solid;
-}
+.rqw-cite { font-family: var(--rqw-mono); font-size: 10px; font-weight: 400; letter-spacing: .02em; color: var(--rqw-indigo); background: var(--rqw-indigo-pale); border: 1px solid #e3e7ff; border-radius: 5px; padding: 3px 7px; }
+.rqw-finding { border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; border: 1px solid; }
 .rqw-finding:last-child { margin-bottom: 0; }
 .rqw-finding--conflict { background: var(--rqw-red-bg); border-color: var(--rqw-red-line); }
 .rqw-finding--gap { background: var(--rqw-amber-bg); border-color: var(--rqw-amber-line); }
-
-.rqw-finding-head {
-  display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  margin-bottom: 6px;
-}
-.rqw-finding-label {
-  font-family: var(--rqw-sans);
-  font-size: 14px; font-weight: 500; letter-spacing: -.01em;
-}
+.rqw-finding-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+.rqw-finding-label { font-family: var(--rqw-sans); font-size: 14px; font-weight: 500; letter-spacing: -.01em; }
 .rqw-finding--conflict .rqw-finding-label { color: #7a241c; }
 .rqw-finding--gap .rqw-finding-label { color: #6a4708; }
-.rqw-finding-desc {
-  margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--rqw-text-soft);
-}
+.rqw-finding-desc { margin: 0; font-size: 12.5px; line-height: 1.5; color: var(--rqw-text-soft); }
 .rqw-finding--conflict .rqw-finding-desc { color: #944238; }
 .rqw-finding--gap .rqw-finding-desc { color: #7c5a1e; }
-
-.rqw-tag {
-  flex: none;
-  font-family: var(--rqw-mono);
-  font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-  padding: 3px 8px; border-radius: 5px;
-}
+.rqw-tag { flex: none; font-family: var(--rqw-mono); font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border-radius: 5px; }
 .rqw-tag--conflict { color: #fff; background: var(--rqw-red); }
 .rqw-tag--gap { color: #fff; background: #b8821a; }
-
 .rqw-vals { display: flex; gap: 8px; margin-top: 12px; }
-.rqw-val {
-  flex: 1 1 0; min-width: 0;
-  background: #fff; border: 1px solid var(--rqw-red-line);
-  border-radius: 9px; padding: 10px 6px; text-align: center;
-}
-.rqw-val-n {
-  display: block;
-  font-family: var(--rqw-sans);
-  font-size: 14px; font-weight: 500; letter-spacing: -.01em; color: var(--rqw-text);
-  line-height: 1.2;
-}
-.rqw-val-src {
-  display: block; margin-top: 4px;
-  font-family: var(--rqw-mono); font-size: 9px; letter-spacing: .02em; color: var(--rqw-text-dim);
-}
-
-/* person card (verifier) */
-.rqw-person-top {
-  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
-}
+.rqw-val { flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--rqw-red-line); border-radius: 9px; padding: 10px 6px; text-align: center; }
+.rqw-val-n { display: block; font-family: var(--rqw-sans); font-size: 14px; font-weight: 500; letter-spacing: -.01em; color: var(--rqw-text); line-height: 1.2; }
+.rqw-val-src { display: block; margin-top: 4px; font-family: var(--rqw-mono); font-size: 9px; letter-spacing: .02em; color: var(--rqw-text-dim); }
+.rqw-person-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .rqw-person-id { display: flex; align-items: center; gap: 11px; }
-.rqw-avatar {
-  flex: none; width: 38px; height: 38px; border-radius: 50%;
-  background: var(--rqw-indigo); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--rqw-sans); font-size: 13px; font-weight: 500; letter-spacing: .02em;
-}
+.rqw-avatar { flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--rqw-indigo); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--rqw-sans); font-size: 13px; font-weight: 500; letter-spacing: .02em; }
 .rqw-person-name { font-size: 14.5px; font-weight: 500; letter-spacing: -.01em; color: var(--rqw-text); }
 .rqw-person-role { font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim); margin-top: 2px; }
-.rqw-person-note {
-  margin: 14px 0 0; padding-left: 12px;
-  border-left: 2px solid var(--rqw-indigo-pale);
-  font-size: 13px; line-height: 1.5; color: var(--rqw-text-soft);
-}
-
-/* message / confirm (verifier output) */
-.rqw-msg {
-  background: var(--rqw-indigo-pale); border: 1px solid #e0e4ff;
-  border-radius: 12px 12px 12px 4px; padding: 11px 13px;
-  font-size: 13px; line-height: 1.5; color: #2c2a5e;
-}
-.rqw-msg-meta {
-  font-family: var(--rqw-mono); font-size: 9.5px; letter-spacing: .06em;
-  color: var(--rqw-text-dim); margin-bottom: 8px;
-}
-.rqw-confirm {
-  display: flex; align-items: flex-start; gap: 10px; margin-top: 14px;
-  padding-top: 12px; border-top: 1px solid var(--rqw-line-soft);
-  font-size: 13px; line-height: 1.45; color: var(--rqw-text);
-}
-.rqw-confirm .rqw-check {
-  flex: none; width: 18px; height: 18px; border-radius: 50%;
-  background: var(--rqw-ok-bg); color: var(--rqw-ok);
-  display: flex; align-items: center; justify-content: center;
-  margin-top: 1px;
-}
+.rqw-person-note { margin: 14px 0 0; padding-left: 12px; border-left: 2px solid var(--rqw-indigo-pale); font-size: 13px; line-height: 1.5; color: var(--rqw-text-soft); }
+.rqw-msg { background: var(--rqw-indigo-pale); border: 1px solid #e0e4ff; border-radius: 12px 12px 12px 4px; padding: 11px 13px; font-size: 13px; line-height: 1.5; color: #2c2a5e; }
+.rqw-msg-meta { font-family: var(--rqw-mono); font-size: 9.5px; letter-spacing: .06em; color: var(--rqw-text-dim); margin-bottom: 8px; }
+.rqw-confirm { display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--rqw-line-soft); font-size: 13px; line-height: 1.45; color: var(--rqw-text); }
+.rqw-confirm .rqw-check { flex: none; width: 18px; height: 18px; border-radius: 50%; background: var(--rqw-ok-bg); color: var(--rqw-ok); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
 .rqw-confirm-body b { font-weight: 500; }
-.rqw-confirm-meta {
-  display: block; margin-top: 4px;
-  font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim);
-}
-
-/* article (writer output) */
+.rqw-confirm-meta { display: block; margin-top: 4px; font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim); }
 .rqw-article-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.rqw-article-head h3 {
-  margin: 0;
-  font-family: var(--rqw-sans);
-  font-size: 16px; font-weight: 500; letter-spacing: -.014em; line-height: 1.3;
-  color: var(--rqw-text);
-}
-.rqw-article-meta {
-  font-family: var(--rqw-mono); font-size: 10.5px; letter-spacing: .04em;
-  color: var(--rqw-text-dim); margin: 6px 0 16px;
-}
+.rqw-article-head h3 { margin: 0; font-family: var(--rqw-sans); font-size: 16px; font-weight: 500; letter-spacing: -.014em; line-height: 1.3; color: var(--rqw-text); }
+.rqw-article-meta { font-family: var(--rqw-mono); font-size: 10.5px; letter-spacing: .04em; color: var(--rqw-text-dim); margin: 6px 0 16px; }
 .rqw-rule { height: 1px; background: var(--rqw-line-soft); margin: 0 0 14px; }
 .rqw-step { margin-bottom: 11px; }
 .rqw-step:last-of-type { margin-bottom: 0; }
 .rqw-step-head { display: flex; align-items: baseline; gap: 10px; }
 .rqw-step-n { flex: none; font-family: var(--rqw-mono); font-size: 11px; font-weight: 500; color: var(--rqw-indigo); width: 16px; }
 .rqw-step-title { font-size: 13.5px; font-weight: 450; letter-spacing: -.01em; color: var(--rqw-text); line-height: 1.4; }
-.rqw-foot {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rqw-line-soft);
-  font-family: var(--rqw-mono); font-size: 10.5px; letter-spacing: .04em; color: var(--rqw-text-dim);
-}
+.rqw-foot { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rqw-line-soft); font-family: var(--rqw-mono); font-size: 10.5px; letter-spacing: .04em; color: var(--rqw-text-dim); }
 .rqw-foot i { width: 3px; height: 3px; border-radius: 50%; background: var(--rqw-text-dim); opacity: .55; }
 .rqw-foot .rqw-foot-ok { color: var(--rqw-ok); }
 
 /* =========================================================
-   KNOWLEDGE MANAGER SEARCH — fixed cursor position
+   KNOWLEDGE MANAGER SEARCH
    ========================================================= */
-.rqw-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--rqw-card-2);
-  border: 1px solid var(--rqw-line);
-  border-radius: 9px;
-  padding: 10px 12px;
-  margin-bottom: 14px;
-  transition: border-color .22s ease, box-shadow .22s ease;
-}
-/* Typing state: subtle focus ring */
-.rqw-search.rqw-search--typing {
-  border-color: rgba(79,70,229,.40);
-  box-shadow: 0 0 0 3px rgba(79,70,229,.08);
-}
+.rqw-search { display: flex; align-items: center; gap: 10px; background: var(--rqw-card-2); border: 1px solid var(--rqw-line); border-radius: 9px; padding: 10px 12px; margin-bottom: 14px; transition: border-color .22s ease, box-shadow .22s ease; }
+.rqw-search.rqw-search--typing { border-color: rgba(79,70,229,.40); box-shadow: 0 0 0 3px rgba(79,70,229,.08); }
 .rqw-search-icon { color: var(--rqw-text-dim); display: flex; flex: none; }
-
-/* Wrapper so cursor sits inline immediately after text */
-.rqw-search-field {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-}
-.rqw-search-q {
-  font-family: var(--rqw-sans);
-  font-size: 13px;
-  font-weight: 450;
-  letter-spacing: -.005em;
-  color: var(--rqw-text);
-  /* no flex-grow — cursor must follow text content, not jump to far right */
-}
-.rqw-search-cursor {
-  display: inline-block;
-  width: 1.5px;
-  height: 13px;
-  background: var(--rqw-indigo);
-  margin-left: 1px;
-  flex: none;
-  vertical-align: middle;
-  animation: rqw-blink 1.1s steps(1) infinite;
-}
+.rqw-search-field { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; }
+.rqw-search-q { font-family: var(--rqw-sans); font-size: 13px; font-weight: 450; letter-spacing: -.005em; color: var(--rqw-text); }
+.rqw-search-cursor { display: inline-block; width: 1.5px; height: 13px; background: var(--rqw-indigo); margin-left: 1px; flex: none; vertical-align: middle; animation: rqw-blink 1.1s steps(1) infinite; }
 @keyframes rqw-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
-
-.rqw-results-meta {
-  font-family: var(--rqw-mono);
-  font-size: 10px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--rqw-text-dim);
-  margin-bottom: 4px;
-}
-.rqw-result {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 11px 0;
-  border-top: 1px solid var(--rqw-line-soft);
-  cursor: pointer;
-}
+.rqw-results-meta { font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--rqw-text-dim); margin-bottom: 4px; }
+.rqw-result { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-top: 1px solid var(--rqw-line-soft); cursor: pointer; }
 .rqw-result:last-of-type { padding-bottom: 0; }
 .rqw-result-main { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.rqw-result-title {
-  font-family: var(--rqw-sans);
-  font-size: 13.5px; font-weight: 450; letter-spacing: -.008em;
-  color: var(--rqw-text);
-  transition: color .18s ease;
-}
+.rqw-result-title { font-family: var(--rqw-sans); font-size: 13.5px; font-weight: 450; letter-spacing: -.008em; color: var(--rqw-text); transition: color .18s ease; }
 .rqw-result:hover .rqw-result-title { color: var(--rqw-indigo); }
-.rqw-result-meta {
-  font-family: var(--rqw-mono);
-  font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim);
-}
+.rqw-result-meta { font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-dim); }
 
-/* =========================================================
-   KM ROW: JS-driven animation initial states
-   Hidden before typewriter sequence runs
-   ========================================================= */
-.js #rqw-km-row .rqw-results-meta {
-  opacity: 0;
-}
-.js #rqw-km-row .rqw-result {
-  opacity: 0;
-  transform: translateX(8px);
-}
-.js #rqw-km-row .rqw-flow--solo {
-  opacity: 0;
-  transform: translateY(6px);
-}
+.js #rqw-km-row .rqw-results-meta { opacity: 0; }
+.js #rqw-km-row .rqw-result { opacity: 0; transform: translateX(8px); }
+.js #rqw-km-row .rqw-flow--solo { opacity: 0; transform: translateY(6px); }
 
-/* ask / answer (mcp) */
-.rqw-ask {
-  align-self: flex-end; max-width: 90%;
-  margin-left: auto;
-  background: var(--rqw-card-2); border: 1px solid var(--rqw-line);
-  border-radius: 12px 12px 4px 12px; padding: 11px 14px;
-  font-size: 13.5px; line-height: 1.45; color: var(--rqw-text);
-}
-.rqw-ask-from {
-  display: block; margin-bottom: 4px;
-  font-family: var(--rqw-mono); font-size: 9.5px; letter-spacing: .06em; color: var(--rqw-text-dim);
-}
+.rqw-ask { align-self: flex-end; max-width: 90%; margin-left: auto; background: var(--rqw-card-2); border: 1px solid var(--rqw-line); border-radius: 12px 12px 4px 12px; padding: 11px 14px; font-size: 13.5px; line-height: 1.45; color: var(--rqw-text); }
+.rqw-ask-from { display: block; margin-bottom: 4px; font-family: var(--rqw-mono); font-size: 9.5px; letter-spacing: .06em; color: var(--rqw-text-dim); }
 .rqw-answer-body { font-size: 13.5px; line-height: 1.55; color: var(--rqw-text); margin: 0 0 12px; }
 .rqw-answer-body b { font-weight: 500; }
-.rqw-source {
-  display: flex; align-items: center; gap: 9px;
-  background: var(--rqw-card-2); border: 1px solid var(--rqw-line);
-  border-radius: 8px; padding: 8px 11px; margin-bottom: 12px;
-}
+.rqw-source { display: flex; align-items: center; gap: 9px; background: var(--rqw-card-2); border: 1px solid var(--rqw-line); border-radius: 8px; padding: 8px 11px; margin-bottom: 12px; }
 .rqw-source-icon { flex: none; color: var(--rqw-indigo); display: flex; }
 .rqw-source-name { font-size: 12.5px; font-weight: 450; color: var(--rqw-text); }
 .rqw-source-name span { color: var(--rqw-ok); font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; margin-left: 6px; }
 .rqw-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-.rqw-tag-mono {
-  font-family: var(--rqw-mono);
-  font-size: 10px; letter-spacing: .04em;
-  color: var(--rqw-text-soft); background: var(--rqw-card-2);
-  border: 1px solid var(--rqw-line); border-radius: 100px; padding: 4px 10px;
-}
+.rqw-tag-mono { font-family: var(--rqw-mono); font-size: 10px; letter-spacing: .04em; color: var(--rqw-text-soft); background: var(--rqw-card-2); border: 1px solid var(--rqw-line); border-radius: 100px; padding: 4px 10px; }
 .rqw-tag-mono b { color: var(--rqw-indigo); font-weight: 500; }
 
 /* scroll-in motion cascade */
@@ -1767,67 +1047,25 @@ footer .wrap { position: relative; z-index: 1; }
   .rqw-suite.rqw-anim .rqw-copy,
   .rqw-suite.rqw-anim .rqw-fragment .rqw-card,
   .rqw-suite.rqw-anim .rqw-fragment .rqw-verb,
-  .rqw-suite.rqw-anim .rqw-fragment .rqw-thread {
-    will-change: opacity, transform;
-  }
-  .rqw-suite.rqw-anim .rqw-copy {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease);
-  }
-  .rqw-suite.rqw-anim .rqw-fragment .rqw-card {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease);
-  }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-thread { will-change: opacity, transform; }
+  .rqw-suite.rqw-anim .rqw-copy { opacity: 0; transform: translateY(20px); transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease); }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-card { opacity: 0; transform: translateY(22px); transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease); }
   .rqw-suite.rqw-anim .rqw-fragment .rqw-card:nth-of-type(2) { transition-delay: .42s; }
-  .rqw-suite.rqw-anim .rqw-fragment .rqw-thread {
-    transform: translateX(-50%) scaleY(0);
-    transition: transform .5s var(--rqw-ease) .22s;
-  }
-  .rqw-suite.rqw-anim .rqw-fragment .rqw-verb {
-    opacity: 0;
-    transform: scale(.9);
-    transition: opacity .45s var(--rqw-ease) .34s, transform .45s var(--rqw-ease) .34s, box-shadow .6s var(--rqw-ease);
-  }
-  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-copy {
-    opacity: 1; transform: none; transition-delay: .04s;
-  }
-  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-card {
-    opacity: 1; transform: none;
-  }
-  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-thread {
-    transform: translateX(-50%) scaleY(1);
-  }
-  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-verb {
-    opacity: 1; transform: none;
-    animation: rqw-verb-glow .9s var(--rqw-ease) .42s 1;
-  }
-  /* KM row: override suite animation for the card — JS handles the internal cascade */
-  .rqw-suite.rqw-anim #rqw-km-row .rqw-fragment .rqw-card {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease);
-  }
-  .rqw-suite.rqw-anim #rqw-km-row.rqw-in .rqw-fragment .rqw-card {
-    opacity: 1;
-    transform: none;
-  }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-thread { transform: translateX(-50%) scaleY(0); transition: transform .5s var(--rqw-ease) .22s; }
+  .rqw-suite.rqw-anim .rqw-fragment .rqw-verb { opacity: 0; transform: scale(.9); transition: opacity .45s var(--rqw-ease) .34s, transform .45s var(--rqw-ease) .34s, box-shadow .6s var(--rqw-ease); }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-copy { opacity: 1; transform: none; transition-delay: .04s; }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-card { opacity: 1; transform: none; }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-thread { transform: translateX(-50%) scaleY(1); }
+  .rqw-suite.rqw-anim .rqw-row.rqw-in .rqw-fragment .rqw-verb { opacity: 1; transform: none; animation: rqw-verb-glow .9s var(--rqw-ease) .42s 1; }
+  .rqw-suite.rqw-anim #rqw-km-row .rqw-fragment .rqw-card { opacity: 0; transform: translateY(22px); transition: opacity .75s var(--rqw-ease), transform .75s var(--rqw-ease); }
+  .rqw-suite.rqw-anim #rqw-km-row.rqw-in .rqw-fragment .rqw-card { opacity: 1; transform: none; }
   @keyframes rqw-verb-glow {
     0%   { box-shadow: 0 2px 8px rgba(55,48,163,.52), 0 8px 24px rgba(8,14,38,.38), inset 0 1px 0 rgba(255,255,255,.16), 0 0 0 0   rgba(165,180,252,.58); }
     55%  { box-shadow: 0 2px 8px rgba(55,48,163,.52), 0 8px 24px rgba(8,14,38,.38), inset 0 1px 0 rgba(255,255,255,.16), 0 0 0 13px rgba(165,180,252,0); }
     100% { box-shadow: 0 2px 8px rgba(55,48,163,.52), 0 8px 24px rgba(8,14,38,.38), inset 0 1px 0 rgba(255,255,255,.16), 0 0 0 0   rgba(165,180,252,0); }
   }
   .rqw-card { transition: transform .35s var(--rqw-ease), box-shadow .35s var(--rqw-ease); }
-  .rqw-fragment:hover .rqw-card:last-child {
-    transform: translateY(-3px);
-    box-shadow:
-      0 2px 4px   rgba(8,14,38,.30),
-      0 24px 60px rgba(8,14,38,.46),
-      0 50px 110px rgba(8,14,38,.30),
-      0 0 0 1px   rgba(79,70,229,.10),
-      0 24px 70px rgba(79,70,229,.24);
-  }
+  .rqw-fragment:hover .rqw-card:last-child { transform: translateY(-2px); box-shadow: 0 0 0 0.5px rgba(15,28,58,.08), 0 2px 6px rgba(8,14,38,.18), 0 8px 18px rgba(8,14,38,.24), 0 24px 56px rgba(8,14,38,.42), 0 50px 100px rgba(8,14,38,.26), 0 0 0 1px rgba(79,70,229,.08), 0 22px 64px rgba(79,70,229,.20); }
 }
 
 @media (max-width: 980px) {
@@ -1846,35 +1084,19 @@ footer .wrap { position: relative; z-index: 1; }
 </head>
 <body>
 
-<!-- Announcement bar -->
-<div class="announce">
-  <div class="wrap announce-inner">
-    <a href="#contact" aria-label="Selected pilot & validation collaborations open">
-      <span class="announce-line">
-        <span class="announce-msg">Selected pilot & validation collaborations open</span>
-        <span class="announce-arrow" aria-hidden="true">
-          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-      </span>
-    </a>
-  </div>
-</div>
+
 
 <nav id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="logo" aria-label="Requivo home">
-      <svg viewBox="0 0 44 36" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#2c2a7a" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#2c2a7a" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <rect x="16" y="12" width="12" height="12" rx="1" fill="#4f46e5" transform="rotate(45 22 18)"/>
+      <svg viewBox="0 0 44 36" width="32" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#3730a3" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#3730a3" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M22 10 L28.5 18 L22 26 L15.5 18 Z" fill="#4f46e5"/>
       </svg>
       Requivo
     </a>
-
     <div class="nav-links">
-      <a href="#problem">Problem</a>
       <a href="#what-you-get">What you get</a>
       <a href="#solution">Solution</a>
       <a href="#governance">Governance</a>
@@ -1903,15 +1125,14 @@ footer .wrap { position: relative; z-index: 1; }
 
       <div class="hero-aside">
         <div class="hero-shot">
-
-          <!-- Dark floating panel — no frame wrapper -->
+          <!-- Arctic blue ingestion panel -->
           <div class="hi-panel" id="hi-card">
             <div class="hi-panel-head">
               <div class="hi-panel-meta">
                 <span class="hi-panel-step">Step 1 · Ingestion</span>
                 <span class="hi-panel-label">Source Connectors</span>
               </div>
-              <span class="hi-status hi-status--active" id="hi-status">Ingesting…</span>
+              <span class="hi-status hi-status--ok" id="hi-status">Ingested</span>
             </div>
             <div id="hi-rows"></div>
             <div class="hi-footer" id="hi-footer">
@@ -1919,30 +1140,29 @@ footer .wrap { position: relative; z-index: 1; }
                 <circle cx="8" cy="8" r="7" fill="currentColor" opacity=".22"/>
                 <path d="M5.2 8.2l1.8 1.8 3.8-3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span><b><span id="hi-count">0</span> evidence objects</b> ingested from 6 sources — typed, dated, linked to origin.</span>
+              <div class="hi-footer-body">
+                <span class="hi-footer-count">2,340</span>
+                <span class="hi-footer-label">evidence objects ingested from 6 sources — typed, dated, linked to origin.</span>
+              </div>
             </div>
+            <div class="hi-caption">Step 1 of 4 &middot; Ingestion &middot; Live preview</div>
           </div>
-
-          <div class="hero-shot-caption">Step 1 of 4 · Ingestion · live preview</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =====================================================
-     WHAT YOU GET · 5-block spotlight suite
-     ===================================================== -->
+<!-- WHAT YOU GET -->
 <section class="rqw-suite" id="what-you-get" aria-label="What you get">
   <div class="rqw-inner">
-
     <header class="rqw-head">
       <span class="rqw-eyebrow">What you get</span>
       <h2>From scattered knowledge to outputs your team can trust</h2>
       <p>One everyday scenario — starting a new customer project — from fragmented sources to trusted, governed knowledge.</p>
     </header>
 
-    <!-- ============ 01 · CONFLICT & GAP ============ -->
+    <!-- 01 · CONFLICT & GAP -->
     <div class="rqw-row">
       <div class="rqw-copy">
         <div class="rqw-mark">
@@ -1951,30 +1171,18 @@ footer .wrap { position: relative; z-index: 1; }
           <span class="rqw-mark-label">Conflict &amp; gap detection</span>
         </div>
         <h2 class="rqw-title">Catch the contradictions nobody noticed</h2>
-        <p class="rqw-sub">
-          Requivo reads across every source at once and flags where they disagree —
-          and where a step was never written down at all. The problems you couldn't
-          see become visible before they affect execution.
-        </p>
+        <p class="rqw-sub">Requivo reads across every source at once and flags where they disagree — and where a step was never written down at all. The problems you couldn't see become visible before they affect execution.</p>
         <div class="rqw-meta">
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Contradictions surfaced</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Missing steps flagged</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Silent drift caught</span>
         </div>
       </div>
-
       <div class="rqw-fragment">
         <div class="rqw-card rqw-card-pad">
-          <div class="rqw-card-head">
-            <h4>Analysis</h4>
-            <span class="rqw-pill-soft">Automated</span>
-          </div>
-
+          <div class="rqw-card-head"><h4>Analysis</h4><span class="rqw-pill-soft">Automated</span></div>
           <div class="rqw-finding rqw-finding--conflict">
-            <div class="rqw-finding-head">
-              <span class="rqw-finding-label">Customer kickoff approval timeline</span>
-              <span class="rqw-tag rqw-tag--conflict">Conflict</span>
-            </div>
+            <div class="rqw-finding-head"><span class="rqw-finding-label">Customer kickoff approval timeline</span><span class="rqw-tag rqw-tag--conflict">Conflict</span></div>
             <p class="rqw-finding-desc">Three sources give three different answers.</p>
             <div class="rqw-vals">
               <div class="rqw-val"><span class="rqw-val-n">2 days</span><span class="rqw-val-src">Sales playbook · 2022</span></div>
@@ -1982,26 +1190,18 @@ footer .wrap { position: relative; z-index: 1; }
               <div class="rqw-val"><span class="rqw-val-n">Before signing</span><span class="rqw-val-src">Team wiki · 2021</span></div>
             </div>
           </div>
-
           <div class="rqw-finding rqw-finding--gap">
-            <div class="rqw-finding-head">
-              <span class="rqw-finding-label">Handover from sales to delivery</span>
-              <span class="rqw-tag rqw-tag--gap">Gap</span>
-            </div>
+            <div class="rqw-finding-head"><span class="rqw-finding-label">Handover from sales to delivery</span><span class="rqw-tag rqw-tag--gap">Gap</span></div>
             <p class="rqw-finding-desc">No approved source explains what must be transferred before the project starts.</p>
           </div>
         </div>
-
         <div class="rqw-flow rqw-flow--solo">
-          <span class="rqw-verb">
-            Routed to the right expert
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
+          <span class="rqw-verb">Routed to the right expert<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
     </div>
 
-    <!-- ============ 02 · KNOWLEDGE VERIFIER ============ -->
+    <!-- 02 · KNOWLEDGE VERIFIER -->
     <div class="rqw-row rqw-row--flip">
       <div class="rqw-copy">
         <div class="rqw-mark">
@@ -2010,62 +1210,41 @@ footer .wrap { position: relative; z-index: 1; }
           <span class="rqw-mark-label">Knowledge Verifier</span>
         </div>
         <h2 class="rqw-title">The right question reaches the right person</h2>
-        <p class="rqw-sub">
-          Requivo knows who actually owns each answer, and sends them one focused
-          question. They confirm from their phone — no meeting, nothing to write up.
-          Open questions get resolved, not buried in a backlog.
-        </p>
+        <p class="rqw-sub">Requivo knows who actually owns each answer, and sends them one focused question. They confirm from their phone — no meeting, nothing to write up. Open questions get resolved, not buried in a backlog.</p>
         <div class="rqw-meta">
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Right person, automatically</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>One precise question</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmed, not chased</span>
         </div>
       </div>
-
       <div class="rqw-fragment">
         <div class="rqw-card rqw-card-pad">
-          <div class="rqw-card-head">
-            <h4>Verification queue</h4>
-            <span class="rqw-pill-soft">1 pending</span>
-          </div>
+          <div class="rqw-card-head"><h4>Verification queue</h4><span class="rqw-pill-soft">1 pending</span></div>
           <div class="rqw-person-top">
             <div class="rqw-person-id">
               <div class="rqw-avatar" aria-hidden="true">PL</div>
-              <div>
-                <div class="rqw-person-name">Petra Lang</div>
-                <div class="rqw-person-role">Process owner · operations</div>
-              </div>
+              <div><div class="rqw-person-name">Petra Lang</div><div class="rqw-person-role">Process owner · operations</div></div>
             </div>
             <span class="rqw-pill-soft">Auto-selected</span>
           </div>
           <p class="rqw-person-note">Owns the customer onboarding process and has resolved similar approval questions before — so the question goes to her, not the whole team.</p>
         </div>
-
         <div class="rqw-flow">
           <span class="rqw-thread" aria-hidden="true"></span>
-          <span class="rqw-verb">
-            Send one question
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
+          <span class="rqw-verb">Send one question<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
-
         <div class="rqw-card rqw-card-pad">
           <div class="rqw-msg-meta">REQUIVO · 14:32</div>
           <div class="rqw-msg">Sources disagree on when customer kickoff approval is required. Which rule applies for new customer projects?</div>
           <div class="rqw-confirm">
-            <span class="rqw-check" aria-hidden="true">
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div class="rqw-confirm-body">
-              Approval must be completed <b>before internal kickoff</b>. Current rule: Ops handbook 2024.
-              <span class="rqw-confirm-meta">Confirmed by Petra · 2 min</span>
-            </div>
+            <span class="rqw-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="rqw-confirm-body">Approval must be completed <b>before internal kickoff</b>. Current rule: Ops handbook 2024.<span class="rqw-confirm-meta">Confirmed by Petra · 2 min</span></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ============ 03 · KNOWLEDGE WRITER ============ -->
+    <!-- 03 · KNOWLEDGE WRITER -->
     <div class="rqw-row">
       <div class="rqw-copy">
         <div class="rqw-mark">
@@ -2074,24 +1253,16 @@ footer .wrap { position: relative; z-index: 1; }
           <span class="rqw-mark-label">Knowledge Writer</span>
         </div>
         <h2 class="rqw-title">Living knowledge articles nobody had to write</h2>
-        <p class="rqw-sub">
-          Once an answer is confirmed, Requivo writes and maintains it as a structured,
-          fully cited article — the know-how that lived in one person's head, now a
-          living document the whole team can read, follow and trust.
-        </p>
+        <p class="rqw-sub">Once an answer is confirmed, Requivo writes and maintains it as a structured, fully cited article — the know-how that lived in one person's head, now a living document the whole team can read, follow and trust.</p>
         <div class="rqw-meta">
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto-detected topics</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Procedure steps</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Every line cited</span>
         </div>
       </div>
-
       <div class="rqw-fragment">
         <div class="rqw-card rqw-card-pad">
-          <div class="rqw-card-head">
-            <h4>Source evidence</h4>
-            <span class="rqw-pill-soft">6 sources linked</span>
-          </div>
+          <div class="rqw-card-head"><h4>Source evidence</h4><span class="rqw-pill-soft">6 sources linked</span></div>
           <div class="rqw-chips">
             <span class="rqw-chip" data-t="pdf"><b>PDF</b>Sales playbook</span>
             <span class="rqw-chip" data-t="doc"><b>DOC</b>Ops handbook</span>
@@ -2101,7 +1272,6 @@ footer .wrap { position: relative; z-index: 1; }
             <span class="rqw-chip" data-t="tpl"><b>TPL</b>Project template</span>
           </div>
         </div>
-
         <div class="rqw-flow">
           <span class="rqw-thread" aria-hidden="true"></span>
           <span class="rqw-verb">
@@ -2110,24 +1280,18 @@ footer .wrap { position: relative; z-index: 1; }
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5L6 7.5l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
-
         <div class="rqw-card rqw-card-pad">
           <div class="rqw-article-head">
             <h3>Starting a new customer project</h3>
-            <span class="rqw-badge rqw-badge--ok">
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Verified
-            </span>
+            <span class="rqw-badge rqw-badge--ok"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
           </div>
           <div class="rqw-article-meta">Auto-generated · approved by P. Lang · updated today</div>
           <div class="rqw-rule"></div>
-
           <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">01</span><span class="rqw-step-title">Confirm contract and scope</span></div></div>
           <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">02</span><span class="rqw-step-title">Complete internal kickoff approval</span></div></div>
           <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">03</span><span class="rqw-step-title">Assign delivery owner</span></div></div>
           <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">04</span><span class="rqw-step-title">Transfer customer context from sales to delivery</span></div></div>
           <div class="rqw-step"><div class="rqw-step-head"><span class="rqw-step-n">05</span><span class="rqw-step-title">Create project workspace and first milestone plan</span></div></div>
-
           <div class="rqw-foot">
             <span>6 sources cited</span><i></i>
             <span class="rqw-foot-ok">0 open conflicts</span><i></i>
@@ -2138,8 +1302,7 @@ footer .wrap { position: relative; z-index: 1; }
       </div>
     </div>
 
-    <!-- ============ 04 · KNOWLEDGE MANAGER ============ -->
-    <!-- id="rqw-km-row" targets JS typewriter sequence -->
+    <!-- 04 · KNOWLEDGE MANAGER -->
     <div class="rqw-row rqw-row--flip" id="rqw-km-row">
       <div class="rqw-copy">
         <div class="rqw-mark">
@@ -2148,76 +1311,43 @@ footer .wrap { position: relative; z-index: 1; }
           <span class="rqw-mark-label">Knowledge Manager</span>
         </div>
         <h2 class="rqw-title">One place to find the verified answer</h2>
-        <p class="rqw-sub">
-          Knowledge Manager is your team's direct interface to the governed layer.
-          Search, browse and read the verified answer — with its sources, validation
-          and approvers attached.
-        </p>
+        <p class="rqw-sub">Knowledge Manager is your team's direct interface to the governed layer. Search, browse and read the verified answer — with its sources, validation and approvers attached.</p>
         <div class="rqw-meta">
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Direct browse &amp; search</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Sources attached</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Same version for the team</span>
         </div>
       </div>
-
       <div class="rqw-fragment">
         <div class="rqw-card rqw-card-pad">
-          <div class="rqw-card-head">
-            <h4>Knowledge Manager</h4>
-            <span class="rqw-pill-soft">Live</span>
-          </div>
-
-          <!-- Search field: text + cursor in shared wrapper so cursor tracks text -->
+          <div class="rqw-card-head"><h4>Knowledge Manager</h4><span class="rqw-pill-soft">Live</span></div>
           <div class="rqw-search" id="rqw-km-search">
-            <span class="rqw-search-icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-            </span>
+            <span class="rqw-search-icon" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 10.5L13.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>
             <span class="rqw-search-field">
               <span class="rqw-search-q" id="rqw-km-text"></span><span class="rqw-search-cursor" id="rqw-km-cursor" aria-hidden="true"></span>
             </span>
           </div>
-
           <div class="rqw-results-meta">3 results · governed knowledge</div>
-
           <div class="rqw-result">
-            <div class="rqw-result-main">
-              <span class="rqw-result-title">Starting a new customer project</span>
-              <span class="rqw-result-meta">Process · 5 steps · 6 sources</span>
-            </div>
-            <span class="rqw-badge rqw-badge--ok">
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Verified
-            </span>
+            <div class="rqw-result-main"><span class="rqw-result-title">Starting a new customer project</span><span class="rqw-result-meta">Process · 5 steps · 6 sources</span></div>
+            <span class="rqw-badge rqw-badge--ok"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
           </div>
           <div class="rqw-result">
-            <div class="rqw-result-main">
-              <span class="rqw-result-title">Customer kickoff approval policy</span>
-              <span class="rqw-result-meta">Policy · 1 rule · 4 sources</span>
-            </div>
-            <span class="rqw-badge rqw-badge--ok">
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Verified
-            </span>
+            <div class="rqw-result-main"><span class="rqw-result-title">Customer kickoff approval policy</span><span class="rqw-result-meta">Policy · 1 rule · 4 sources</span></div>
+            <span class="rqw-badge rqw-badge--ok"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
           </div>
           <div class="rqw-result">
-            <div class="rqw-result-main">
-              <span class="rqw-result-title">Sales-to-delivery handover</span>
-              <span class="rqw-result-meta">Process · 7 steps · 5 sources</span>
-            </div>
+            <div class="rqw-result-main"><span class="rqw-result-title">Sales-to-delivery handover</span><span class="rqw-result-meta">Process · 7 steps · 5 sources</span></div>
             <span class="rqw-badge rqw-badge--review">Review</span>
           </div>
         </div>
-
         <div class="rqw-flow rqw-flow--solo">
-          <span class="rqw-verb">
-            Open the verified answer
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
+          <span class="rqw-verb">Open the verified answer<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
       </div>
     </div>
 
-    <!-- ============ 05 · CONNECTED AI / MCP ============ -->
+    <!-- 05 · CONNECTED AI / MCP -->
     <div class="rqw-row">
       <div class="rqw-copy">
         <div class="rqw-mark">
@@ -2226,47 +1356,26 @@ footer .wrap { position: relative; z-index: 1; }
           <span class="rqw-mark-label">Connected AI · MCP</span>
         </div>
         <h2 class="rqw-title">Your AI, grounded in your organisation's truth</h2>
-        <p class="rqw-sub">
-          Connect the AI tools your team already uses to your governed knowledge layer
-          through MCP. They stop answering from raw documents and start answering from
-          what your organisation has verified — source, validation state, and approval
-          history on every response.
-        </p>
+        <p class="rqw-sub">Connect the AI tools your team already uses to your governed knowledge layer through MCP. They stop answering from raw documents and start answering from what your organisation has verified — source, validation state, and approval history on every response.</p>
         <div class="rqw-meta">
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Bring your own key</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Model-agnostic</span>
           <span class="rqw-meta-pill"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 6.2l2.2 2.2 4.8-4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Always cited</span>
         </div>
       </div>
-
       <div class="rqw-fragment">
         <div class="rqw-card rqw-card-pad">
-          <div class="rqw-card-head">
-            <h4>Your assistant</h4>
-            <span class="rqw-pill-soft">via MCP</span>
-          </div>
-          <div class="rqw-ask">
-            <span class="rqw-ask-from">USER</span>
-            What do I need to do before starting a new customer project?
-          </div>
+          <div class="rqw-card-head"><h4>Your assistant</h4><span class="rqw-pill-soft">via MCP</span></div>
+          <div class="rqw-ask"><span class="rqw-ask-from">USER</span>What do I need to do before starting a new customer project?</div>
         </div>
-
         <div class="rqw-flow">
           <span class="rqw-thread" aria-hidden="true"></span>
           <span class="rqw-verb">Answered from approved knowledge</span>
         </div>
-
         <div class="rqw-card rqw-card-pad">
-          <p class="rqw-answer-body">
-            Confirm contract and scope, complete internal kickoff approval, assign the
-            delivery owner, transfer customer context from sales to delivery, and create
-            the project workspace. This answer is based on the <b>approved customer
-            project start procedure</b>.
-          </p>
+          <p class="rqw-answer-body">Confirm contract and scope, complete internal kickoff approval, assign the delivery owner, transfer customer context from sales to delivery, and create the project workspace. This answer is based on the <b>approved customer project start procedure</b>.</p>
           <div class="rqw-source">
-            <span class="rqw-source-icon" aria-hidden="true">
-              <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 2.5h6l2.5 2.5v8.5H4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 7.5h4M6 9.8h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </span>
+            <span class="rqw-source-icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M4 2.5h6l2.5 2.5v8.5H4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M6 7.5h4M6 9.8h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span>
             <span class="rqw-source-name">Starting a new customer project <span>· approved</span></span>
           </div>
           <div class="rqw-tags">
@@ -2285,32 +1394,16 @@ footer .wrap { position: relative; z-index: 1; }
   <div class="wrap">
     <div class="section-label">Solution</div>
     <div class="section-title reveal">One governed knowledge layer, built from the knowledge you already have</div>
-
     <div class="solution-layout">
       <div class="sol-copy reveal">
         <p>Requivo works where your critical knowledge already lives — across documents, systems, workflows, and people.</p>
         <p>It structures fragmented evidence, detects gaps and conflicts, and routes unresolved areas to the right expert for confirmation.</p>
         <p>The result is not a one-off answer. It is a reusable knowledge layer your teams can use for answers, procedures, onboarding, handovers, and controlled AI access.</p>
       </div>
-
       <div class="sol-panels reveal d1">
-        <div class="sol-panel">
-          <div class="sol-tag">Core flow</div>
-          <h3>Fragmented evidence → governed knowledge</h3>
-          <p>Connect what's scattered and turn it into maintained, validated operational knowledge.</p>
-        </div>
-
-        <div class="sol-panel">
-          <div class="sol-tag">Validation loop</div>
-          <h3>Gaps become expert tasks</h3>
-          <p>Weak, missing, or conflicting knowledge is surfaced and routed to the named expert who should confirm it.</p>
-        </div>
-
-        <div class="sol-panel">
-          <div class="sol-tag">Application layer</div>
-          <h3>One layer, many uses</h3>
-          <p>The same governed layer powers verified answers, living procedures, expert review tasks, onboarding, handover, and controlled AI access.</p>
-        </div>
+        <div class="sol-panel"><div class="sol-tag">Core flow</div><h3>Fragmented evidence → governed knowledge</h3><p>Connect what's scattered and turn it into maintained, validated operational knowledge.</p></div>
+        <div class="sol-panel"><div class="sol-tag">Validation loop</div><h3>Gaps become expert tasks</h3><p>Weak, missing, or conflicting knowledge is surfaced and routed to the named expert who should confirm it.</p></div>
+        <div class="sol-panel"><div class="sol-tag">Application layer</div><h3>One layer, many uses</h3><p>The same governed layer powers verified answers, living procedures, expert review tasks, onboarding, handover, and controlled AI access.</p></div>
       </div>
     </div>
   </div>
@@ -2321,31 +1414,11 @@ footer .wrap { position: relative; z-index: 1; }
     <div class="section-label">Governance</div>
     <div class="section-title reveal">Designed for governance from day one</div>
     <div class="section-sub reveal d1">Requivo is built around the controls complex organisations need before knowledge can be reused by teams, workflows, and AI systems.</div>
-
     <div class="gov-grid">
-      <div class="gov-card reveal">
-        <div class="gov-kicker">01</div>
-        <h3>Provenance</h3>
-        <p>Every answer remains linked to source material and evidence lineage, so teams can see where knowledge came from and why it is eligible for reuse.</p>
-      </div>
-
-      <div class="gov-card reveal d1">
-        <div class="gov-kicker">02</div>
-        <h3>Validation state</h3>
-        <p>Knowledge can be draft, verified, under review, or retired — instead of being treated as equally reliable by default.</p>
-      </div>
-
-      <div class="gov-card reveal d1">
-        <div class="gov-kicker">03</div>
-        <h3>Expert ownership</h3>
-        <p>Open questions are routed to accountable experts, turning missing, conflicting, or weakly validated knowledge into reviewable decisions.</p>
-      </div>
-
-      <div class="gov-card reveal d2">
-        <div class="gov-kicker">04</div>
-        <h3>Audit history</h3>
-        <p>Decisions, confirmations, updates, and reuse signals remain traceable over time.</p>
-      </div>
+      <div class="gov-card reveal"><div class="gov-kicker">01</div><h3>Provenance</h3><p>Every answer remains linked to source material and evidence lineage, so teams can see where knowledge came from and why it is eligible for reuse.</p></div>
+      <div class="gov-card reveal d1"><div class="gov-kicker">02</div><h3>Validation state</h3><p>Knowledge can be draft, verified, under review, or retired — instead of being treated as equally reliable by default.</p></div>
+      <div class="gov-card reveal d1"><div class="gov-kicker">03</div><h3>Expert ownership</h3><p>Open questions are routed to accountable experts, turning missing, conflicting, or weakly validated knowledge into reviewable decisions.</p></div>
+      <div class="gov-card reveal d2"><div class="gov-kicker">04</div><h3>Audit history</h3><p>Decisions, confirmations, updates, and reuse signals remain traceable over time.</p></div>
     </div>
   </div>
 </section>
@@ -2355,37 +1428,13 @@ footer .wrap { position: relative; z-index: 1; }
     <div class="section-label">Why Requivo</div>
     <div class="section-title reveal">Why better search is not enough</div>
     <div class="section-sub reveal d1">Search tools find documents. AI assistants generate answers. Documentation tools store what people write. Requivo starts earlier: it makes organisational knowledge trustworthy before people and AI reuse it.</div>
-
     <div class="strata reveal d1">
-      <div class="strata-row">
-        <div class="strata-label">Fragmented</div>
-        <div class="strata-body">Critical knowledge is distributed across files, systems, workflows, and experts — often without a single maintained structure.</div>
-      </div>
-
-      <div class="strata-row">
-        <div class="strata-label">Weakly structured</div>
-        <div class="strata-body">Existing information rarely reflects real operational hierarchy, ownership, currentness, and reliability.</div>
-      </div>
-
-      <div class="strata-row">
-        <div class="strata-label">Expert-dependent</div>
-        <div class="strata-body">Operational judgment, exceptions, and edge-case reasoning often remain with individual experts until they are lost.</div>
-      </div>
-
-      <div class="strata-row">
-        <div class="strata-label">Validated</div>
-        <div class="strata-body">Reliable knowledge requires validation, ownership, and a process for resolving weak or conflicting areas.</div>
-      </div>
-
-      <div class="strata-row">
-        <div class="strata-label">Governed</div>
-        <div class="strata-body">The goal is a maintained knowledge layer with traceable structure, clear ownership, and controlled reuse.</div>
-      </div>
-
-      <div class="strata-row">
-        <div class="strata-label">Reusable</div>
-        <div class="strata-body">Once governed, operational knowledge becomes an organisational asset for teams, workflows, and AI systems.</div>
-      </div>
+      <div class="strata-row"><div class="strata-label">Fragmented</div><div class="strata-body">Critical knowledge is distributed across files, systems, workflows, and experts — often without a single maintained structure.</div></div>
+      <div class="strata-row"><div class="strata-label">Weakly structured</div><div class="strata-body">Existing information rarely reflects real operational hierarchy, ownership, currentness, and reliability.</div></div>
+      <div class="strata-row"><div class="strata-label">Expert-dependent</div><div class="strata-body">Operational judgment, exceptions, and edge-case reasoning often remain with individual experts until they are lost.</div></div>
+      <div class="strata-row"><div class="strata-label">Validated</div><div class="strata-body">Reliable knowledge requires validation, ownership, and a process for resolving weak or conflicting areas.</div></div>
+      <div class="strata-row"><div class="strata-label">Governed</div><div class="strata-body">The goal is a maintained knowledge layer with traceable structure, clear ownership, and controlled reuse.</div></div>
+      <div class="strata-row"><div class="strata-label">Reusable</div><div class="strata-body">Once governed, operational knowledge becomes an organisational asset for teams, workflows, and AI systems.</div></div>
     </div>
   </div>
 </section>
@@ -2394,22 +1443,10 @@ footer .wrap { position: relative; z-index: 1; }
   <div class="wrap">
     <div class="section-label">Use cases</div>
     <div class="section-title reveal">Where Requivo creates value first</div>
-
     <div class="use-grid">
-      <div class="use-card reveal">
-        <h3>Complex operations</h3>
-        <p>Maintenance procedures, incident learnings, handovers, shift-critical decisions, and operational know-how.</p>
-      </div>
-
-      <div class="use-card reveal d1">
-        <h3>Technical organisations</h3>
-        <p>Engineering knowledge, configuration decisions, project memory, exception logic, and expert reasoning.</p>
-      </div>
-
-      <div class="use-card reveal d2">
-        <h3>Regulated workflows</h3>
-        <p>Validated procedures, audit evidence, approved guidance, controlled AI access, and traceable decision history.</p>
-      </div>
+      <div class="use-card reveal"><h3>Complex operations</h3><p>Maintenance procedures, incident learnings, handovers, shift-critical decisions, and operational know-how.</p></div>
+      <div class="use-card reveal d1"><h3>Technical organisations</h3><p>Engineering knowledge, configuration decisions, project memory, exception logic, and expert reasoning.</p></div>
+      <div class="use-card reveal d2"><h3>Regulated workflows</h3><p>Validated procedures, audit evidence, approved guidance, controlled AI access, and traceable decision history.</p></div>
     </div>
   </div>
 </section>
@@ -2418,25 +1455,10 @@ footer .wrap { position: relative; z-index: 1; }
   <div class="wrap">
     <div class="section-label">Contact</div>
     <div class="section-title reveal">Requivo is now inviting selected enterprise validation partners.<br>If your organisation depends on complex operational knowledge, we would be glad to explore one high-value workflow together.</div>
-
     <div class="contact-grid">
-      <div class="contact-card reveal">
-        <h3>Agnieszka Pisz-Weglarz</h3>
-        <div class="contact-role">CEO / Co-Founder</div>
-        <a class="contact-email" href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
-      </div>
-
-      <div class="contact-card reveal d1">
-        <h3>Patrick Pirchheim</h3>
-        <div class="contact-role">CTO / Co-Founder</div>
-        <a class="contact-email" href="mailto:patrick.pirchheim@requivo.at">patrick.pirchheim@requivo.at</a>
-      </div>
-
-      <div class="contact-card reveal d2">
-        <h3>Jakub Weglarz</h3>
-        <div class="contact-role">COO / Delivery Lead</div>
-        <a class="contact-email" href="mailto:jakub@requivo.at">jakub@requivo.at</a>
-      </div>
+      <div class="contact-card reveal"><h3>Agnieszka Pisz-Weglarz</h3><div class="contact-role">CEO / Co-Founder</div><a class="contact-email" href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a></div>
+      <div class="contact-card reveal d1"><h3>Patrick Pirchheim</h3><div class="contact-role">CTO / Co-Founder</div><a class="contact-email" href="mailto:patrick.pirchheim@requivo.at">patrick.pirchheim@requivo.at</a></div>
+      <div class="contact-card reveal d2"><h3>Jakub Weglarz</h3><div class="contact-role">COO / Delivery Lead</div><a class="contact-email" href="mailto:jakub@requivo.at">jakub@requivo.at</a></div>
     </div>
   </div>
 </section>
@@ -2446,55 +1468,33 @@ footer .wrap { position: relative; z-index: 1; }
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#top" class="footer-logo" aria-label="Requivo home">
-          <svg viewBox="0 0 44 36" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <rect x="16" y="12" width="12" height="12" rx="1" fill="#818cf8" transform="rotate(45 22 18)"/>
+          <svg viewBox="0 0 44 36" width="32" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M22 10 L28.5 18 L22 26 L15.5 18 Z" fill="#a5b4fc"/>
           </svg>
           Requivo
         </a>
-
         <p>The governed knowledge layer for organisations where correctness, ownership, and reuse matter.</p>
       </div>
-
       <div class="footer-col">
         <h4>Product</h4>
-        <a href="#problem">Problem</a>
-        <a href="#what-you-get">What you get</a>
+          <a href="#what-you-get">What you get</a>
         <a href="#solution">Solution</a>
-          <a href="#governance">Governance</a>
+        <a href="#governance">Governance</a>
         <a href="#why">Why Requivo</a>
         <a href="#use-cases">Use cases</a>
         <a href="requivo-vs-llm.html">Requivo vs LLM models</a>
       </div>
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="mission-vision.html">Mission &amp; Vision</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="impressum.html">Impressum</a>
-        <a href="privacy.html">Privacy</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
-        <a href="mailto:jakub@requivo.at">jakub@requivo.at</a>
-      </div>
+      <div class="footer-col"><h4>Company</h4><a href="mission-vision.html">Mission &amp; Vision</a><a href="#contact">Contact</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="impressum.html">Impressum</a><a href="privacy.html">Privacy</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a><a href="mailto:jakub@requivo.at">jakub@requivo.at</a></div>
     </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Requivo</span>
-      <span>All rights reserved.</span>
-    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Requivo</span><span>All rights reserved.</span></div>
   </div>
 </footer>
 
-<!-- Spotlight scroll-in cascade (sections 01–03 & 05) -->
+<!-- Spotlight scroll-in cascade -->
 <script>
 (function () {
   var s = document.getElementById('what-you-get');
@@ -2510,70 +1510,49 @@ footer .wrap { position: relative; z-index: 1; }
 })();
 </script>
 
-<!-- Nav raise on scroll + section reveals -->
+<!-- Nav raise + section reveals -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const nav = document.getElementById('nav');
   const reveals = document.querySelectorAll('.reveal');
-
   let ticking = false;
-
   function updateNav() {
-    if (window.scrollY > 8) { nav.classList.add('raised'); }
-    else { nav.classList.remove('raised'); }
+    if (window.scrollY > 8) nav.classList.add('raised');
+    else nav.classList.remove('raised');
   }
-
-  // rAF-throttle the scroll handler for smoothness
   function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(function () { updateNav(); ticking = false; });
-    }
+    if (!ticking) { ticking = true; requestAnimationFrame(function () { updateNav(); ticking = false; }); }
   }
-
   updateNav();
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', updateNav, { passive: true });
-
   if (!('IntersectionObserver' in window)) {
     reveals.forEach(el => el.classList.add('in'));
   } else {
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          obs.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('in'); obs.unobserve(entry.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
     reveals.forEach(el => observer.observe(el));
   }
 });
 </script>
 
-<!--
-  ============================================================
-  KNOWLEDGE MANAGER · Typewriter + stagger interaction
-  ============================================================
--->
+<!-- Knowledge Manager typewriter + stagger -->
 <script>
 (function () {
   'use strict';
-
   const QUERY = 'starting a new customer project';
-
   const row      = document.getElementById('rqw-km-row');
   const textEl   = document.getElementById('rqw-km-text');
   const cursorEl = document.getElementById('rqw-km-cursor');
   const searchEl = document.getElementById('rqw-km-search');
   if (!row || !textEl || !cursorEl || !searchEl) return;
-
   const metaEl   = row.querySelector('.rqw-results-meta');
   const results  = [...row.querySelectorAll('.rqw-result')];
   const flowSolo = row.querySelector('.rqw-flow--solo');
   if (!metaEl) return;
-
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     textEl.textContent = QUERY;
     metaEl.style.opacity = '1';
@@ -2581,11 +1560,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (flowSolo) { flowSolo.style.opacity = '1'; flowSolo.style.transform = 'none'; }
     return;
   }
-
   let runId = 0;
   const wait = ms => new Promise(res => setTimeout(res, ms));
   const charDelay = c => Math.max(28, 52 + (c === ' ' ? 38 : 0) + (Math.random() - 0.5) * 22);
-
   function setHidden() {
     textEl.textContent = '';
     cursorEl.style.transition = 'none';
@@ -2594,53 +1571,35 @@ document.addEventListener('DOMContentLoaded', function () {
     searchEl.classList.remove('rqw-search--typing');
     metaEl.style.transition = 'none';
     metaEl.style.opacity    = '0';
-    results.forEach(r => {
-      r.style.transition = 'none';
-      r.style.opacity    = '0';
-      r.style.transform  = 'translateX(8px)';
-    });
-    if (flowSolo) {
-      flowSolo.style.transition = 'none';
-      flowSolo.style.opacity    = '0';
-      flowSolo.style.transform  = 'translateY(6px)';
-    }
+    results.forEach(r => { r.style.transition = 'none'; r.style.opacity = '0'; r.style.transform = 'translateX(8px)'; });
+    if (flowSolo) { flowSolo.style.transition = 'none'; flowSolo.style.opacity = '0'; flowSolo.style.transform = 'translateY(6px)'; }
   }
-
   async function animate() {
-    const id    = ++runId;
+    const id = ++runId;
     const alive = () => runId === id;
-
     setHidden();
-
     await wait(260);
     if (!alive()) return;
-
     searchEl.classList.add('rqw-search--typing');
-
     for (let i = 0; i < QUERY.length; i++) {
       if (!alive()) return;
       textEl.textContent = QUERY.slice(0, i + 1);
       await wait(charDelay(QUERY[i]));
     }
-
     if (!alive()) return;
     await wait(460);
-
-    cursorEl.style.animation  = 'none';
-    cursorEl.style.opacity    = '1';
+    cursorEl.style.animation = 'none';
+    cursorEl.style.opacity   = '1';
     await wait(190);
     if (!alive()) return;
-
     cursorEl.style.transition = 'opacity .18s ease';
     cursorEl.style.opacity    = '0';
     searchEl.classList.remove('rqw-search--typing');
     await wait(100);
-
     if (!alive()) return;
     metaEl.style.transition = 'opacity .28s ease';
     metaEl.style.opacity    = '1';
     await wait(120);
-
     for (const r of results) {
       if (!alive()) return;
       r.style.transition = 'opacity .34s ease, transform .34s ease';
@@ -2648,187 +1607,123 @@ document.addEventListener('DOMContentLoaded', function () {
       r.style.transform  = 'none';
       await wait(145);
     }
-
     if (!alive()) return;
     await wait(60);
-    if (flowSolo) {
-      flowSolo.style.transition = 'opacity .38s ease, transform .38s ease';
-      flowSolo.style.opacity    = '1';
-      flowSolo.style.transform  = 'none';
-    }
+    if (flowSolo) { flowSolo.style.transition = 'opacity .38s ease, transform .38s ease'; flowSolo.style.opacity = '1'; flowSolo.style.transform = 'none'; }
   }
-
   setHidden();
-
   new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        animate();
-      } else {
-        runId++;
-        setHidden();
-      }
+      if (e.isIntersecting) animate();
+      else { runId++; setHidden(); }
     });
   }, { threshold: 0.30 }).observe(row);
-
 })();
 </script>
 
-<!--
-  ============================================================
-  HERO · INGESTION ANIMATION
-  ============================================================
-  Plays once on load, then rests in the completed state.
-  Respects prefers-reduced-motion (shows final state instantly).
-  ============================================================
--->
+<!-- ============================================================
+     HERO · INGESTION PANEL — precision reveal
+     One-time sequence. Complete silence after t=1100ms.
+     ============================================================ -->
 <script>
 (function () {
   'use strict';
 
-  /* ── Source data ─────────────────────────────────────── */
   const SOURCES = [
-    { abbr: 'CFG', name: 'PLC config exports',     badge: 'Config',   color: '#4338ca', pBg: 'rgba(79,70,229,.30)',   pColor: '#a5b4fc', pBdr: 'rgba(165,180,252,.34)', dur: 920  },
-    { abbr: 'SOP', name: 'Maintenance procedures', badge: 'SOP',      color: '#0284c7', pBg: 'rgba(6,182,212,.22)',   pColor: '#7dd3fc', pBdr: 'rgba(125,211,252,.32)', dur: 1660 },
-    { abbr: 'LOG', name: 'Fault & incident log',   badge: 'Incident', color: '#b45309', pBg: 'rgba(245,158,11,.22)',  pColor: '#fcd34d', pBdr: 'rgba(252,211,77,.30)',  dur: 2180 },
-    { abbr: 'WO',  name: 'Work order history',     badge: 'Order',    color: '#1a6c37', pBg: 'rgba(16,185,129,.20)',  pColor: '#6ee7b7', pBdr: 'rgba(110,231,183,.30)', dur: 2820 },
-    { abbr: 'PDF', name: 'Equipment manuals',      badge: 'Manual',   color: '#d8453a', pBg: 'rgba(239,68,68,.22)',   pColor: '#fca5a5', pBdr: 'rgba(252,165,165,.30)', dur: 3360 },
-    { abbr: 'ENG', name: 'Engineering wiki',       badge: 'Wiki',     color: '#7c3aed', pBg: 'rgba(139,92,246,.24)',  pColor: '#c4b5fd', pBdr: 'rgba(196,181,253,.32)', dur: 4050 },
+    { abbr: 'CFG', name: 'PLC config exports',     badge: 'Config',   iconBg: 'rgba(59,130,246,0.10)',  iconBdr: 'rgba(59,130,246,0.18)',  iconColor: '#93c5fd', pBg: 'rgba(56,189,248,0.08)',   pColor: '#7dd3fc', pBdr: 'rgba(56,189,248,0.22)'  },
+    { abbr: 'SOP', name: 'Maintenance procedures', badge: 'SOP',      iconBg: 'rgba(99,102,241,0.12)',  iconBdr: 'rgba(99,102,241,0.20)',  iconColor: '#a5b4fc', pBg: 'rgba(99,102,241,0.10)',   pColor: '#a5b4fc', pBdr: 'rgba(99,102,241,0.26)'  },
+    { abbr: 'LOG', name: 'Fault & incident log',   badge: 'Incident', iconBg: 'rgba(251,191,36,0.10)',  iconBdr: 'rgba(251,191,36,0.20)',  iconColor: '#fcd34d', pBg: 'rgba(251,191,36,0.10)',   pColor: '#fcd34d', pBdr: 'rgba(251,191,36,0.26)'  },
+    { abbr: 'WO',  name: 'Work order history',     badge: 'Order',    iconBg: 'rgba(59,130,246,0.10)',  iconBdr: 'rgba(59,130,246,0.18)',  iconColor: '#93c5fd', pBg: 'rgba(59,130,246,0.08)',   pColor: '#93c5fd', pBdr: 'rgba(59,130,246,0.22)'  },
+    { abbr: 'PDF', name: 'Equipment manuals',      badge: 'Manual',   iconBg: 'rgba(148,163,184,0.10)', iconBdr: 'rgba(148,163,184,0.18)', iconColor: '#94a3b8', pBg: 'rgba(148,163,184,0.10)',  pColor: '#94a3b8', pBdr: 'rgba(148,163,184,0.22)' },
+    { abbr: 'ENG', name: 'Engineering wiki',       badge: 'Wiki',     iconBg: 'rgba(45,212,191,0.10)',  iconBdr: 'rgba(45,212,191,0.20)',  iconColor: '#5eead4', pBg: 'rgba(45,212,191,0.08)',   pColor: '#5eead4', pBdr: 'rgba(45,212,191,0.22)'  },
   ];
-  const MAX_DUR   = Math.max(...SOURCES.map(s => s.dur));
-  const COUNT_TARGET = 2340;
 
-  /* Gradient strings — brighter on dark track */
-  const BAR_ACTIVE = 'linear-gradient(90deg,#5b52f0 0%,#818cf8 100%)';
-  const BAR_DONE   = 'linear-gradient(90deg,#059669 0%,#34d399 100%)';
+  const BAR = 'linear-gradient(90deg,#2563eb 0%,#60a5fa 100%)';
 
-  /* ── DOM refs ────────────────────────────────────────── */
   const card     = document.getElementById('hi-card');
   const statusEl = document.getElementById('hi-status');
   const footerEl = document.getElementById('hi-footer');
   const rowsEl   = document.getElementById('hi-rows');
-  const countEl  = document.getElementById('hi-count');
-  if (!card || !statusEl || !footerEl || !rowsEl) return;
+  const headEl   = card ? card.querySelector('.hi-panel-head') : null;
+  if (!card || !statusEl || !footerEl || !rowsEl || !headEl) return;
 
-  /* ── Build rows ──────────────────────────────────────── */
-  SOURCES.forEach(function (src, i) {
+  /* Build rows — bars at 100%, badges pre-rendered, no fill animation */
+  SOURCES.forEach(function (src) {
     const row = document.createElement('div');
     row.className = 'hi-row';
     row.innerHTML =
-      '<div class="hi-icon" style="background:' + src.color + '">' + src.abbr + '</div>' +
+      '<div class="hi-icon" style="background:' + src.iconBg + ';border:0.5px solid ' + src.iconBdr + ';color:' + src.iconColor + '">' + src.abbr + '</div>' +
       '<span class="hi-name">' + src.name + '</span>' +
-      '<div class="hi-bar-wrap"><div class="hi-bar-fill" id="hib' + i + '"></div></div>' +
-      '<span class="hi-pct" id="hip' + i + '">—</span>';
+      '<div class="hi-bar-wrap"><div class="hi-bar-fill" style="width:100%;background:' + BAR + '"></div></div>' +
+      '<span class="hi-pct hi-pct--done"><span class="hi-type-pill" style="background:' + src.pBg + ';color:' + src.pColor + ';border-color:' + src.pBdr + '">' + src.badge + '</span></span>';
     rowsEl.appendChild(row);
   });
 
-  /* ── Reduced motion: show completed state immediately ── */
+  /* Reduced motion: show final state immediately, no transitions */
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    SOURCES.forEach(function (src, i) {
-      const b = document.getElementById('hib' + i);
-      const p = document.getElementById('hip' + i);
-      if (b) { b.style.background = BAR_DONE; b.style.width = '100%'; }
-      if (p) {
-        p.className = 'hi-pct hi-pct--done';
-        p.innerHTML = '<span class="hi-type-pill" style="background:' + src.pBg + ';color:' + src.pColor + ';border-color:' + src.pBdr + '">' + src.badge + '</span>';
-      }
-    });
-    statusEl.textContent = 'Ingested';
-    statusEl.className   = 'hi-status hi-status--ok';
-    if (countEl) countEl.textContent = COUNT_TARGET.toLocaleString('en');
     footerEl.style.opacity = '1';
     return;
   }
 
-  /* ── Helpers ─────────────────────────────────────────── */
-  const wait         = ms => new Promise(res => setTimeout(res, ms));
-  const easeOutCubic = t  => 1 - Math.pow(1 - t, 3);
+  const wait = ms => new Promise(res => setTimeout(res, ms));
 
-  /* ── Reset to initial state (runs while card is invisible) ── */
-  function resetState() {
-    statusEl.textContent  = 'Ingesting\u2026';
-    statusEl.className    = 'hi-status hi-status--active';
-    footerEl.style.transition = 'none';
-    footerEl.style.opacity    = '0';
-    if (countEl) countEl.textContent = COUNT_TARGET.toLocaleString('en');
-
-    SOURCES.forEach(function (src, i) {
-      const b = document.getElementById('hib' + i);
-      const p = document.getElementById('hip' + i);
-      if (b) { b.style.background = BAR_ACTIVE; b.style.width = '0%'; }
-      if (p) { p.innerHTML = '—'; p.className = 'hi-pct'; delete p.dataset.done; }
-    });
+  function freeze() {
+    const rows = [...rowsEl.querySelectorAll('.hi-row')];
+    card.style.cssText      += ';opacity:0;transform:translateY(10px);transition:none';
+    headEl.style.cssText    += ';opacity:0;transition:none';
+    statusEl.style.cssText  += ';opacity:0;transform:scale(0.88);transition:none';
+    rows.forEach(r => { r.style.cssText += ';opacity:0;transform:translateY(5px);transition:none'; });
+    footerEl.style.cssText  += ';opacity:0;transition:none';
   }
 
-  /* ── Animate all bars simultaneously ────────────────── */
-  function animateAllBars() {
-    SOURCES.forEach(function (src, i) {
-      const barEl = document.getElementById('hib' + i);
-      const pctEl = document.getElementById('hip' + i);
-      if (!barEl || !pctEl) return;
+  const E = 'cubic-bezier(.2,.7,.2,1)';
 
-      var startTime = null;
+  async function reveal() {
+    freeze();
+    await wait(60);
 
-      function frame(ts) {
-        if (!startTime) startTime = ts;
-        var raw   = Math.min((ts - startTime) / src.dur, 1);
-        var eased = easeOutCubic(raw);
-        var pct   = Math.round(eased * 100);
-
-        barEl.style.width = pct + '%';
-
-        if (!pctEl.dataset.done) {
-          pctEl.textContent = pct + '%';
-        }
-
-        if (raw < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          barEl.style.background = BAR_DONE;
-          pctEl.className        = 'hi-pct hi-pct--done';
-          pctEl.dataset.done     = '1';
-          pctEl.innerHTML =
-            '<span class="hi-type-pill" style="background:' + src.pBg +
-            ';color:' + src.pColor +
-            ';border-color:' + src.pBdr + '">' + src.badge + '</span>';
-        }
-      }
-
-      requestAnimationFrame(frame);
-    });
-  }
-
-  /* ── Animation — plays once, then rests in completed state ── */
-  async function runOnce() {
-    resetState();
-
-    card.style.transition = 'opacity .45s ease';
+    /* t=0 · Panel enters */
+    card.style.transition = 'opacity 380ms ' + E + ', transform 380ms ' + E;
     card.style.opacity    = '1';
-    await wait(480);
+    card.style.transform  = 'translateY(0)';
 
-    animateAllBars();
+    await wait(280);
 
-    await wait(MAX_DUR + 250);
+    /* t=280ms · Header (without badge) */
+    headEl.style.transition = 'opacity 260ms ease';
+    headEl.style.opacity    = '1';
 
-    statusEl.textContent = 'Ingested';
-    statusEl.className   = 'hi-status hi-status--ok';
+    await wait(180);
 
-    await wait(380);
+    /* t=460ms · Source rows cascade, 60ms stagger */
+    const rows = [...rowsEl.querySelectorAll('.hi-row')];
+    const ROW_TRANS = 'opacity 220ms ' + E + ', transform 220ms ' + E;
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].style.transition = ROW_TRANS;
+      rows[i].style.opacity    = '1';
+      rows[i].style.transform  = 'translateY(0)';
+      if (i < rows.length - 1) await wait(60);
+    }
 
-    footerEl.style.transition = 'opacity .4s ease';
+    await wait(280); /* last row settles: 220ms transition + 60ms breath */
+
+    /* t=880ms · Footer summary */
+    footerEl.style.transition = 'opacity 260ms ease';
     footerEl.style.opacity    = '1';
+
+    await wait(140);
+
+    /* t=1020ms · Badge snaps in once — silence forever after */
+    statusEl.style.opacity    = '';
+    statusEl.style.transform  = '';
+    statusEl.style.transition = '';
+    statusEl.classList.add('hi-status--confirmed');
   }
 
-  /* ── Kick off ────────────────────────────────────────── */
-  function start() {
-    card.style.opacity = '0';
-    runOnce();
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start);
-  } else {
-    start();
-  }
+  function start() { freeze(); reveal(); }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 
 })();
 </script>
