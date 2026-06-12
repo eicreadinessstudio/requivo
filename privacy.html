@@ -5,652 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Datenschutzerklärung — Requivo</title>
 <meta name="description" content="Informationen zur Verarbeitung personenbezogener Daten im Zusammenhang mit dieser Website." />
+<meta name="theme-color" content="#fcfcfd" />
 <link rel="icon" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 <script>document.documentElement.classList.add('js');</script>
-
 <style>
-/* =========================================================
-   DESIGN TOKENS — matches main index.html
-   ========================================================= */
-:root {
-  /* Color */
-  --bg:          #ffffff;
-  --bg-off:      #f7f8fb;
-  --bg-panel:    #f2f4f8;
-  --bg-deep:     #0b1430;
-  --bg-deep-2:   #0e1839;
-  --line:        #e5e8ef;
-  --line-soft:   #eef0f5;
-  --line-strong: #d6dbe5;
-  --text:        #0a1124;
-  --text-mid:    #2d3552;
-  --text-soft:   #5a6584;
-  --text-dim:    #8a93ac;
-  --text-on-dark:        #e8ecf7;
-  --text-on-dark-soft:   #9aa6c4;
-  --text-on-dark-dim:    #6a7595;
-  --indigo:      #3730a3;
-  --indigo-mid:  #4f46e5;
-  --indigo-soft: #eef2ff;
-  --indigo-pale: #f5f6ff;
-  --indigo-on-dark: #a5b4fc;
-  --brand:       #4f46e5;
-
-  /* Type families */
-  --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
-
-  /* Type scale (golden-ratio derived) */
-  --fs-micro:    11px;
-  --fs-xs:       12px;
-  --fs-sm:       13.5px;
-  --fs-base:     15.5px;
-  --fs-lead:     17.5px;
-  --fs-label:    20px;
-  --fs-card:     20px;
-  --fs-h3:       26px;
-  --fs-h2:       clamp(28px, 3.2vw, 42px);
-  --fs-h1-page:  clamp(34px, 4.4vw, 52px);
-
-  /* Spacing / radius / motion */
-  --max:         1180px;
-  --radius:      6px;
-  --radius-lg:   14px;
-  --radius-xl:   18px;
-  --ease:        cubic-bezier(.2,.7,.2,1);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: "ss01" 1, "ss03" 1, "cv11" 1, "kern" 1, "calt" 1;
-  overflow-x: hidden;
-}
-
-a { text-decoration: none; color: inherit; }
-.wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
-
-/* =========================================================
-   ANNOUNCEMENT BAR
-   ========================================================= */
-.announce {
-  background: var(--bg-deep);
-  color: var(--text-on-dark);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.announce-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 38px;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 450;
-  letter-spacing: -.005em;
-  color: #e8ecf7;
-}
-.announce-inner a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.announce-tag {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 450;
-  letter-spacing: -.005em;
-  text-transform: none;
-  color: rgba(232,236,247,.62);
-  padding-right: 12px;
-  border-right: 1px solid rgba(255,255,255,.14);
-  margin-right: 4px;
-}
-.announce-arrow {
-  display: inline-flex;
-  margin-left: 4px;
-  opacity: .8;
-  transition: transform .2s var(--ease), opacity .2s;
-}
-.announce a:hover .announce-arrow {
-  transform: translateX(2px);
-  opacity: 1;
-}
-
-/* =========================================================
-   NAV
-   ========================================================= */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line-soft);
-  transition: box-shadow .25s;
-}
-nav.raised { box-shadow: 0 1px 18px rgba(11,20,48,.06); }
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 64px;
-  gap: 32px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 500;
-  color: var(--text);
-  letter-spacing: -.022em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.nav-links a {
-  font-family: var(--font-sans);
-  font-size: var(--fs-sm);
-  font-weight: 450;
-  color: var(--text-mid);
-  letter-spacing: -.005em;
-  transition: color .18s;
-}
-.nav-links a:hover { color: var(--text); }
-
-.nav-cta {
-  background: transparent !important;
-  color: var(--indigo) !important;
-  border: 1px solid var(--indigo) !important;
-  padding: 8px 18px;
-  border-radius: var(--radius);
-  font-size: var(--fs-sm) !important;
-  font-weight: 500 !important;
-  transition: background .18s, color .18s !important;
-}
-.nav-cta:hover {
-  background: var(--indigo) !important;
-  color: #fff !important;
-}
-
-/* =========================================================
-   PAGE
-   ========================================================= */
-.page { padding: 84px 0 100px; }
-
-.page-label {
-  font-family: var(--font-sans);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: -.012em;
-  color: var(--brand);
-  margin-bottom: 18px;
-  display: block;
-}
-
-.page h1 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-h1-page);
-  font-weight: 500;
-  line-height: 1.06;
-  letter-spacing: -.028em;
-  color: var(--text);
-  margin-bottom: 22px;
-}
-
-.page-intro {
-  font-family: var(--font-sans);
-  font-size: var(--fs-lead);
-  line-height: 1.62;
-  font-weight: 400;
-  letter-spacing: -.005em;
-  color: var(--text-soft);
-  max-width: 720px;
-  margin-bottom: 56px;
-}
-
-/* =========================================================
-   LEGAL CARD
-   ========================================================= */
-.legal-card {
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(11,20,48,.03);
-}
-
-.legal-section {
-  padding: 32px 40px;
-  border-bottom: 1px solid var(--line-soft);
-}
-
-.legal-section:last-child { border-bottom: none; }
-
-.legal-section h2 {
-  font-family: var(--font-sans);
-  font-size: var(--fs-label);
-  font-weight: 500;
-  letter-spacing: -.012em;
-  text-transform: none;
-  color: var(--brand);
-  margin-bottom: 14px;
-}
-
-.legal-section p {
-  font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  line-height: 1.75;
-  font-weight: 400;
-  letter-spacing: -.003em;
-  color: var(--text-mid);
-  margin-bottom: 10px;
-}
-
-.legal-section p:last-child { margin-bottom: 0; }
-
-.legal-section ul {
-  margin: 12px 0 12px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.legal-section ul:last-child { margin-bottom: 0; }
-
-.legal-section li {
-  position: relative;
-  font-family: var(--font-sans);
-  font-size: var(--fs-base);
-  line-height: 1.75;
-  font-weight: 400;
-  letter-spacing: -.003em;
-  color: var(--text-mid);
-  padding-left: 22px;
-  margin-bottom: 6px;
-}
-
-.legal-section li:last-child { margin-bottom: 0; }
-
-.legal-section li::before {
-  content: "–";
-  position: absolute;
-  left: 4px;
-  top: 0;
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
-.legal-section strong {
-  font-weight: 500;
-  color: var(--text);
-}
-
-.legal-section a {
-  color: var(--brand);
-  border-bottom: 1px solid rgba(79,70,229,.25);
-  transition: color .18s, border-color .18s;
-}
-.legal-section a:hover {
-  color: var(--indigo);
-  border-color: rgba(55,48,163,.5);
-}
-
-/* =========================================================
-   BACK LINK
-   ========================================================= */
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 44px;
-  font-family: var(--font-sans);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  letter-spacing: -.003em;
-  color: var(--text-soft);
-  transition: color .18s, gap .2s var(--ease);
-}
-.back-link::before {
-  content: '←';
-  font-weight: 400;
-  transition: transform .2s var(--ease);
-}
-.back-link:hover {
-  color: var(--brand);
-}
-.back-link:hover::before {
-  transform: translateX(-3px);
-}
-
-/* =========================================================
-   FOOTER — matches main index.html
-   ========================================================= */
-footer {
-  background: var(--bg-deep);
-  padding: 80px 0 60px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr .8fr 1fr;
-  gap: 48px;
-  margin-bottom: 56px;
-  align-items: start;
-}
-
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 19px;
-  font-weight: 500;
-  color: #fff;
-  letter-spacing: -.022em;
-}
-
-.footer-brand p {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.65;
-  font-weight: 400;
-  color: var(--text-on-dark-soft);
-  max-width: 300px;
-  letter-spacing: -.003em;
-}
-
-.footer-col h4 {
-  font-family: var(--font-sans);
-  font-size: 14px;
-  letter-spacing: -.005em;
-  text-transform: none;
-  font-weight: 500;
-  color: var(--indigo-on-dark);
-  margin-bottom: 16px;
-}
-
-.footer-col a,
-.footer-col p {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 2;
-  font-weight: 400;
-  color: var(--text-on-dark-soft);
-  letter-spacing: -.003em;
-  transition: color .18s;
-}
-.footer-col a:hover { color: #fff; }
-
-.footer-bottom {
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,.08);
-  font-family: var(--font-sans);
-  font-size: 12px;
-  color: var(--text-on-dark-dim);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-@media (max-width: 1040px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 768px) {
-  .wrap { width: calc(100% - 32px); }
-  .nav-links { display: none; }
-
-  .announce-inner { font-size: 13px; height: 36px; }
-  .announce-tag { padding-right: 8px; margin-right: 4px; }
-
-  .page { padding: 56px 0 80px; }
-  .legal-section { padding: 26px 24px; }
-  .legal-section h2 { font-size: 18px; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 8px; }
-}
+:root{--dark:#07090f;--light:#fcfcfd;--off:#f3f4f8;--text:#0a1124;--text-mid:#2d3552;--text-soft:#5a6584;--text-dim:#8a93ac;--indigo:#3730a3;--brand:#4f46e5;--line:rgba(0,0,0,.07);--serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--ease:cubic-bezier(.2,.7,.2,1);--max:1100px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);font-size:15.5px;background:var(--light);color:var(--text);line-height:1.68;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;z-index:290;pointer-events:none;opacity:.026;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;}
+a{text-decoration:none;color:inherit;}
+::selection{background:#c7d2fe;color:#1a1147;}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:3px;}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:0 auto;}
+#nav{position:fixed;top:0;left:0;right:0;z-index:300;height:56px;border-bottom:0.5px solid transparent;transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;}
+#nav.scrolled{backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);background:rgba(252,252,253,.94);border-bottom-color:rgba(0,0,0,.07);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:56px;gap:24px;}
+.logo{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:500;letter-spacing:-.018em;color:var(--text);flex-shrink:0;transition:opacity .18s ease;}
+.logo:hover{opacity:.72;}
+.nav-links{display:flex;align-items:center;gap:26px;}
+.nav-links a{font-size:13px;font-weight:400;letter-spacing:.005em;color:var(--text-soft);transition:color .18s ease;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{font-size:13px;font-weight:500;padding:7px 18px;border-radius:6px;border:1px solid rgba(0,0,0,.18);color:var(--text);transition:background .18s ease,color .18s ease,border-color .18s ease;}
+.nav-cta:hover{background:var(--text);color:#fff;border-color:var(--text);}
+.page{padding:112px 0 100px;}
+.page-eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);display:block;margin-bottom:16px;}
+.page-title{font-family:var(--serif);font-size:clamp(34px,4vw,54px);font-weight:400;line-height:1.06;letter-spacing:-.014em;color:var(--text);margin-bottom:20px;text-wrap:balance;}
+.page-intro{font-size:16.5px;line-height:1.68;color:var(--text-soft);max-width:680px;margin-bottom:56px;letter-spacing:-.005em;}
+.legal-card{background:var(--light);border:0.5px solid rgba(0,0,0,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(10,17,36,.04),0 8px 32px rgba(10,17,36,.05);}
+.legal-section{padding:32px 40px;border-bottom:0.5px solid var(--line);}
+.legal-section:last-child{border-bottom:none;}
+.legal-section h2{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:14px;}
+.legal-section p{font-size:15px;line-height:1.75;color:var(--text-mid);letter-spacing:-.003em;margin-bottom:10px;}
+.legal-section p:last-child{margin-bottom:0;}
+.legal-section ul{margin:12px 0;padding:0;list-style:none;}
+.legal-section li{position:relative;font-size:15px;line-height:1.75;color:var(--text-mid);padding-left:20px;margin-bottom:6px;}
+.legal-section li::before{content:"–";position:absolute;left:4px;top:0;color:var(--text-dim);}
+.legal-section li:last-child{margin-bottom:0;}
+.legal-section strong{font-weight:500;color:var(--text);}
+.legal-section a{color:var(--brand);border-bottom:0.5px solid rgba(79,70,229,.30);transition:color .18s,border-color .18s;}
+.legal-section a:hover{color:var(--indigo);border-color:rgba(55,48,163,.55);}
+.back-link{display:inline-flex;align-items:center;gap:8px;margin-top:48px;font-size:13px;font-weight:500;letter-spacing:-.003em;color:var(--text-soft);transition:color .18s ease;}
+.back-link::before{content:'←';transition:transform .2s var(--ease);}
+.back-link:hover{color:var(--brand);}
+.back-link:hover::before{transform:translateX(-3px);}
+footer{background:var(--dark);padding:72px 0 48px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:48px;}
+.footer-brand{display:flex;flex-direction:column;gap:16px;}
+.footer-logo{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:500;color:rgba(255,255,255,.90);letter-spacing:-.018em;transition:opacity .18s ease;}
+.footer-logo:hover{opacity:.72;}
+.footer-brand p{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.30);max-width:280px;}
+.footer-col h4{font-size:12px;font-weight:500;letter-spacing:-.005em;color:rgba(165,180,252,.55);margin-bottom:14px;}
+.footer-col a,.footer-col p{display:block;font-size:13.5px;line-height:2.0;color:rgba(255,255,255,.30);transition:color .18s ease;}
+.footer-col a:hover{color:rgba(255,255,255,.88);}
+.footer-bottom{padding-top:24px;border-top:0.5px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.22);}
+@media(max-width:1080px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.wrap{width:calc(100% - 32px);}.nav-links a:not(.nav-cta){display:none;}.page{padding:88px 0 80px;}.legal-section{padding:24px 24px;}.footer-grid{grid-template-columns:1fr 1fr;}.footer-bottom{flex-direction:column;gap:6px;}}
 </style>
 </head>
 <body>
-
-<!-- Announcement bar -->
-<div class="announce">
-  <div class="wrap announce-inner">
-    <a href="index.html#contact" aria-label="Pre-seed round">
-      <span class="announce-tag">Pre-seed round</span>
-      <span>Selected pilot and validation collaborations open</span>
-      <span class="announce-arrow" aria-hidden="true">
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4.5 2.5l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </a>
-  </div>
-</div>
-
 <nav id="nav">
   <div class="wrap nav-inner">
     <a href="index.html" class="logo" aria-label="Requivo home">
-      <svg viewBox="0 0 44 36" width="36" height="29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#2c2a7a" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#2c2a7a" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <rect x="16" y="12" width="12" height="12" rx="1" fill="#4f46e5" transform="rotate(45 22 18)"/>
-      </svg>
+      <svg viewBox="0 0 44 36" width="28" height="23" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#3730a3" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#3730a3" stroke-width="2" stroke-linecap="round" fill="none"/><polygon points="22,10 28.5,18 22,26 15.5,18" fill="#4f46e5"/></svg>
       Requivo
     </a>
-
     <div class="nav-links">
-      <a href="index.html#problem">Problem</a>
+      <a href="index.html#what-you-get">What you get</a>
       <a href="index.html#solution">Solution</a>
-      <a href="index.html#why">Why this matters</a>
+      <a href="index.html#governance">Governance</a>
+      <a href="index.html#why">Why Requivo</a>
       <a href="index.html#use-cases">Use cases</a>
       <a href="index.html#contact" class="nav-cta">Contact</a>
     </div>
   </div>
 </nav>
-
 <main class="page">
   <div class="wrap">
-    <div class="page-label">Datenschutz</div>
-    <h1>Datenschutzerklärung</h1>
+    <span class="page-eyebrow">Datenschutz</span>
+    <h1 class="page-title">Datenschutzerklärung</h1>
     <p class="page-intro">Informationen zur Verarbeitung personenbezogener Daten im Zusammenhang mit dieser Website.</p>
-
     <div class="legal-card">
-      <section class="legal-section">
-        <h2>1. Verantwortliche Stelle</h2>
-        <p>
-          <strong>Agnieszka Pisz-Weglarz</strong><br>
-          Requivo – Projekt in Vorbereitung
-        </p>
-        <p>
-          E-Mail:<br>
-          <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
-        </p>
-        <p>Anfragen zum Datenschutz können an diese E-Mail-Adresse gerichtet werden.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>2. Zwecke und Rechtsgrundlagen der Verarbeitung</h2>
-        <p>Wir verarbeiten personenbezogene Daten nur insoweit, als dies zur Bereitstellung dieser Website, zur Gewährleistung der technischen Sicherheit und zur Bearbeitung von Kontaktanfragen erforderlich ist.</p>
-        <p>Rechtsgrundlagen sind insbesondere:</p>
-        <ul>
-          <li>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem funktionsfähigen, sicheren und informativen Webauftritt),</li>
-          <li>bei Kontaktaufnahme zusätzlich gegebenenfalls Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Kommunikation) oder ebenfalls Art. 6 Abs. 1 lit. f DSGVO.</li>
-        </ul>
-        <p>Diese Website dient der allgemeinen Information über Requivo. Es werden keine Benutzerkonten angeboten, keine Formulare verarbeitet und keine Tracking- oder Marketing-Tools eingesetzt.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>3. Bereitstellung der Website</h2>
-        <p>Die Website wird als statische Website bereitgestellt. Beim Aufruf der Website können aus technischen Gründen bestimmte Verbindungsdaten verarbeitet werden, insbesondere:</p>
-        <ul>
-          <li>IP-Adresse,</li>
-          <li>Datum und Uhrzeit des Zugriffs,</li>
-          <li>aufgerufene Datei bzw. Seite,</li>
-          <li>übertragene Datenmenge,</li>
-          <li>Browser- und Geräteinformationen,</li>
-          <li>Referrer-Informationen, soweit vom Browser übermittelt.</li>
-        </ul>
-        <p>Diese Datenverarbeitung erfolgt ausschließlich, soweit dies für den technischen Betrieb, die Stabilität und die Sicherheit der Website erforderlich ist.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>4. Kontaktaufnahme per E-Mail</h2>
-        <p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen freiwillig übermittelten personenbezogenen Daten ausschließlich zur Bearbeitung Ihres Anliegens.</p>
-        <p>Bitte beachten Sie, dass die Übermittlung per E-Mail grundsätzlich nicht vollständig risikofrei ist. Sie entscheiden selbst, welche Informationen Sie uns auf diesem Weg mitteilen.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>5. Empfänger</h2>
-        <p>Eine Weitergabe personenbezogener Daten an Dritte erfolgt nicht zu Werbezwecken.</p>
-        <p>Eine Weitergabe kann nur insoweit erfolgen, als dies für den technischen Betrieb der Website erforderlich ist, insbesondere an Hosting- oder Infrastruktur-Dienstleister.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>6. Drittlandübermittlung</h2>
-        <p>Im Zusammenhang mit dem bloßen Besuch dieser Website ist keine bewusste Übermittlung personenbezogener Daten in ein Drittland beabsichtigt. Soweit im Einzelfall technische Infrastruktur von Dienstleistern mit Drittlandbezug eingesetzt wird, erfolgt dies nur im Rahmen der datenschutzrechtlich zulässigen Voraussetzungen.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>7. Cookies und ähnliche Technologien</h2>
-        <p>Diese Website verwendet keine nicht notwendigen Cookies sowie keine Analyse-, Tracking- oder Marketing-Technologien.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>8. Speicherdauer</h2>
-        <p>Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Zwecke erforderlich ist.</p>
-        <p>E-Mails und damit verbundene Kommunikationsdaten werden grundsätzlich nur so lange gespeichert, wie dies zur Bearbeitung des Anliegens erforderlich ist, sofern nicht gesetzliche Aufbewahrungspflichten oder berechtigte Gründe für eine längere Speicherung bestehen.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>9. Ihre Rechte</h2>
-        <p>Sie haben nach Maßgabe der DSGVO insbesondere folgende Rechte:</p>
-        <ul>
-          <li>Recht auf Auskunft,</li>
-          <li>Recht auf Berichtigung,</li>
-          <li>Recht auf Löschung,</li>
-          <li>Recht auf Einschränkung der Verarbeitung,</li>
-          <li>Recht auf Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen,</li>
-          <li>Recht auf Datenübertragbarkeit, soweit anwendbar,</li>
-          <li>Recht auf Beschwerde bei einer Aufsichtsbehörde.</li>
-        </ul>
-        <p>In Österreich ist dies insbesondere die Datenschutzbehörde.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>10. Datensicherheit</h2>
-        <p>Wir setzen angemessene technische und organisatorische Maßnahmen ein, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten. Dazu zählt insbesondere die verschlüsselte Übertragung der Website per HTTPS, soweit dies durch die eingesetzte Infrastruktur unterstützt wird.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>11. Keine automatisierten Entscheidungen</h2>
-        <p>Es findet keine ausschließlich automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO statt.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>12. Änderungen dieser Datenschutzerklärung</h2>
-        <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, insbesondere wenn sich die Website, ihre Funktionen oder die rechtlichen Anforderungen ändern.</p>
-      </section>
+      <section class="legal-section"><h2>1. Verantwortliche Stelle</h2><p><strong>Agnieszka Pisz-Weglarz</strong><br>Requivo – Projekt in Vorbereitung</p><p>E-Mail: <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a></p><p>Anfragen zum Datenschutz können an diese E-Mail-Adresse gerichtet werden.</p></section>
+      <section class="legal-section"><h2>2. Zwecke und Rechtsgrundlagen der Verarbeitung</h2><p>Wir verarbeiten personenbezogene Daten nur insoweit, als dies zur Bereitstellung dieser Website, zur Gewährleistung der technischen Sicherheit und zur Bearbeitung von Kontaktanfragen erforderlich ist.</p><p>Rechtsgrundlagen sind insbesondere:</p><ul><li>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem funktionsfähigen, sicheren und informativen Webauftritt),</li><li>bei Kontaktaufnahme zusätzlich gegebenenfalls Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Kommunikation) oder ebenfalls Art. 6 Abs. 1 lit. f DSGVO.</li></ul><p>Diese Website dient der allgemeinen Information. Es werden keine Benutzerkonten angeboten, keine Formulare verarbeitet und keine Tracking- oder Marketing-Tools eingesetzt.</p></section>
+      <section class="legal-section"><h2>3. Bereitstellung der Website</h2><p>Die Website wird als statische Website bereitgestellt. Beim Aufruf können aus technischen Gründen bestimmte Verbindungsdaten verarbeitet werden:</p><ul><li>IP-Adresse,</li><li>Datum und Uhrzeit des Zugriffs,</li><li>aufgerufene Datei bzw. Seite,</li><li>übertragene Datenmenge,</li><li>Browser- und Geräteinformationen,</li><li>Referrer-Informationen, soweit vom Browser übermittelt.</li></ul><p>Diese Datenverarbeitung erfolgt ausschließlich für den technischen Betrieb.</p></section>
+      <section class="legal-section"><h2>4. Kontaktaufnahme per E-Mail</h2><p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen freiwillig übermittelten personenbezogenen Daten ausschließlich zur Bearbeitung Ihres Anliegens.</p><p>Bitte beachten Sie, dass die Übermittlung per E-Mail grundsätzlich nicht vollständig risikofrei ist.</p></section>
+      <section class="legal-section"><h2>5. Empfänger</h2><p>Eine Weitergabe personenbezogener Daten an Dritte erfolgt nicht zu Werbezwecken. Eine Weitergabe kann nur insoweit erfolgen, als dies für den technischen Betrieb erforderlich ist.</p></section>
+      <section class="legal-section"><h2>6. Drittlandübermittlung</h2><p>Im Zusammenhang mit dem bloßen Besuch dieser Website ist keine bewusste Übermittlung personenbezogener Daten in ein Drittland beabsichtigt.</p></section>
+      <section class="legal-section"><h2>7. Cookies und ähnliche Technologien</h2><p>Diese Website verwendet keine nicht notwendigen Cookies sowie keine Analyse-, Tracking- oder Marketing-Technologien.</p></section>
+      <section class="legal-section"><h2>8. Speicherdauer</h2><p>Personenbezogene Daten werden nur so lange gespeichert, wie dies für die jeweiligen Zwecke erforderlich ist.</p></section>
+      <section class="legal-section"><h2>9. Ihre Rechte</h2><p>Sie haben nach Maßgabe der DSGVO insbesondere folgende Rechte:</p><ul><li>Recht auf Auskunft,</li><li>Recht auf Berichtigung,</li><li>Recht auf Löschung,</li><li>Recht auf Einschränkung der Verarbeitung,</li><li>Recht auf Widerspruch,</li><li>Recht auf Datenübertragbarkeit, soweit anwendbar,</li><li>Recht auf Beschwerde bei einer Aufsichtsbehörde.</li></ul><p>In Österreich ist dies insbesondere die Datenschutzbehörde.</p></section>
+      <section class="legal-section"><h2>10. Datensicherheit</h2><p>Wir setzen angemessene technische und organisatorische Maßnahmen ein, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten, insbesondere die verschlüsselte Übertragung per HTTPS.</p></section>
+      <section class="legal-section"><h2>11. Keine automatisierten Entscheidungen</h2><p>Es findet keine ausschließlich automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO statt.</p></section>
+      <section class="legal-section"><h2>12. Änderungen dieser Datenschutzerklärung</h2><p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen, insbesondere wenn sich die Website oder die rechtlichen Anforderungen ändern.</p></section>
     </div>
-
     <a class="back-link" href="index.html">Back to main page</a>
   </div>
 </main>
-
 <footer>
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="footer-logo" aria-label="Requivo home">
-          <svg viewBox="0 0 44 36" width="34" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <rect x="16" y="12" width="12" height="12" rx="1" fill="#818cf8" transform="rotate(45 22 18)"/>
-          </svg>
+          <svg viewBox="0 0 44 36" width="28" height="23" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 3.5 C7.5 3.5,3 8,3 14 L3 22 C3 28,7.5 32.5,15 32.5" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M29 3.5 C36.5 3.5,41 8,41 14 L41 22 C41 28,36.5 32.5,29 32.5" stroke="#c7d2fe" stroke-width="2" stroke-linecap="round" fill="none"/><polygon points="22,10 28.5,18 22,26 15.5,18" fill="#a5b4fc"/></svg>
           Requivo
         </a>
-        <p>Turning fragmented enterprise evidence into a governed operational knowledge layer.</p>
+        <p>The governed knowledge layer for organisations where correctness, ownership, and reuse matter.</p>
       </div>
-
-      <div class="footer-col">
-        <h4>Navigation</h4>
-        <a href="index.html#problem">Problem</a>
-        <a href="index.html#solution">Solution</a>
-        <a href="index.html#why">Why this matters</a>
-        <a href="index.html#use-cases">Use cases</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="mission-vision.html">Mission &amp; Vision</a>
-        <a href="index.html#contact">Contact</a>
-        <a href="requivo-vs-llm.html">Requivo vs LLM models</a>
-        <a href="impressum.html">Impressum</a>
-        <a href="privacy.html">Datenschutz</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a>
-        <a href="mailto:jakub@requivo.at">jakub@requivo.at</a>
-      </div>
+      <div class="footer-col"><h4>Product</h4><a href="index.html#what-you-get">What you get</a><a href="index.html#solution">Solution</a><a href="index.html#governance">Governance</a><a href="index.html#why">Why Requivo</a><a href="index.html#use-cases">Use cases</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="mission-vision.html">Mission &amp; Vision</a><a href="index.html#contact">Contact</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="impressum.html">Impressum</a><a href="privacy.html">Privacy</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:agnieszka.weglarz@requivo.at">agnieszka.weglarz@requivo.at</a><a href="mailto:jakub@requivo.at">jakub@requivo.at</a></div>
     </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Requivo</span>
-      <span>All rights reserved.</span>
-    </div>
+    <div class="footer-bottom"><span>&copy; 2026 Requivo</span><span>All rights reserved.</span></div>
   </div>
 </footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const nav = document.getElementById('nav');
-
-  function updateNav() {
-    if (window.scrollY > 8) {
-      nav.classList.add('raised');
-    } else {
-      nav.classList.remove('raised');
-    }
-  }
-
-  updateNav();
-  window.addEventListener('scroll', updateNav, { passive: true });
-});
-</script>
-
+<script>(function(){var nav=document.getElementById('nav');if(!nav)return;function u(){if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled');}u();window.addEventListener('scroll',u,{passive:true});})();</script>
 </body>
 </html>
